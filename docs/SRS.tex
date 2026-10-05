@@ -1,16 +1,53 @@
-\documentclass[12pt]{article}
+\documentclass[12pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
-\usepackage{pdfpages}
 \usepackage[margin=2.5cm]{geometry}
-
-\title{Especificación de Requisitos de Software\\CitaFácil}
-\author{Equipo CitaFácil}
-\date{}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{enumitem}
 
 \begin{document}
-\maketitle
 
+% --- PORTADA ---
+\begin{titlepage}
+    \centering
+    \vspace*{0.2cm}
+
+    % Imagen del logo cargada correctamente
+    \includegraphics[width=3.5cm]{logo.jpg.jpeg} \\[0.4cm]
+
+    {\Large\bfseries Universidad Politécnica de Pachuca\par}
+    \vspace{0.3cm}
+    {\large Ingeniería en Tecnologías de la Información e Innovación Digital\par}
+
+    \vspace{1.2cm}
+    {\Huge\bfseries Especificación de Requisitos de Software\par}
+    \vspace{0.4cm}
+    {\LARGE\bfseries CitaFácil\par}
+
+    \vspace{1.2cm}
+    {\large \textbf{Asignatura:} Aplicaciones Web\par}
+    {\large \textbf{Docente:} Mtra. Yeniza Sarahi Montoya Martínez\par}
+
+    \vfill
+
+    \begin{flushright}
+        \textbf{Integrantes del Equipo:}\\[0.2cm]
+        Victor Hugo Ramírez \\
+        Elizabeth Vázquez Espinoza \\
+        Aram Jael Morales Peña \\
+        Luis Ángel Ruíz Bautista \\
+        Liam Tonatiuh Villanueva Cerón \\
+        Jonathan Corona Téllez \\[0.3cm]
+        \textbf{Periodo:} Septiembre--Diciembre 2026
+    \end{flushright}
+\end{titlepage}
+
+\newpage
+\tableofcontents
+\newpage
+
+% --- CONTENIDO ---
 \section{Introducción}
 CitaFácil es una aplicación web para que consultorios pequeños gestionen sus citas. Resuelve un problema frecuente: citas duplicadas, olvidadas o mal organizadas. Este documento describe el alcance del proyecto y sus requerimientos funcionales y no funcionales.
 
@@ -132,7 +169,7 @@ CitaFácil es una aplicación web para que consultorios pequeños gestionen sus 
 \bigskip
 
 \noindent\textbf{Nombre:} Confiabilidad de la información \\
-\textbf{Requerimiento:} El sistema deberá conservar correctamente la información registrada, evitando pérdidas o modificaciones accidentales. \\
+\textbf{Requerimiento:} El sistema deberá conservar correctamente la información registrada, evitando pérdidas o modificaciones accidentalmente. \\
 \textbf{Prioridad:} Alta
 \bigskip
 
