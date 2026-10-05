@@ -1,6 +1,17 @@
 /* ===== VARIABLES ===== */
 
+:root {
+    --color-primario: #2F7F7A;
+    --color-secundario: #F4C98B;
+    --color-texto: #2E3E3E;
+    --color-superficie: #EEF5F3;
+    --color-fondo: #FFFFFF;
+    --color-exito: #3B7D52;
+    --color-pendiente: #8A5F1F;
+    --color-error: #B4483F;
 
+    --fuente-principal: 'Atkinson Hyperlegible', Verdana, sans-serif;
+}
 
 /* ===== GLOBAL ===== */
 
@@ -8,7 +19,199 @@
 
 /* ===== INICIO ===== */
 
+.hero-inicio {
+    background-color: var(--color-superficie);
+    padding: 4rem 1rem;
+}
 
+.hero-contenido {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.hero-contenido h1 {
+    color: var(--color-primario);
+    font-family: var(--fuente-principal);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.hero-contenido p {
+    color: var(--color-texto);
+    font-family: var(--fuente-principal);
+    font-size: 1.125rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.btn-agendar {
+    background-color: var(--color-primario);
+    color: var(--color-fondo);
+    font-family: var(--fuente-principal);
+    font-weight: 700;
+    min-height: 48px;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-agendar:hover {
+    background-color: #256964;
+    color: var(--color-fondo);
+}
+
+.beneficios-inicio {
+    padding: 3rem 1rem;
+    background-color: var(--color-fondo);
+}
+
+.beneficios-inicio h2 {
+    color: var(--color-primario);
+    font-family: var(--fuente-principal);
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.beneficio-carousel {
+    max-width: 650px;
+    min-height: 220px;
+    margin: 0 auto;
+    padding: 2rem 3rem;
+    background-color: var(--color-superficie);
+    border-radius: 12px;
+    text-align: center;
+}
+
+.beneficio-carousel i {
+    color: var(--color-primario);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.beneficio-carousel h3 {
+    color: var(--color-texto);
+    font-family: var(--fuente-principal);
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.beneficio-carousel p {
+    color: var(--color-texto);
+    font-family: var(--fuente-principal);
+    font-size: 1.125rem;
+    line-height: 1.6;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: var(--color-primario);
+    border-radius: 50%;
+    padding: 1rem;
+}
+
+.funciones-inicio {
+    padding: 3rem 1rem;
+    background-color: var(--color-superficie);
+}
+
+.funciones-inicio h2 {
+    color: var(--color-primario);
+    font-family: var(--fuente-principal);
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.tarjeta-funcion {
+    border: none;
+    border-radius: 12px;
+    background-color: var(--color-fondo);
+}
+
+.tarjeta-funcion .card-body {
+    padding: 1rem;
+    text-align: center;
+}
+
+.tarjeta-funcion i {
+    color: var(--color-primario);
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.tarjeta-funcion h3 {
+    color: var(--color-texto);
+    font-family: var(--fuente-principal);
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.tarjeta-funcion p {
+    color: var(--color-texto);
+    font-family: var(--fuente-principal);
+    font-size: 1.125rem;
+    line-height: 1.6;
+}
+
+/* ===== RESPONSIVE INICIO ===== */
+
+@media (max-width: 768px) {
+
+    .hero-inicio {
+        padding: 3rem 1rem;
+    }
+
+    .hero-contenido h1 {
+        font-size: 1.75rem;
+    }
+
+    .hero-contenido p {
+        font-size: 1rem;
+    }
+
+    .btn-agendar {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .beneficios-inicio,
+    .funciones-inicio {
+        padding: 2rem 1rem;
+    }
+
+    .beneficio-carousel {
+        min-height: 260px;
+        padding: 1.5rem 2.5rem;
+    }
+
+    .beneficio-carousel p,
+    .tarjeta-funcion p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .hero-contenido h1 {
+        font-size: 1.5rem;
+    }
+
+    .beneficio-carousel {
+        padding: 1.5rem 2rem;
+    }
+
+    .tarjeta-funcion {
+        margin-bottom: 0.5rem;
+    }
+}
 
 /* ===== NOSOTROS ===== */
 
