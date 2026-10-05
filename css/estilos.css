@@ -161,6 +161,58 @@
     line-height: 1.6;
 }
 
+/* ===== RESPONSIVE INICIO ===== */
+
+@media (max-width: 768px) {
+
+    .hero-inicio {
+        padding: 3rem 1rem;
+    }
+
+    .hero-contenido h1 {
+        font-size: 1.75rem;
+    }
+
+    .hero-contenido p {
+        font-size: 1rem;
+    }
+
+    .btn-agendar {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .beneficios-inicio,
+    .funciones-inicio {
+        padding: 2rem 1rem;
+    }
+
+    .beneficio-carousel {
+        min-height: 260px;
+        padding: 1.5rem 2.5rem;
+    }
+
+    .beneficio-carousel p,
+    .tarjeta-funcion p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .hero-contenido h1 {
+        font-size: 1.5rem;
+    }
+
+    .beneficio-carousel {
+        padding: 1.5rem 2rem;
+    }
+
+    .tarjeta-funcion {
+        margin-bottom: 0.5rem;
+    }
+}
+
 /* ===== NOSOTROS ===== */
 
 
