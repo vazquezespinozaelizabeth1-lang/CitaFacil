@@ -35,7 +35,25 @@
         <div class="container my-5">
     <h1 class="text-center mb-4">Contáctanos</h1>
     <div id="contenedor-formulario">
-        <!-- Aquí vamos a poner el formulario en el siguiente paso -->
+        <form>
+    <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre completo</label>
+        <input type="text" class="form-control" id="nombre">
+    </div>
+    <div class="mb-3">
+        <label for="telefono" class="form-label">Teléfono</label>
+        <input type="tel" class="form-control" id="telefono">
+    </div>
+    <div class="mb-3">
+        <label for="correo" class="form-label">Correo electrónico</label>
+        <input type="text" class="form-control" id="correo">
+    </div>
+    <div class="mb-3">
+        <label for="mensaje" class="form-label">Mensaje</label>
+        <textarea class="form-control" id="mensaje" rows="3"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary w-100 mt-2">Enviar mensaje</button>
+</form>
     </div>
 </div>
     </main>
