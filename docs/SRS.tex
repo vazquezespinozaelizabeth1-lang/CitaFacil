@@ -14,4 +14,29 @@
 \section{Introducción}
 CitaFácil es un sitio web diseñado para ayudar a los consultorios pequeños a llevar el control de sus citas de forma sencilla. Con él se evitan los empalmes de horarios, los olvidos y el desorden de las agendas en papel. Este documento reúne el alcance del proyecto y los requerimientos funcionales y no funcionales que guiarán su desarrollo.
 
+\section{Alcance del proyecto}
+
+\subsection{Corto plazo}
+\begin{itemize}
+    \item Definir el problema: citas duplicadas, olvidadas o mal organizadas en consultorios pequeños.
+    \item Especificar las funciones principales del sistema: gestión de citas (agendar, cancelar, reprogramar), consulta de horarios disponibles y envío de recordatorios automáticos.
+    \item Elaborar bocetos iniciales de las pantallas principales (calendario de citas, formulario de reserva, panel de administración del consultorio).
+    \item Diseñar el diagrama entidad-relación de la base de datos (pacientes, citas, horarios, consultorio).
+\end{itemize}
+
+\subsection{Mediano plazo}
+\begin{itemize}
+    \item Implementar la base de datos en MySQL con un modelo relacional, ya que los datos (pacientes, citas, horarios, consultorio) tienen relaciones claras entre ellos (un paciente puede tener varias citas, una cita pertenece a un horario y un consultorio), lo que permite mantener la integridad de los datos y evitar duplicados.
+    \item Programar el módulo de gestión de citas: registro de pacientes, consulta de disponibilidad y agendado/cancelación de citas.
+    \item Realizar pruebas de usabilidad con usuarios reales, priorizando personas mayores o con poca experiencia tecnológica.
+    \item Verificar el funcionamiento correcto del sistema y una interfaz accesible (buen contraste, tamaño de letra ajustable, compatibilidad con lectores de pantalla).
+\end{itemize}
+
+\subsection{Largo plazo}
+\begin{itemize}
+    \item Publicar la aplicación en un servidor para que consultorios y pacientes puedan usarla.
+    \item Recopilar retroalimentación mediante encuestas a pacientes y personal del consultorio.
+    \item Dar mantenimiento continuo: corregir errores y mejorar funciones según lo que reporten los usuarios.
+    \item Generar ingresos mediante un modelo de suscripción mensual.
+\end{itemize}
 \end{document}
