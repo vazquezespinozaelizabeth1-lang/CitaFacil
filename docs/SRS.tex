@@ -12,7 +12,7 @@
 \maketitle
 
 \section{Introducción}
-CitaFácil es un sitio web diseñado para ayudar a los consultorios pequeños a llevar el control de sus citas de forma sencilla. Con él se evitan los empalmes de horarios, los olvidos y el desorden de las agendas en papel. Este documento reúne el alcance del proyecto y los requerimientos funcionales y no funcionales que guiarán su desarrollo.
+CitaFácil es una aplicación web para que consultorios pequeños gestionen sus citas. Resuelve un problema frecuente: citas duplicadas, olvidadas o mal organizadas. Este documento describe el alcance del proyecto y sus requerimientos funcionales y no funcionales.
 
 \section{Alcance del proyecto}
 
@@ -39,6 +39,7 @@ CitaFácil es un sitio web diseñado para ayudar a los consultorios pequeños a 
     \item Dar mantenimiento continuo: corregir errores y mejorar funciones según lo que reporten los usuarios.
     \item Generar ingresos mediante un modelo de suscripción mensual.
 \end{itemize}
+
 \section{Requerimientos específicos}
 
 \subsection{Requerimientos funcionales}
@@ -92,4 +93,57 @@ CitaFácil es un sitio web diseñado para ayudar a los consultorios pequeños a 
 \textbf{Requerimiento:} El sistema deberá permitir el acceso de médicos y recepcionistas mediante una cuenta de usuario y contraseña. \\
 \textbf{Prioridad:} Alta
 \bigskip
+
+\subsection{Requerimientos no funcionales}
+
+\noindent\textbf{Nombre:} Seguridad de datos \\
+\textbf{Requerimiento:} El sistema deberá proteger la información personal de los pacientes contra accesos no autorizados. \\
+\textbf{Prioridad:} Alta
+\bigskip
+
+\noindent\textbf{Nombre:} Tiempo de respuesta \\
+\textbf{Requerimiento:} El sistema deberá responder a las acciones del usuario en un tiempo máximo de 3 segundos en condiciones normales. \\
+\textbf{Prioridad:} Media
+\bigskip
+
+\noindent\textbf{Nombre:} Disponibilidad \\
+\textbf{Requerimiento:} El sistema deberá estar disponible las 24 horas del día para permitir la consulta y administración de citas. \\
+\textbf{Prioridad:} Alta
+\bigskip
+
+\noindent\textbf{Nombre:} Facilidad de uso \\
+\textbf{Requerimiento:} La interfaz deberá ser sencilla, clara e intuitiva para médicos y recepcionistas. \\
+\textbf{Prioridad:} Alta
+\bigskip
+
+\noindent\textbf{Nombre:} Compatibilidad con navegadores \\
+\textbf{Requerimiento:} El sistema deberá funcionar correctamente en navegadores actuales como Chrome, Safari, Edge y Firefox. \\
+\textbf{Prioridad:} Media
+\bigskip
+
+\noindent\textbf{Nombre:} Diseño responsivo \\
+\textbf{Requerimiento:} La página web deberá adaptarse correctamente a computadoras, tabletas y teléfonos celulares. \\
+\textbf{Prioridad:} Alta
+\bigskip
+
+\noindent\textbf{Nombre:} Privacidad \\
+\textbf{Requerimiento:} El sistema deberá restringir el acceso a la información de los pacientes únicamente a usuarios autorizados. \\
+\textbf{Prioridad:} Alta
+\bigskip
+
+\noindent\textbf{Nombre:} Confiabilidad de la información \\
+\textbf{Requerimiento:} El sistema deberá conservar correctamente la información registrada, evitando pérdidas o modificaciones accidentales. \\
+\textbf{Prioridad:} Alta
+\bigskip
+
+\noindent\textbf{Nombre:} Respaldo de información \\
+\textbf{Requerimiento:} El sistema deberá realizar respaldos periódicos de la información de pacientes, usuarios y citas. \\
+\textbf{Prioridad:} Alta
+\bigskip
+
+\noindent\textbf{Nombre:} Escalabilidad \\
+\textbf{Requerimiento:} El sistema deberá permitir aumentar la cantidad de pacientes, médicos y citas sin afectar considerablemente su rendimiento. \\
+\textbf{Prioridad:} Media
+\bigskip
+
 \end{document}
