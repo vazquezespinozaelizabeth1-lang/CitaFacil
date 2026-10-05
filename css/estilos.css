@@ -281,3 +281,66 @@ footer {
         font-size: 1.5rem;
     }
 }
+
+/* ===== CONTACTO ===== */
+
+#contenedor-formulario form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 16px;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    font-family: 'Atkinson Hyperlegible', Verdana, sans-serif;
+    color: #2E3E3E;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+#contenedor-formulario h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #2F7F7A;
+}
+
+#contenedor-formulario .form-label {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+#contenedor-formulario .form-control {
+    min-height: 48px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 18px;
+}
+
+#contenedor-formulario .form-control:focus {
+    border-color: #2F7F7A;
+    box-shadow: 0 0 0 3px #F4C98B;
+}
+
+#contenedor-formulario .btn-primary {
+    background-color: #2F7F7A;
+    color: #FFFFFF;
+    min-height: 48px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+}
+
+/* --- RESPONSIVE CONTACTO --- */
+
+@media (max-width: 576px) {
+    #contenedor-formulario form {
+        padding: 20px 15px;
+        margin: 0 8px;
+    }
+
+    #contenedor-formulario h1 {
+        font-size: 26px;
+    }
+
+    #contenedor-formulario .form-control {
+        font-size: 16px;
+    }
+}
