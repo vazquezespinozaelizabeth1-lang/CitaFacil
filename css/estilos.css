@@ -1,21 +1,25 @@
-/* ===== VARIABLES ===== */
+/* NOSOTROS Y SERVICIOS */
 
+.nosotros-section,
+.servicios-section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
 
+.nosotros-section .card,
+.servicios-section .card {
+    transition: transform 0.2s ease;
+}
 
-/* ===== GLOBAL ===== */
+.nosotros-section .card:hover,
+.servicios-section .card:hover {
+    transform: translateY(-5px);
+}
 
-
-
-/* ===== INICIO ===== */
-
-
-
-/* ===== NOSOTROS ===== */
-
-
-
-/* ===== SERVICIOS ===== */
-
-
-
-/* ===== CONTACTO ===== */
+@media (max-width: 768px) {
+    .nosotros-section,
+    .servicios-section {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+}
