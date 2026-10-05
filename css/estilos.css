@@ -17,9 +17,15 @@
 }
 
 @media (max-width: 768px) {
+
     .nosotros-section,
     .servicios-section {
         padding-top: 2rem;
         padding-bottom: 2rem;
+    }
+
+    .nosotros-section h1,
+    .servicios-section h1 {
+        font-size: 2rem;
     }
 }
