@@ -1,0 +1,186 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\begin{document}
+
+% --- PORTADA ---
+\begin{titlepage}
+    \centering
+    \vspace*{0.2cm}
+
+    % Imagen del logo cargada correctamente
+    \includegraphics[width=3.5cm]{logo.jpg.jpeg} \\[0.4cm]
+
+    {\Large\bfseries Universidad Politécnica de Pachuca\par}
+    \vspace{0.3cm}
+    {\large Ingeniería en Tecnologías de la Información e Innovación Digital\par}
+
+    \vspace{1.2cm}
+    {\Huge\bfseries Especificación de Requisitos de Software\par}
+    \vspace{0.4cm}
+    {\LARGE\bfseries CitaFácil\par}
+
+    \vspace{1.2cm}
+    {\large \textbf{Asignatura:} Aplicaciones Web\par}
+    {\large \textbf{Docente:} Mtra. Yeniza Sarahi Montoya Martínez\par}
+
+    \vfill
+
+    \begin{flushright}
+        \textbf{Integrantes del Equipo:}\\[0.2cm]
+        Victor Hugo Ramírez \\
+        Elizabeth Vázquez Espinoza \\
+        Aram Jael Morales Peña \\
+        Luis Ángel Ruíz Bautista \\
+        Liam Tonatiuh Villanueva Cerón \\
+        Jonathan Corona Téllez \\[0.3cm]
+        \textbf{Periodo:} Septiembre--Diciembre 2026
+    \end{flushright}
+\end{titlepage}
+
+\newpage
+\tableofcontents
+\newpage
+
+% --- CONTENIDO ---
+\section{Introducción}
+CitaFácil es una aplicación web para que consultorios pequeños gestionen sus citas. Resuelve un problema frecuente: citas duplicadas, olvidadas o mal organizadas. Este documento describe el alcance del proyecto y sus requerimientos funcionales y no funcionales.
+
+\section{Alcance del proyecto}
+
+\subsection{Corto plazo}
+\begin{itemize}
+    \item Definir el problema: citas duplicadas, olvidadas o mal organizadas en consultorios pequeños.
+    \item Especificar las funciones principales del sistema: gestión de citas (agendar, cancelar, reprogramar), consulta de horarios disponibles y envío de recordatorios automáticos.
+    \item Elaborar bocetos iniciales de las pantallas principales (calendario de citas, formulario de reserva, panel de administración del consultorio).
+    \item Diseñar el diagrama entidad-relación de la base de datos (pacientes, citas, horarios, consultorio).
+\end{itemize}
+
+\subsection{Mediano plazo}
+\begin{itemize}
+    \item Implementar la base de datos en MySQL con un modelo relacional, ya que los datos (pacientes, citas, horarios, consultorio) tienen relaciones claras entre ellos (un paciente puede tener varias citas, una cita pertenece a un horario y un consultorio), lo que permite mantener la integridad de los datos y evitar duplicados.
+    \item Programar el módulo de gestión de citas: registro de pacientes, consulta de disponibilidad y agendado/cancelación de citas.
+    \item Realizar pruebas de usabilidad con usuarios reales, priorizando personas mayores o con poca experiencia tecnológica.
+    \item Verificar el funcionamiento correcto del sistema y una interfaz accesible (buen contraste, tamaño de letra ajustable, compatibilidad con lectores de pantalla).
+\end{itemize}
+
+\subsection{Largo plazo}
+\begin{itemize}
+    \item Publicar la aplicación en un servidor para que consultorios y pacientes puedan usarla.
+    \item Recopilar retroalimentación mediante encuestas a pacientes y personal del consultorio.
+    \item Dar mantenimiento continuo: corregir errores y mejorar funciones según lo que reporten los usuarios.
+    \item Generar ingresos mediante un modelo de suscripción mensual.
+\end{itemize}
+
+\section{Requerimientos específicos}
+
+\subsection{Requerimientos funcionales}
+
+\noindent\textbf{Nombre:} Registro de pacientes \\
+\textbf{Requerimiento:} El sistema deberá permitir registrar pacientes ingresando su nombre, teléfono, correo electrónico y datos básicos. \\
+\textbf{Prioridad:} Alta
+\bigskip
+
+\noindent\textbf{Nombre:} Agendar citas \\
+\textbf{Requerimiento:} El sistema deberá permitir al usuario crear una cita seleccionando al paciente, médico, fecha, hora y motivo de consulta. \\
+\textbf{Prioridad:} Alta
+\bigskip
+
+\noindent\textbf{Nombre:} Consulta de citas \\
+\textbf{Requerimiento:} El sistema deberá permitir visualizar las citas programadas por día, semana y mes. \\
+\textbf{Prioridad:} Alta
+\bigskip
+
+\noindent\textbf{Nombre:} Modificación de citas \\
+\textbf{Requerimiento:} El sistema deberá permitir modificar la fecha, hora, médico o información de una cita previamente registrada. \\
+\textbf{Prioridad:} Alta
+\bigskip
+
+\noindent\textbf{Nombre:} Cancelación de citas \\
+\textbf{Requerimiento:} El sistema deberá permitir cancelar una cita y actualizar su estado como cancelada. \\
+\textbf{Prioridad:} Alta
+\bigskip
+
+\noindent\textbf{Nombre:} Búsqueda de pacientes \\
+\textbf{Requerimiento:} El sistema deberá permitir buscar pacientes mediante su nombre o número telefónico. \\
+\textbf{Prioridad:} Media
+\bigskip
+
+\noindent\textbf{Nombre:} Gestión de horarios \\
+\textbf{Requerimiento:} El sistema deberá permitir establecer los días y horarios disponibles para cada médico. \\
+\textbf{Prioridad:} Alta
+\bigskip
+
+\noindent\textbf{Nombre:} Prevención de citas duplicadas \\
+\textbf{Requerimiento:} El sistema deberá verificar que un médico no tenga dos citas registradas en la misma fecha y horario. \\
+\textbf{Prioridad:} Alta
+\bigskip
+
+\noindent\textbf{Nombre:} Recordatorio de citas \\
+\textbf{Requerimiento:} El sistema deberá generar recordatorios para informar a los pacientes sobre sus próximas citas. \\
+\textbf{Prioridad:} Media
+\bigskip
+
+\noindent\textbf{Nombre:} Administración de usuarios \\
+\textbf{Requerimiento:} El sistema deberá permitir el acceso de médicos y recepcionistas mediante una cuenta de usuario y contraseña. \\
+\textbf{Prioridad:} Alta
+\bigskip
+
+\subsection{Requerimientos no funcionales}
+
+\noindent\textbf{Nombre:} Seguridad de datos \\
+\textbf{Requerimiento:} El sistema deberá proteger la información personal de los pacientes contra accesos no autorizados. \\
+\textbf{Prioridad:} Alta
+\bigskip
+
+\noindent\textbf{Nombre:} Tiempo de respuesta \\
+\textbf{Requerimiento:} El sistema deberá responder a las acciones del usuario en un tiempo máximo de 3 segundos en condiciones normales. \\
+\textbf{Prioridad:} Media
+\bigskip
+
+\noindent\textbf{Nombre:} Disponibilidad \\
+\textbf{Requerimiento:} El sistema deberá estar disponible las 24 horas del día para permitir la consulta y administración de citas. \\
+\textbf{Prioridad:} Alta
+\bigskip
+
+\noindent\textbf{Nombre:} Facilidad de uso \\
+\textbf{Requerimiento:} La interfaz deberá ser sencilla, clara e intuitiva para médicos y recepcionistas. \\
+\textbf{Prioridad:} Alta
+\bigskip
+
+\noindent\textbf{Nombre:} Compatibilidad con navegadores \\
+\textbf{Requerimiento:} El sistema deberá funcionar correctamente en navegadores actuales como Chrome, Safari, Edge y Firefox. \\
+\textbf{Prioridad:} Media
+\bigskip
+
+\noindent\textbf{Nombre:} Diseño responsivo \\
+\textbf{Requerimiento:} La página web deberá adaptarse correctamente a computadoras, tabletas y teléfonos celulares. \\
+\textbf{Prioridad:} Alta
+\bigskip
+
+\noindent\textbf{Nombre:} Privacidad \\
+\textbf{Requerimiento:} El sistema deberá restringir el acceso a la información de los pacientes únicamente a usuarios autorizados. \\
+\textbf{Prioridad:} Alta
+\bigskip
+
+\noindent\textbf{Nombre:} Confiabilidad de la información \\
+\textbf{Requerimiento:} El sistema deberá conservar correctamente la información registrada, evitando pérdidas o modificaciones accidentalmente. \\
+\textbf{Prioridad:} Alta
+\bigskip
+
+\noindent\textbf{Nombre:} Respaldo de información \\
+\textbf{Requerimiento:} El sistema deberá realizar respaldos periódicos de la información de pacientes, usuarios y citas. \\
+\textbf{Prioridad:} Alta
+\bigskip
+
+\noindent\textbf{Nombre:} Escalabilidad \\
+\textbf{Requerimiento:} El sistema deberá permitir aumentar la cantidad de pacientes, médicos y citas sin afectar considerablemente su rendimiento. \\
+\textbf{Prioridad:} Media
+\bigskip
+
+\end{document}
