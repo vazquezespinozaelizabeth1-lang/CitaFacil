@@ -1,31 +1,80 @@
-/* NOSOTROS Y SERVICIOS */
+/* COLORES DE CITAFÁCIL */
 
-.nosotros-section,
-.servicios-section {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+:root {
+    --color-primario: #2F7F7A;
+    --color-secundario: #F4C98B;
+    --color-texto: #2E3E3E;
+    --color-fondo-claro: #FFFFFF;
+    --color-fondo-oscuro: #121212;
 }
 
-.nosotros-section .card,
-.servicios-section .card {
-    transition: transform 0.2s ease;
+/* Fondo y texto general */
+
+body {
+    color: var(--color-texto);
+    background-color: var(--color-fondo-claro);
 }
 
-.nosotros-section .card:hover,
-.servicios-section .card:hover {
-    transform: translateY(-5px);
+/* Navbar */
+
+.navbar {
+    background-color: var(--color-primario) !important;
 }
+
+.navbar .navbar-brand,
+.navbar .nav-link {
+    color: #FFFFFF !important;
+}
+
+.navbar .nav-link:hover {
+    color: var(--color-secundario) !important;
+}
+
+/* Títulos */
+
+h1,
+h2,
+h3 {
+    color: var(--color-texto);
+}
+
+/* Botones */
+
+.btn-primary {
+    background-color: var(--color-primario);
+    border-color: var(--color-primario);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-texto);
+    border-color: var(--color-texto);
+}
+
+/* Tarjetas */
+
+.card {
+    border-color: var(--color-secundario);
+}
+
+.card .bi {
+    color: var(--color-primario);
+}
+
+/* Footer */
+
+footer {
+    background-color: var(--color-texto);
+    color: #FFFFFF;
+}
+
+/* Responsive */
 
 @media (max-width: 768px) {
-
-    .nosotros-section,
-    .servicios-section {
-        padding-top: 2rem;
-        padding-bottom: 2rem;
+    h1 {
+        font-size: 2rem;
     }
 
-    .nosotros-section h1,
-    .servicios-section h1 {
-        font-size: 2rem;
+    h2 {
+        font-size: 1.5rem;
     }
 }
