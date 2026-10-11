@@ -32,7 +32,48 @@
     </header>
 
     <main>
-        <!-- CONTENIDO DE ESTA PÁGINA -->
+        <div class="container my-5">
+    <h1 class="text-center mb-4">Contáctanos</h1>
+    <div id="contenedor-formulario">
+        <form>
+    <form>
+    <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre completo</label>
+        <input type="text" class="form-control" id="nombre" required>
+    </div>
+    <div class="mb-3">
+        <label for="telefono" class="form-label">Teléfono</label>
+        <input type="tel" class="form-control" id="telefono" minlength="10" required>
+    </div>
+    <div class="mb-3">
+        <label for="correo" class="form-label">Correo electrónico</label>
+        <input type="email" class="form-control" id="correo" required>
+    </div>
+    <div class="mb-3">
+        <label for="mensaje" class="form-label">Mensaje</label>
+        <textarea class="form-control" id="mensaje" rows="3" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary w-100 mt-2">Enviar mensaje</button>
+</form>
+<div class="text-center mt-4">
+    <a href="#" data-bs-toggle="modal" data-bs-target="#privacidadModal" style="color: #2F7F7A; font-weight: 700;">Ver aviso de privacidad</a>
+</div>
+
+<div class="modal fade" id="privacidadModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border-radius: 12px; background-color: #FFFFFF;">
+      <div class="modal-header">
+        <h5 class="modal-title" style="font-weight: 700; color: #2E3E3E;">Aviso de Privacidad</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body" style="color: #2E3E3E; font-size: 18px;">
+        Tus datos están seguros y no serán compartidos con terceros.
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+</div>
     </main>
 
     <footer class="py-3 text-center">
