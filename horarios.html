@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CitaFácil | Gestión de horarios</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+<header>
+<a class="visually-hidden-focusable" href="#contenido">Saltar al contenido</a>
+<nav class="navbar navbar-expand-lg bg-body-tertiary" aria-label="Menú del consultorio">
+<div class="container">
+<a class="navbar-brand d-flex align-items-center" href="panel.html"><img src="img/logo.jpg.jpeg" alt="Logo CitaFácil" width="30" height="30" class="me-2">CitaFácil</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir menú"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="menu"><ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link" href="panel.html">Panel</a></li>
+<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pacientes</a><ul class="dropdown-menu"><li><a class="dropdown-item" href="pacientes-registro.html">Registrar paciente</a></li><li><a class="dropdown-item" href="pacientes-buscar.html">Buscar paciente</a></li></ul></li>
+<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Citas</a><ul class="dropdown-menu"><li><a class="dropdown-item" href="citas-agendar.html">Agendar cita</a></li><li><a class="dropdown-item" href="citas-consulta.html">Consultar citas</a></li><li><a class="dropdown-item" href="citas-modificar.html">Modificar cita</a></li><li><a class="dropdown-item" href="citas-cancelar.html">Cancelar cita</a></li></ul></li>
+<li class="nav-item"><a class="nav-link active" href="horarios.html">Horarios</a></li>
+<li class="nav-item"><a class="nav-link" href="recordatorios.html">Recordatorios</a></li>
+<li class="nav-item"><a class="nav-link" href="usuarios.html">Usuarios</a></li>
+<li class="nav-item"><a class="nav-link" href="login.html"><i class="bi bi-box-arrow-right"></i> Salir</a></li>
+</ul></div></div></nav></header>
+
+<main id="contenido">
+<section class="encabezado-pagina"><div class="container">
+<nav aria-label="breadcrumb"><ol class="breadcrumb mb-2"><li class="breadcrumb-item"><a href="panel.html">Panel</a></li><li class="breadcrumb-item active" aria-current="page">Horarios</li></ol></nav>
+<h1><i class="bi bi-clock" aria-hidden="true"></i> Gestión de horarios</h1>
+<p class="mb-0">Define los días y horarios disponibles de cada médico.</p>
+</div></section>
+<div class="container panel-app">
+
+<form class="form-app row g-3" action="horarios.html" method="post">
+<div class="col-md-6"><label for="h-medico" class="form-label">Médico</label><select class="form-select" id="h-medico" name="h-medico" required><option value="" disabled>Selecciona una opción</option><option selected>Dra. Laura Mendoza (Medicina general)</option><option>Dr. Carlos Rivera (Pediatría)</option><option>Dra. Sofía Herrera (Ginecología)</option></select></div><div class="col-md-6"><label for="h-dur" class="form-label">Duración de cada consulta</label><select class="form-select" id="h-dur" name="h-dur" required><option value="" disabled>Selecciona una opción</option><option>15 minutos</option><option selected>30 minutos</option><option>45 minutos</option><option>60 minutos</option></select></div>
+<div class="col-12"><div class="table-responsive"><table class="table tabla-app align-middle"><caption class="visually-hidden">Horario semanal</caption>
+<thead><tr><th scope="col">Día</th><th scope="col">Disponibilidad</th><th scope="col">Inicio</th><th scope="col">Fin</th></tr></thead><tbody><tr><th scope="row">Lunes</th><td><div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="lunes-on" name="lunes-on" checked><label class="form-check-label" for="lunes-on">Disponible</label></div></td>
+<td><label class="visually-hidden" for="lunes-ini">Hora de inicio Lunes</label><input type="time" class="form-control" id="lunes-ini" name="lunes-ini" value="09:00"></td>
+<td><label class="visually-hidden" for="lunes-fin">Hora de fin Lunes</label><input type="time" class="form-control" id="lunes-fin" name="lunes-fin" value="18:00"></td></tr><tr><th scope="row">Martes</th><td><div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="martes-on" name="martes-on" checked><label class="form-check-label" for="martes-on">Disponible</label></div></td>
+<td><label class="visually-hidden" for="martes-ini">Hora de inicio Martes</label><input type="time" class="form-control" id="martes-ini" name="martes-ini" value="09:00"></td>
+<td><label class="visually-hidden" for="martes-fin">Hora de fin Martes</label><input type="time" class="form-control" id="martes-fin" name="martes-fin" value="18:00"></td></tr><tr><th scope="row">Miércoles</th><td><div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="miercoles-on" name="miercoles-on" checked><label class="form-check-label" for="miercoles-on">Disponible</label></div></td>
+<td><label class="visually-hidden" for="miercoles-ini">Hora de inicio Miércoles</label><input type="time" class="form-control" id="miercoles-ini" name="miercoles-ini" value="09:00"></td>
+<td><label class="visually-hidden" for="miercoles-fin">Hora de fin Miércoles</label><input type="time" class="form-control" id="miercoles-fin" name="miercoles-fin" value="18:00"></td></tr><tr><th scope="row">Jueves</th><td><div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="jueves-on" name="jueves-on" checked><label class="form-check-label" for="jueves-on">Disponible</label></div></td>
+<td><label class="visually-hidden" for="jueves-ini">Hora de inicio Jueves</label><input type="time" class="form-control" id="jueves-ini" name="jueves-ini" value="09:00"></td>
+<td><label class="visually-hidden" for="jueves-fin">Hora de fin Jueves</label><input type="time" class="form-control" id="jueves-fin" name="jueves-fin" value="18:00"></td></tr><tr><th scope="row">Viernes</th><td><div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="viernes-on" name="viernes-on" checked><label class="form-check-label" for="viernes-on">Disponible</label></div></td>
+<td><label class="visually-hidden" for="viernes-ini">Hora de inicio Viernes</label><input type="time" class="form-control" id="viernes-ini" name="viernes-ini" value="09:00"></td>
+<td><label class="visually-hidden" for="viernes-fin">Hora de fin Viernes</label><input type="time" class="form-control" id="viernes-fin" name="viernes-fin" value="18:00"></td></tr><tr><th scope="row">Sábado</th><td><div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="sabado-on" name="sabado-on"><label class="form-check-label" for="sabado-on">Disponible</label></div></td>
+<td><label class="visually-hidden" for="sabado-ini">Hora de inicio Sábado</label><input type="time" class="form-control" id="sabado-ini" name="sabado-ini" value=""></td>
+<td><label class="visually-hidden" for="sabado-fin">Hora de fin Sábado</label><input type="time" class="form-control" id="sabado-fin" name="sabado-fin" value=""></td></tr><tr><th scope="row">Domingo</th><td><div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="domingo-on" name="domingo-on"><label class="form-check-label" for="domingo-on">Disponible</label></div></td>
+<td><label class="visually-hidden" for="domingo-ini">Hora de inicio Domingo</label><input type="time" class="form-control" id="domingo-ini" name="domingo-ini" value=""></td>
+<td><label class="visually-hidden" for="domingo-fin">Hora de fin Domingo</label><input type="time" class="form-control" id="domingo-fin" name="domingo-fin" value=""></td></tr></tbody></table></div></div>
+<div class="col-12"><button type="submit" class="btn btn-primary"><i class="bi bi-check-circle" aria-hidden="true"></i> Guardar horario</button></div></form>
+</div>
+</main>
+
+<footer class="py-3 text-center">
+    <p class="mb-0">CitaFácil · Tu tiempo también importa</p>
+    <p class="mb-0">&copy; 2026 CitaFácil. Todos los derechos reservados.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

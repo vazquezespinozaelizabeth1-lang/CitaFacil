@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CitaFácil | Horario no disponible</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+<header>
+<a class="visually-hidden-focusable" href="#contenido">Saltar al contenido</a>
+<nav class="navbar navbar-expand-lg bg-body-tertiary" aria-label="Menú del consultorio">
+<div class="container">
+<a class="navbar-brand d-flex align-items-center" href="panel.html"><img src="img/logo.jpg.jpeg" alt="Logo CitaFácil" width="30" height="30" class="me-2">CitaFácil</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir menú"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="menu"><ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link" href="panel.html">Panel</a></li>
+<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pacientes</a><ul class="dropdown-menu"><li><a class="dropdown-item" href="pacientes-registro.html">Registrar paciente</a></li><li><a class="dropdown-item" href="pacientes-buscar.html">Buscar paciente</a></li></ul></li>
+<li class="nav-item dropdown"><a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Citas</a><ul class="dropdown-menu"><li><a class="dropdown-item" href="citas-agendar.html">Agendar cita</a></li><li><a class="dropdown-item" href="citas-consulta.html">Consultar citas</a></li><li><a class="dropdown-item" href="citas-modificar.html">Modificar cita</a></li><li><a class="dropdown-item" href="citas-cancelar.html">Cancelar cita</a></li></ul></li>
+<li class="nav-item"><a class="nav-link" href="horarios.html">Horarios</a></li>
+<li class="nav-item"><a class="nav-link" href="recordatorios.html">Recordatorios</a></li>
+<li class="nav-item"><a class="nav-link" href="usuarios.html">Usuarios</a></li>
+<li class="nav-item"><a class="nav-link" href="login.html"><i class="bi bi-box-arrow-right"></i> Salir</a></li>
+</ul></div></div></nav></header>
+
+<main id="contenido">
+<section class="encabezado-pagina"><div class="container">
+<nav aria-label="breadcrumb"><ol class="breadcrumb mb-2"><li class="breadcrumb-item"><a href="panel.html">Panel</a></li><li class="breadcrumb-item">Citas</li><li class="breadcrumb-item">Agendar</li><li class="breadcrumb-item active" aria-current="page">Horario no disponible</li></ol></nav>
+<h1><i class="bi bi-exclamation-triangle" aria-hidden="true"></i> Horario no disponible</h1>
+<p class="mb-0">El sistema verifica que un médico no tenga dos citas en la misma fecha y hora.</p>
+</div></section>
+<div class="container panel-app">
+
+<div class="alert alert-danger estado-alerta" role="alert"><h2 class="h5"><i class="bi bi-x-octagon" aria-hidden="true"></i> No se pudo agendar la cita</h2>
+<p class="mb-0">La Dra. Laura Mendoza ya tiene una cita el jueves 15 de octubre de 2026 a las 10:00.</p></div>
+<div class="row g-4"><div class="col-md-6"><div class="card h-100"><div class="card-body"><h2 class="h5">Cita ya registrada</h2>
+<ul class="list-unstyled mb-0"><li><strong>Paciente:</strong> José Luis Martínez Cruz</li><li><strong>Médico:</strong> Dra. Laura Mendoza</li><li><strong>Fecha:</strong> 15/10/2026 · 10:00</li><li class="mt-2"><span class="badge chip estado-exito"><i class="bi bi-check-circle" aria-hidden="true"></i> Confirmada</span></li></ul></div></div></div>
+<div class="col-md-6"><div class="card h-100"><div class="card-body"><h2 class="h5">Horarios disponibles ese día</h2>
+<div class="d-flex flex-wrap gap-2"><a class="btn btn-outline-primary" href="citas-agendar.html"><i class="bi bi-clock" aria-hidden="true"></i> 09:00</a><a class="btn btn-outline-primary" href="citas-agendar.html"><i class="bi bi-clock" aria-hidden="true"></i> 10:30</a><a class="btn btn-outline-primary" href="citas-agendar.html"><i class="bi bi-clock" aria-hidden="true"></i> 11:00</a><a class="btn btn-outline-primary" href="citas-agendar.html"><i class="bi bi-clock" aria-hidden="true"></i> 12:00</a><a class="btn btn-outline-primary" href="citas-agendar.html"><i class="bi bi-clock" aria-hidden="true"></i> 16:00</a></div></div></div></div></div>
+<div class="mt-4"><a class="btn btn-primary" href="citas-agendar.html"><i class="bi bi-arrow-left" aria-hidden="true"></i> Elegir otra fecha u hora</a></div>
+</div>
+</main>
+
+<footer class="py-3 text-center">
+    <p class="mb-0">CitaFácil · Tu tiempo también importa</p>
+    <p class="mb-0">&copy; 2026 CitaFácil. Todos los derechos reservados.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
