@@ -95,6 +95,13 @@
                                 Programa una nueva cita de acuerdo con tus necesidades.
                             </p>
 
+                            <button type="button"
+                                class="btn btn-primary"
+                                data-bs-toggle="modal"
+                                data-bs-target="#modalAgendar">
+                                Ver detalles
+                            </button>
+
                         </div>
 
                     </div>
@@ -119,6 +126,13 @@
                             <p>
                                 Cancela una cita que ya no puedas realizar.
                             </p>
+
+                            <button type="button"
+                                class="btn btn-primary"
+                                data-bs-toggle="modal"
+                                data-bs-target="#modalCancelar">
+                                Ver detalles
+                            </button>
 
                         </div>
 
@@ -145,6 +159,13 @@
                                 Cambia la fecha o el horario de una cita existente.
                             </p>
 
+                            <button type="button"
+                                class="btn btn-primary"
+                                data-bs-toggle="modal"
+                                data-bs-target="#modalReprogramar">
+                                Ver detalles
+                            </button>
+
                         </div>
 
                     </div>
@@ -169,6 +190,13 @@
                             <p>
                                 Consulta los horarios disponibles para tus citas.
                             </p>
+
+                            <button type="button"
+                                class="btn btn-primary"
+                                data-bs-toggle="modal"
+                                data-bs-target="#modalHorarios">
+                                Ver detalles
+                            </button>
 
                         </div>
 
@@ -195,6 +223,13 @@
                                 Recibe recordatorios para no olvidar tus próximas citas.
                             </p>
 
+                            <button type="button"
+                                class="btn btn-primary"
+                                data-bs-toggle="modal"
+                                data-bs-target="#modalRecordatorios">
+                                Ver detalles
+                            </button>
+
                         </div>
 
                     </div>
@@ -206,52 +241,25 @@
         </section>
 
 
-        <!-- BOTÓN DEL MODAL -->
+        <!-- MODAL AGENDAR -->
 
-        <section class="container pb-5 text-center">
-
-            <button type="button"
-                class="btn btn-primary"
-                data-bs-toggle="modal"
-                data-bs-target="#modalServicio">
-
-                Ver detalle de servicio
-
-            </button>
-
-        </section>
-
-
-        <!-- MODAL -->
-
-        <div class="modal fade"
-            id="modalServicio"
-            tabindex="-1"
-            aria-labelledby="modalServicioLabel"
-            aria-hidden="true">
+        <div class="modal fade" id="modalAgendar" tabindex="-1"
+            aria-labelledby="tituloAgendar" aria-hidden="true">
 
             <div class="modal-dialog">
-
                 <div class="modal-content">
-
 
                     <div class="modal-header">
 
-                        <h2 class="modal-title fs-5"
-                            id="modalServicioLabel">
-
+                        <h2 class="modal-title fs-5" id="tituloAgendar">
                             Agendar una cita
-
                         </h2>
 
-                        <button type="button"
-                            class="btn-close"
-                            data-bs-dismiss="modal"
-                            aria-label="Cerrar">
+                        <button type="button" class="btn-close"
+                            data-bs-dismiss="modal" aria-label="Cerrar">
                         </button>
 
                     </div>
-
 
                     <div class="modal-body">
 
@@ -267,24 +275,209 @@
 
                     </div>
 
-
                     <div class="modal-footer">
 
-                        <button type="button"
-                            class="btn btn-secondary"
+                        <button type="button" class="btn btn-secondary"
                             data-bs-dismiss="modal">
-
                             Cerrar
-
                         </button>
 
                     </div>
 
+                </div>
+            </div>
+        </div>
+
+
+        <!-- MODAL CANCELAR -->
+
+        <div class="modal fade" id="modalCancelar" tabindex="-1"
+            aria-labelledby="tituloCancelar" aria-hidden="true">
+
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+
+                        <h2 class="modal-title fs-5" id="tituloCancelar">
+                            Cancelar una cita
+                        </h2>
+
+                        <button type="button" class="btn-close"
+                            data-bs-dismiss="modal" aria-label="Cerrar">
+                        </button>
+
+                    </div>
+
+                    <div class="modal-body">
+
+                        <p>
+                            Este servicio permite cancelar una cita
+                            que ya no puedas realizar.
+                        </p>
+
+                        <p>
+                            Así podrás mantener organizada tu agenda
+                            y evitar citas innecesarias.
+                        </p>
+
+                    </div>
+
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">
+                            Cerrar
+                        </button>
+
+                    </div>
 
                 </div>
-
             </div>
+        </div>
 
+
+        <!-- MODAL REPROGRAMAR -->
+
+        <div class="modal fade" id="modalReprogramar" tabindex="-1"
+            aria-labelledby="tituloReprogramar" aria-hidden="true">
+
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+
+                        <h2 class="modal-title fs-5" id="tituloReprogramar">
+                            Reprogramar una cita
+                        </h2>
+
+                        <button type="button" class="btn-close"
+                            data-bs-dismiss="modal" aria-label="Cerrar">
+                        </button>
+
+                    </div>
+
+                    <div class="modal-body">
+
+                        <p>
+                            Este servicio permite cambiar la fecha
+                            o el horario de una cita existente.
+                        </p>
+
+                        <p>
+                            Puedes seleccionar un nuevo horario
+                            que se adapte mejor a tus necesidades.
+                        </p>
+
+                    </div>
+
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">
+                            Cerrar
+                        </button>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- MODAL HORARIOS -->
+
+        <div class="modal fade" id="modalHorarios" tabindex="-1"
+            aria-labelledby="tituloHorarios" aria-hidden="true">
+
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+
+                        <h2 class="modal-title fs-5" id="tituloHorarios">
+                            Consultar horarios
+                        </h2>
+
+                        <button type="button" class="btn-close"
+                            data-bs-dismiss="modal" aria-label="Cerrar">
+                        </button>
+
+                    </div>
+
+                    <div class="modal-body">
+
+                        <p>
+                            Consulta los horarios disponibles
+                            para programar tus próximas citas.
+                        </p>
+
+                        <p>
+                            Esto te permitirá elegir el horario
+                            que mejor se adapte a tus actividades.
+                        </p>
+
+                    </div>
+
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">
+                            Cerrar
+                        </button>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- MODAL RECORDATORIOS -->
+
+        <div class="modal fade" id="modalRecordatorios" tabindex="-1"
+            aria-labelledby="tituloRecordatorios" aria-hidden="true">
+
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+
+                        <h2 class="modal-title fs-5" id="tituloRecordatorios">
+                            Recordatorios de citas
+                        </h2>
+
+                        <button type="button" class="btn-close"
+                            data-bs-dismiss="modal" aria-label="Cerrar">
+                        </button>
+
+                    </div>
+
+                    <div class="modal-body">
+
+                        <p>
+                            Este servicio te ayuda a recordar
+                            las citas que tienes programadas.
+                        </p>
+
+                        <p>
+                            Mantente informado sobre tus próximas citas
+                            y organiza mejor tu tiempo.
+                        </p>
+
+                    </div>
+
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">
+                            Cerrar
+                        </button>
+
+                    </div>
+
+                </div>
+            </div>
         </div>
 
     </main>
