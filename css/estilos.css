@@ -394,4 +394,256 @@ footer {
     #contenedor-formulario .form-control {
         font-size: 16px;
     }
+<<<<<<< Updated upstream
 }
+=======
+}
+
+/* ===== INTERFACES DE LA APLICACIÓN (requerimientos funcionales) ===== */
+
+.navbar .dropdown-menu {
+    border: 1px solid var(--color-secundario);
+    border-radius: 8px;
+}
+
+.navbar .dropdown-item {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    color: var(--color-texto);
+}
+
+.navbar .dropdown-item:hover,
+.navbar .dropdown-item:focus {
+    background-color: var(--color-superficie);
+    color: var(--color-primario);
+}
+
+.navbar .nav-link.active {
+    border-bottom: 3px solid var(--color-secundario);
+}
+
+.encabezado-pagina {
+    background-color: var(--color-superficie);
+    border-bottom: 4px solid var(--color-secundario);
+    padding: 1.5rem 0;
+}
+
+.encabezado-pagina h1 {
+    color: var(--color-primario);
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.encabezado-pagina .breadcrumb a {
+    color: var(--color-primario);
+    font-weight: 700;
+}
+
+.panel-app {
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+    font-size: 1.125rem;
+    line-height: 1.6;
+}
+
+/* Botones: el ícono hereda el color del botón */
+.btn,
+.badge {
+    font-family: var(--fuente-principal);
+}
+
+.btn {
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    border-radius: 8px;
+}
+
+.btn-sm {
+    min-height: 40px;
+}
+
+.btn .bi,
+.badge .bi {
+    color: inherit !important;
+}
+
+.btn-outline-primary {
+    color: var(--color-primario);
+    border: 2px solid var(--color-primario);
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+    background-color: var(--color-primario);
+    color: var(--color-fondo);
+}
+
+.btn-outline-danger {
+    color: var(--color-error);
+    border: 2px solid var(--color-error);
+}
+
+.btn-outline-danger:hover,
+.btn-outline-danger:focus,
+.btn-danger {
+    background-color: var(--color-error);
+    border-color: var(--color-error);
+    color: var(--color-fondo);
+}
+
+/* Formularios */
+.form-app {
+    background-color: var(--color-fondo);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-app .form-label {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.form-app .form-control,
+.form-app .form-select {
+    min-height: 48px;
+    border: 2px solid var(--color-texto);
+    border-radius: 8px;
+    font-size: 18px;
+    color: var(--color-texto);
+}
+
+.form-app textarea.form-control {
+    min-height: 96px;
+}
+
+.form-app .form-control:focus,
+.form-app .form-select:focus,
+.form-check-input:focus {
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 3px var(--color-secundario);
+}
+
+.form-check-input {
+    width: 1.5em;
+    height: 1.5em;
+    border: 2px solid var(--color-texto);
+}
+
+.form-check-input:checked {
+    background-color: var(--color-primario);
+    border-color: var(--color-primario);
+}
+
+.form-check-label {
+    font-size: 1.125rem;
+    margin-left: 0.25rem;
+}
+
+.form-switch .form-check-input {
+    width: 3em;
+}
+
+/* Estados (chips) */
+.chip {
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 0.4rem 0.75rem;
+    border-radius: 999px;
+}
+
+.estado-alerta {
+    border-left: 6px solid var(--color-error);
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+}
+
+.resumen-num {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primario);
+}
+
+/* Tablas */
+.tabla-app {
+    font-size: 1rem;
+}
+
+.tabla-app thead th {
+    background-color: var(--color-primario);
+    color: var(--color-fondo);
+    white-space: nowrap;
+}
+
+.tabla-app td,
+.tabla-app th {
+    vertical-align: middle;
+}
+
+/* Pestañas Día / Semana / Mes */
+.nav-pills .nav-link {
+    min-height: 48px;
+    color: var(--color-primario);
+    font-weight: 700;
+    border: 2px solid var(--color-primario);
+    margin-right: 0.5rem;
+    border-radius: 8px;
+}
+
+.nav-pills .nav-link.active {
+    background-color: var(--color-primario);
+    color: var(--color-fondo);
+}
+
+/* Calendario */
+.cal-mes td {
+    height: 96px;
+    min-width: 110px;
+    vertical-align: top;
+}
+
+.cal-mes th {
+    text-align: center;
+}
+
+.cal-vacio {
+    background-color: var(--color-superficie);
+}
+
+.cal-hoy {
+    outline: 3px solid var(--color-secundario);
+    outline-offset: -3px;
+    background-color: var(--color-superficie);
+}
+
+.cita-mini {
+    display: inline-block;
+    background-color: var(--color-superficie);
+    border-left: 4px solid var(--color-primario);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 0.875rem;
+}
+
+/* Foco visible */
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--color-secundario);
+    outline-offset: 2px;
+}
+
+@media (max-width: 576px) {
+    .encabezado-pagina h1 {
+        font-size: 1.5rem;
+    }
+
+    .form-app {
+        padding: 16px;
+    }
+}
+>>>>>>> Stashed changes

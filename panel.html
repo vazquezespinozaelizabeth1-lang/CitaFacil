@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CitaFácil | Panel del consultorio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+<header>
+<a class="visually-hidden-focusable" href="#contenido">Saltar al contenido</a>
+<nav class="navbar navbar-expand-lg bg-body-tertiary" aria-label="Menú del consultorio">
+<div class="container">
+<a class="navbar-brand d-flex align-items-center" href="panel.html"><img src="img/logo.jpg.jpeg" alt="Logo CitaFácil" width="30" height="30" class="me-2">CitaFácil</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir menú"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="menu"><ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link active" href="panel.html">Panel</a></li>
+<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pacientes</a><ul class="dropdown-menu"><li><a class="dropdown-item" href="pacientes-registro.html">Registrar paciente</a></li><li><a class="dropdown-item" href="pacientes-buscar.html">Buscar paciente</a></li></ul></li>
+<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Citas</a><ul class="dropdown-menu"><li><a class="dropdown-item" href="citas-agendar.html">Agendar cita</a></li><li><a class="dropdown-item" href="citas-consulta.html">Consultar citas</a></li><li><a class="dropdown-item" href="citas-modificar.html">Modificar cita</a></li><li><a class="dropdown-item" href="citas-cancelar.html">Cancelar cita</a></li></ul></li>
+<li class="nav-item"><a class="nav-link" href="horarios.html">Horarios</a></li>
+<li class="nav-item"><a class="nav-link" href="recordatorios.html">Recordatorios</a></li>
+<li class="nav-item"><a class="nav-link" href="usuarios.html">Usuarios</a></li>
+<li class="nav-item"><a class="nav-link" href="login.html"><i class="bi bi-box-arrow-right"></i> Salir</a></li>
+</ul></div></div></nav></header>
+
+<main id="contenido">
+<section class="encabezado-pagina"><div class="container">
+
+<h1><i class="bi bi-grid" aria-hidden="true"></i> Panel del consultorio</h1>
+<p class="mb-0">Accede a todas las funciones del sistema.</p>
+</div></section>
+<div class="container panel-app">
+
+<div class="row g-3 mb-4 text-center"><div class="col-sm-4"><div class="card"><div class="card-body"><p class="mb-1">Citas de hoy</p><p class="resumen-num mb-0">8</p></div></div></div>
+<div class="col-sm-4"><div class="card"><div class="card-body"><p class="mb-1">Por confirmar</p><p class="resumen-num mb-0"><span class="badge chip estado-pendiente"><i class="bi bi-hourglass-split" aria-hidden="true"></i> 3</span></p></div></div></div>
+<div class="col-sm-4"><div class="card"><div class="card-body"><p class="mb-1">Canceladas</p><p class="resumen-num mb-0"><span class="badge chip estado-error"><i class="bi bi-x-circle" aria-hidden="true"></i> 1</span></p></div></div></div></div>
+<div class="row g-4"><div class="col-sm-6 col-lg-4"><div class="card tarjeta-funcion h-100"><div class="card-body text-center"><i class="bi bi-person-plus" aria-hidden="true"></i><h2 class="h5">Registro de pacientes</h2><p>Alta de pacientes con datos básicos.</p><a class="btn btn-primary" href="pacientes-registro.html"><i class="bi bi-arrow-right-circle" aria-hidden="true"></i> Abrir</a></div></div></div><div class="col-sm-6 col-lg-4"><div class="card tarjeta-funcion h-100"><div class="card-body text-center"><i class="bi bi-search" aria-hidden="true"></i><h2 class="h5">Búsqueda de pacientes</h2><p>Por nombre o teléfono.</p><a class="btn btn-primary" href="pacientes-buscar.html"><i class="bi bi-arrow-right-circle" aria-hidden="true"></i> Abrir</a></div></div></div><div class="col-sm-6 col-lg-4"><div class="card tarjeta-funcion h-100"><div class="card-body text-center"><i class="bi bi-calendar-plus" aria-hidden="true"></i><h2 class="h5">Agendar citas</h2><p>Nueva cita con paciente, médico, fecha y hora.</p><a class="btn btn-primary" href="citas-agendar.html"><i class="bi bi-arrow-right-circle" aria-hidden="true"></i> Abrir</a></div></div></div><div class="col-sm-6 col-lg-4"><div class="card tarjeta-funcion h-100"><div class="card-body text-center"><i class="bi bi-calendar3" aria-hidden="true"></i><h2 class="h5">Consulta de citas</h2><p>Vista por día, semana y mes.</p><a class="btn btn-primary" href="citas-consulta.html"><i class="bi bi-arrow-right-circle" aria-hidden="true"></i> Abrir</a></div></div></div><div class="col-sm-6 col-lg-4"><div class="card tarjeta-funcion h-100"><div class="card-body text-center"><i class="bi bi-pencil-square" aria-hidden="true"></i><h2 class="h5">Modificación de citas</h2><p>Cambia fecha, hora, médico o datos.</p><a class="btn btn-primary" href="citas-modificar.html"><i class="bi bi-arrow-right-circle" aria-hidden="true"></i> Abrir</a></div></div></div><div class="col-sm-6 col-lg-4"><div class="card tarjeta-funcion h-100"><div class="card-body text-center"><i class="bi bi-calendar-x" aria-hidden="true"></i><h2 class="h5">Cancelación de citas</h2><p>Actualiza el estado a cancelada.</p><a class="btn btn-primary" href="citas-cancelar.html"><i class="bi bi-arrow-right-circle" aria-hidden="true"></i> Abrir</a></div></div></div><div class="col-sm-6 col-lg-4"><div class="card tarjeta-funcion h-100"><div class="card-body text-center"><i class="bi bi-clock" aria-hidden="true"></i><h2 class="h5">Gestión de horarios</h2><p>Días y horas de cada médico.</p><a class="btn btn-primary" href="horarios.html"><i class="bi bi-arrow-right-circle" aria-hidden="true"></i> Abrir</a></div></div></div><div class="col-sm-6 col-lg-4"><div class="card tarjeta-funcion h-100"><div class="card-body text-center"><i class="bi bi-exclamation-triangle" aria-hidden="true"></i><h2 class="h5">Prevención de duplicados</h2><p>Aviso cuando el horario está ocupado.</p><a class="btn btn-primary" href="citas-duplicada.html"><i class="bi bi-arrow-right-circle" aria-hidden="true"></i> Abrir</a></div></div></div><div class="col-sm-6 col-lg-4"><div class="card tarjeta-funcion h-100"><div class="card-body text-center"><i class="bi bi-bell" aria-hidden="true"></i><h2 class="h5">Recordatorios</h2><p>Avisos para próximas citas.</p><a class="btn btn-primary" href="recordatorios.html"><i class="bi bi-arrow-right-circle" aria-hidden="true"></i> Abrir</a></div></div></div><div class="col-sm-6 col-lg-4"><div class="card tarjeta-funcion h-100"><div class="card-body text-center"><i class="bi bi-people" aria-hidden="true"></i><h2 class="h5">Administración de usuarios</h2><p>Cuentas de médicos y recepcionistas.</p><a class="btn btn-primary" href="usuarios.html"><i class="bi bi-arrow-right-circle" aria-hidden="true"></i> Abrir</a></div></div></div></div>
+</div>
+</main>
+
+<footer class="py-3 text-center">
+    <p class="mb-0">CitaFácil · Tu tiempo también importa</p>
+    <p class="mb-0">&copy; 2026 CitaFácil. Todos los derechos reservados.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
