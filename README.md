@@ -63,26 +63,27 @@ CitaFacil/
 ## Capturas de pantalla
 
 ### Pruebas de diseño responsive (móvil)
-![Responsive móvil 1](img/respon1.jpeg)
-![Responsive móvil 2](img/respon2.jpeg)
-![Responsive móvil 3](img/respon3.jpeg)
-![Responsive móvil 4](img/respon4.jpeg)
-![Responsive móvil 5](img/respon5.jpeg)
+<img width="1600" height="900" alt="respon1" src="https://github.com/user-attachments/assets/0c1d8615-42ad-49f5-82c7-d49378cc3954" />
+
+<img width="1600" height="900" alt="respon2" src="https://github.com/user-attachments/assets/c613364b-a0bb-4fe7-9556-be9b6714b94e" />
+
+<img width="1600" height="900" alt="respon3" src="https://github.com/user-attachments/assets/4a1591b2-6d1d-4675-9e12-f284ab344478" />
+
+<img width="1600" height="900" alt="respon5" src="https://github.com/user-attachments/assets/79b6396f-e323-4686-bcf9-656f9acfd5bc" />
 
 ## Evidencias del proceso
 
 ### Repositorio en GitHub
-![Repositorio](img/cap1.png)
+<img width="1131" height="682" alt="cap1" src="https://github.com/user-attachments/assets/2192f005-0b56-41a0-b683-ca0a0b95f06d" />
 
 ### Tablero Kanban
-![Tablero Kanban 1](img/cap2.png)
-![Tablero Kanban 2](img/cap3.png)
+<img width="752" height="211" alt="cap2" src="https://github.com/user-attachments/assets/180ab2bc-87e9-4a3a-9a9d-bfa49da51b8e" /><img width="727" height="237" alt="cap3" src="https://github.com/user-attachments/assets/d4e32557-5220-4229-b883-40d61fd241d7" />
 
 ### Colaboradores del repositorio
-![Colaboradores](img/colaboradores.png)
+<img width="1246" height="777" alt="colaboradores" src="https://github.com/user-attachments/assets/4ab3fca6-d580-461c-9fd5-0f5b22624d13" />
 
 ### Ramas
-![Ramas del repositorio](img/ramas.png)
+<img width="642" height="675" alt="ramas" src="https://github.com/user-attachments/assets/bda52cec-0aff-42b3-8423-09ac06a0a96b" />
 
 ### Historial de commits
-![Historial de commits](img/commits.png)
+<img width="1142" height="697" alt="commits" src="https://github.com/user-attachments/assets/b8b7d16c-9041-4c48-9a7d-03e68c00995a" />
