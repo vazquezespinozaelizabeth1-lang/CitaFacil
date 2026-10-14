@@ -60,6 +60,20 @@ CitaFacil/
 2. Abrir la carpeta `CitaFacil`.
 3. Abrir `index.html` en el navegador (doble clic) o usar la extensión Live Server en VS Code.
 
+
+## La Reflexión del Equipo
+
+Durante el desarrollo de esta práctica, el equipo logró fortalecer de manera significativa sus competencias en el uso de flujos de trabajo colaborativos con Git, GitHub y metodologías ágiles mediante el tablero Kanban. La coordinación a través de ramas individuales (feature/), la aplicación rigurosa de buenas prácticas en JavaScript vanilla y la revisión cruzada de Pull Requests nos permitieron garantizar la calidad del código e identificar errores a tiempo. A pesar de los retos iniciales para sincronizar los archivos base y coordinar las entregas sin generar conflictos de fusión, la comunicación constante y el apego a los roles asignados fueron clave para superar cada obstáculo. Esta experiencia consolidó nuestro entendimiento sobre la importancia del control de versiones en proyectos reales y la responsabilidad compartida dentro de un equipo de desarrollo software.   
+
+## Tabla de Interacciones JavaScript
+
+| Integrante | Página / Componente | Elementos y Selectores Utilizados | Eventos Implementados | Descripción de la Interacción |
+| :--- | :--- | :--- | :--- | :--- |
+| **Jonathan** | `pacientes-buscar.html` | `getElementById('q')`, `querySelectorAll('tbody tr')`, `querySelector('form')` | `input`, `submit` | Filtro de búsqueda de pacientes en tiempo real con ocultamiento de filas vía `classList.toggle('d-none')`. |
+| **[Nombre 2]** | `[pagina.html]` | `getElementById(...)`, `querySelector(...)` | `click` | [Breve descripción de su interacción] |
+| **[Nombre 3]** | `[pagina.html]` | `querySelector(...)` | `change` | [Breve descripción de su interacción] |
+| **[Nombre 4]** | `[pagina.html]` | `querySelectorAll(...)` | `submit` | [Breve descripción de su interacción] |
+
 ## Capturas de pantalla
 
 ### Pruebas de diseño responsive (móvil)
