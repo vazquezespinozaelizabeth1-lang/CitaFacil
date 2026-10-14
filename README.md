@@ -20,7 +20,7 @@ CitaFácil es una aplicación web para que consultorios pequeños gestionen sus 
 ## Objetivo
 Evitar citas duplicadas, olvidadas o mal organizadas mediante una interfaz simple y accesible, pensada también para personas mayores o con poca experiencia tecnológica.
 
-## Tecnologías utilizadas
+## Tecnologías utilizadas    
 - HTML5
 - CSS3
 - JavaScript (DOM, eventos y funciones con nombre)
@@ -135,7 +135,7 @@ Lo más difícil fue que un solo modal mostrara información distinta según el 
 
 **Filtrado de pacientes**
 
-![Filtrado de pacientes](img/p1-filtro.png)
+<img width="1600" height="777" alt="image" src="https://github.com/user-attachments/assets/3e7b8348-44bb-46e7-9041-04fc0c241faf" />
 
 **Agregar y eliminar usuarios**
 
