@@ -16,7 +16,11 @@
 <a class="visually-hidden-focusable" href="#contenido">Saltar al contenido</a>
 <nav class="navbar navbar-expand-lg bg-body-tertiary" aria-label="Menú del consultorio">
 <div class="container">
-<a class="navbar-brand d-flex align-items-center" href="panel.html"><img src="img/logo.jpg.jpeg" alt="Logo CitaFácil" width="30" height="30" class="me-2">CitaFácil</a>
+
+
+
+<a class="navbar-brand d-flex align-items-center" href="panel.html"><img src="img/logo-app.png" alt="Logo CitaFácil" width="30" height="30" class="me-2">CitaFácil</a>
+
 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir menú"><span class="navbar-toggler-icon"></span></button>
 <div class="collapse navbar-collapse" id="menu"><ul class="navbar-nav ms-auto">
 <li class="nav-item"><a class="nav-link" href="panel.html">Panel</a></li>
@@ -36,12 +40,20 @@
 </div></section>
 <div class="container panel-app">
 
-<form class="form-app row g-3 align-items-end" action="pacientes-buscar.html" method="get" role="search">
-<div class="col-md-8"><label for="q" class="form-label">Nombre o teléfono</label><input type="search" class="form-control" id="q" name="q" value="María" placeholder="Ej. María Hernández o 7711234567" required></div>
+<form id="formBuscar" class="form-app row g-3 align-items-end" action="pacientes-buscar.html" method="get" role="search">
+<div class="col-md-8"><label for="q" class="form-label">Nombre o teléfono</label><input type="search" class="form-control" id="q" name="q" placeholder="Ej. María Hernández o 7711234567" required></div>
 <div class="col-md-4"><button type="submit" class="btn btn-primary w-100"><i class="bi bi-search" aria-hidden="true"></i> Buscar</button></div></form>
-<h2 class="h4 mt-4" aria-live="polite">2 resultados para «María»</h2>
+<h2 id="resumen" class="h4 mt-4" aria-live="polite">10 pacientes en total</h2>
 <div class="table-responsive"><table class="table tabla-app align-middle"><caption class="visually-hidden">Resultados de la búsqueda</caption>
-<thead><tr><th scope="col">Paciente</th><th scope="col">Teléfono</th><th scope="col">Correo</th><th scope="col">Última cita</th><th scope="col">Acción</th></tr></thead><tbody><tr><td>María Hernández López</td><td>771 123 4567</td><td>maria.hernandez@correo.com</td><td>08/10/2026</td><td class="text-nowrap"><a class="btn btn-primary btn-sm" href="citas-agendar.html"><i class="bi bi-calendar-plus" aria-hidden="true"></i> Agendar</a></td></tr><tr><td>María Fernanda Ortiz</td><td>771 987 6543</td><td>mf.ortiz@correo.com</td><td>30/09/2026</td><td class="text-nowrap"><a class="btn btn-primary btn-sm" href="citas-agendar.html"><i class="bi bi-calendar-plus" aria-hidden="true"></i> Agendar</a></td></tr></tbody></table></div>
+<thead><tr><th scope="col">Paciente</th><th scope="col">Teléfono</th><th scope="col">Correo</th><th scope="col">Última cita</th><th scope="col">Acción</th></tr></thead><tbody><tr><td>María Hernández López</td><td>771 123 4567</td><td>maria.hernandez@correo.com</td><td>08/10/2026</td><td class="text-nowrap"><a class="btn btn-primary btn-sm" href="citas-agendar.html"><i class="bi bi-calendar-plus" aria-hidden="true"></i> Agendar</a></td></tr><tr><td>María Fernanda Ortiz</td><td>771 987 6543</td><td>mf.ortiz@correo.com</td><td>30/09/2026</td><td class="text-nowrap"><a class="btn btn-primary btn-sm" href="citas-agendar.html"><i class="bi bi-calendar-plus" aria-hidden="true"></i> Agendar</a></td></tr>
+<tr><td>Carlos Ramírez Soto</td><td>771 234 5678</td><td>carlos.ramirez@correo.com</td><td>05/10/2026</td><td class="text-nowrap"><a class="btn btn-primary btn-sm" href="citas-agendar.html"><i class="bi bi-calendar-plus" aria-hidden="true"></i> Agendar</a></td></tr>
+<tr><td>Lucía Torres Vega</td><td>771 345 6789</td><td>lucia.torres@correo.com</td><td>02/10/2026</td><td class="text-nowrap"><a class="btn btn-primary btn-sm" href="citas-agendar.html"><i class="bi bi-calendar-plus" aria-hidden="true"></i> Agendar</a></td></tr>
+<tr><td>Fernando Castillo Ruiz</td><td>771 456 7890</td><td>f.castillo@correo.com</td><td>28/09/2026</td><td class="text-nowrap"><a class="btn btn-primary btn-sm" href="citas-agendar.html"><i class="bi bi-calendar-plus" aria-hidden="true"></i> Agendar</a></td></tr>
+<tr><td>Sofía Morales Díaz</td><td>771 567 8901</td><td>sofia.morales@correo.com</td><td>12/10/2026</td><td class="text-nowrap"><a class="btn btn-primary btn-sm" href="citas-agendar.html"><i class="bi bi-calendar-plus" aria-hidden="true"></i> Agendar</a></td></tr>
+<tr><td>Ricardo Mendoza Cruz</td><td>771 678 9012</td><td>ricardo.mendoza@correo.com</td><td>21/09/2026</td><td class="text-nowrap"><a class="btn btn-primary btn-sm" href="citas-agendar.html"><i class="bi bi-calendar-plus" aria-hidden="true"></i> Agendar</a></td></tr>
+<tr><td>Ana Paola Flores</td><td>771 789 0123</td><td>ana.flores@correo.com</td><td>07/10/2026</td><td class="text-nowrap"><a class="btn btn-primary btn-sm" href="citas-agendar.html"><i class="bi bi-calendar-plus" aria-hidden="true"></i> Agendar</a></td></tr>
+<tr><td>Diego Vázquez Luna</td><td>771 890 1234</td><td>diego.vazquez@correo.com</td><td>15/09/2026</td><td class="text-nowrap"><a class="btn btn-primary btn-sm" href="citas-agendar.html"><i class="bi bi-calendar-plus" aria-hidden="true"></i> Agendar</a></td></tr>
+<tr><td>Valeria Jiménez Ortega</td><td>771 901 2345</td><td>valeria.jimenez@correo.com</td><td>10/10/2026</td><td class="text-nowrap"><a class="btn btn-primary btn-sm" href="citas-agendar.html"><i class="bi bi-calendar-plus" aria-hidden="true"></i> Agendar</a></td></tr></tbody></table></div>
 <p>¿No aparece? <a class="btn btn-outline-primary" href="pacientes-registro.html"><i class="bi bi-person-plus" aria-hidden="true"></i> Registrar paciente nuevo</a></p>
 </div>
 </main>
@@ -52,6 +64,7 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/filtro.js"></script>
 </body>
 
 </html>
