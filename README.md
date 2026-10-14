@@ -20,7 +20,7 @@ CitaFácil es una aplicación web para que consultorios pequeños gestionen sus 
 ## Objetivo
 Evitar citas duplicadas, olvidadas o mal organizadas mediante una interfaz simple y accesible, pensada también para personas mayores o con poca experiencia tecnológica.
 
-## Tecnologías utilizadas    
+## Tecnologías utilizadas
 - HTML5
 - CSS3
 - JavaScript (DOM, eventos y funciones con nombre)
@@ -123,23 +123,27 @@ Lo más difícil fue que un solo modal mostrara información distinta según el 
 
 **Validación en tiempo real y barra de progreso**
 
-![Validación y barra de progreso](img/p1-validacion.png)
+<img width="1600" height="661" alt="WhatsApp Image 2026-10-14 at 1 49 33 PM" src="https://github.com/user-attachments/assets/3f5608d9-c232-49e5-9ef4-fe5afff8ab17" />
 
 **Modal con información dinámica**
 
-![Modal con información dinámica](img/p1-modal.png)
+<img width="1599" height="644" alt="WhatsApp Image 2026-10-14 at 1 56 39 PM" src="https://github.com/user-attachments/assets/8657338a-02cd-4c4d-be98-bc74881a3243" />
+
 
 **Toast tras una acción**
 
-![Toast](img/p1-toast.png)
+<img width="1600" height="863" alt="WhatsApp Image 2026-10-14 at 1 55 27 PM" src="https://github.com/user-attachments/assets/cfc17f53-3a51-4dff-b7a2-68d8984d6d9e" />
+<img width="1600" height="873" alt="WhatsApp Image 2026-10-14 at 1 55 55 PM" src="https://github.com/user-attachments/assets/799bdbf6-32da-4d89-a834-e39e037955dc" />
+
 
 **Filtrado de pacientes**
 
-<img width="1600" height="777" alt="image" src="https://github.com/user-attachments/assets/3e7b8348-44bb-46e7-9041-04fc0c241faf" />
+<img width="1600" height="777" alt="WhatsApp Image 2026-10-14 at 1 58 09 PM" src="https://github.com/user-attachments/assets/53e4ccd6-9568-4d68-8270-cdf8b8cb6416" />
 
 **Agregar y eliminar usuarios**
 
-![Agregar y eliminar usuarios](img/p1-usuarios.png)
+<img width="1600" height="846" alt="WhatsApp Image 2026-10-14 at 1 59 33 PM" src="https://github.com/user-attachments/assets/eb67476c-874d-4488-812b-939262ef429d" />
+
 
 **Mostrar/ocultar contraseña**
 
@@ -160,6 +164,7 @@ Lo más difícil fue que un solo modal mostrara información distinta según el 
 <img width="1131" height="682" alt="cap1" src="https://github.com/user-attachments/assets/2192f005-0b56-41a0-b683-ca0a0b95f06d" />
 
 ### Tablero Kanban
+<img width="1600" height="843" alt="image" src="https://github.com/user-attachments/assets/9d7a5cfe-bd9c-4a44-b18a-a45cef6fe52a" />
 
 **Entrega anterior**
 
@@ -167,7 +172,7 @@ Lo más difícil fue que un solo modal mostrara información distinta según el 
 
 **Práctica 1 (interacciones con DOM y Bootstrap)**
 
-![Tablero Kanban de la Práctica 1](img/p1-kanban.png)
+<img width="1600" height="843" alt="WhatsApp Image 2026-10-14 at 2 02 19 PM" src="https://github.com/user-attachments/assets/ab7b01b5-0405-4959-8e85-d68d26f1927e" />
 
 ### Colaboradores del repositorio
 <img width="1246" height="777" alt="colaboradores" src="https://github.com/user-attachments/assets/4ab3fca6-d580-461c-9fd5-0f5b22624d13" />
