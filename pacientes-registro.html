@@ -1,50 +1,252 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>CitaFácil | Registro de pacientes</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 
 <body>
+
 <header>
-<a class="visually-hidden-focusable" href="#contenido">Saltar al contenido</a>
-<nav class="navbar navbar-expand-lg bg-body-tertiary" aria-label="Menú del consultorio">
-<div class="container">
-<a class="navbar-brand d-flex align-items-center" href="panel.html"><img src="img/logo-app.png" alt="Logo CitaFácil" width="30" height="30" class="me-2">CitaFácil</a>
-<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir menú"><span class="navbar-toggler-icon"></span></button>
-<div class="collapse navbar-collapse" id="menu"><ul class="navbar-nav ms-auto">
-<li class="nav-item"><a class="nav-link" href="panel.html">Panel</a></li>
-<li class="nav-item dropdown"><a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pacientes</a><ul class="dropdown-menu"><li><a class="dropdown-item" href="pacientes-registro.html">Registrar paciente</a></li><li><a class="dropdown-item" href="pacientes-buscar.html">Buscar paciente</a></li></ul></li>
-<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Citas</a><ul class="dropdown-menu"><li><a class="dropdown-item" href="citas-agendar.html">Agendar cita</a></li><li><a class="dropdown-item" href="citas-consulta.html">Consultar citas</a></li><li><a class="dropdown-item" href="citas-modificar.html">Modificar cita</a></li><li><a class="dropdown-item" href="citas-cancelar.html">Cancelar cita</a></li></ul></li>
-<li class="nav-item"><a class="nav-link" href="horarios.html">Horarios</a></li>
-<li class="nav-item"><a class="nav-link" href="recordatorios.html">Recordatorios</a></li>
-<li class="nav-item"><a class="nav-link" href="usuarios.html">Usuarios</a></li>
-<li class="nav-item"><a class="nav-link" href="login.html"><i class="bi bi-box-arrow-right"></i> Salir</a></li>
-</ul></div></div></nav></header>
+    <a class="visually-hidden-focusable" href="#contenido">
+        Saltar al contenido
+    </a>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" aria-label="Menú del consultorio">
+        <div class="container">
+
+            <a class="navbar-brand d-flex align-items-center" href="panel.html">
+                <img src="img/logo-app.png" alt="Logo CitaFácil" width="30" height="30" class="me-2">
+                CitaFácil
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir menú">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="panel.html">Panel</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Pacientes
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="pacientes-registro.html">Registrar paciente</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="pacientes-buscar.html">Buscar paciente</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Citas
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="citas-agendar.html">Agendar cita</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="citas-consulta.html">Consultar citas</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="citas-modificar.html">Modificar cita</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="citas-cancelar.html">Cancelar cita</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="horarios.html">Horarios</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="recordatorios.html">Recordatorios</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="usuarios.html">Usuarios</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">
+                            <i class="bi bi-box-arrow-right" aria-hidden="true"></i>
+                            Salir
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
 
 <main id="contenido">
-<section class="encabezado-pagina"><div class="container">
-<nav aria-label="breadcrumb"><ol class="breadcrumb mb-2"><li class="breadcrumb-item"><a href="panel.html">Panel</a></li><li class="breadcrumb-item">Pacientes</li><li class="breadcrumb-item active" aria-current="page">Registrar</li></ol></nav>
-<h1><i class="bi bi-person-plus" aria-hidden="true"></i> Registro de pacientes</h1>
-<p class="mb-0">Captura los datos básicos del paciente. Los campos sin “opcional” son obligatorios.</p>
-</div></section>
-<div class="container panel-app">
 
-<form class="form-app row g-3" action="pacientes-registro.html" method="post">
-<div class="col-md-6"><label for="p-nombre" class="form-label">Nombre(s)</label><input type="text" class="form-control" id="p-nombre" name="p-nombre" placeholder="Ej. María" required ></div><div class="col-md-6"><label for="p-apellidos" class="form-label">Apellidos</label><input type="text" class="form-control" id="p-apellidos" name="p-apellidos" placeholder="Ej. Hernández López" required ></div>
-<div class="col-md-6"><label for="p-tel" class="form-label">Teléfono (10 dígitos)</label><input type="tel" class="form-control" id="p-tel" name="p-tel" placeholder="7711234567" required pattern="[0-9]{10}" inputmode="numeric"></div><div class="col-md-6"><label for="p-correo" class="form-label">Correo electrónico</label><input type="email" class="form-control" id="p-correo" name="p-correo" placeholder="nombre@correo.com" required ></div>
-<div class="col-md-6"><label for="p-nac" class="form-label">Fecha de nacimiento</label><input type="date" class="form-control" id="p-nac" name="p-nac" placeholder="" required ></div><div class="col-md-6"><label for="p-sexo" class="form-label">Sexo</label><select class="form-select" id="p-sexo" name="p-sexo" required><option value="" selected disabled>Selecciona una opción</option><option>Femenino</option><option>Masculino</option><option>Prefiero no decirlo</option></select></div>
-<div class="col-md-6"><label for="p-emerg" class="form-label">Contacto de emergencia <span class="fw-normal">(opcional)</span></label><input type="tel" class="form-control" id="p-emerg" name="p-emerg" placeholder="" pattern="[0-9]{10}"></div><div class="col-md-6"><label for="p-alergias" class="form-label">Alergias conocidas <span class="fw-normal">(opcional)</span></label><input type="text" class="form-control" id="p-alergias" name="p-alergias" placeholder="" ></div>
-<div class="col-12"><label for="p-obs" class="form-label">Observaciones <span class="fw-normal">(opcional)</span></label><textarea class="form-control" id="p-obs" name="p-obs" rows="3"></textarea></div>
-<div class="col-12 d-flex flex-wrap gap-2"><button type="submit" class="btn btn-primary"><i class="bi bi-check-circle" aria-hidden="true"></i> Guardar paciente</button><a class="btn btn-outline-primary" href="panel.html"><i class="bi bi-x-circle" aria-hidden="true"></i> Cancelar</a></div>
-</form>
-</div>
+    <section class="encabezado-pagina">
+        <div class="container">
+
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-2">
+                    <li class="breadcrumb-item">
+                        <a href="panel.html">Panel</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        Pacientes
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        Registrar
+                    </li>
+                </ol>
+            </nav>
+
+            <h1>
+                <i class="bi bi-person-plus" aria-hidden="true"></i>
+                Registro de pacientes
+            </h1>
+
+            <p class="mb-0">
+                Captura los datos básicos del paciente.
+                Los campos sin “opcional” son obligatorios.
+            </p>
+
+        </div>
+    </section>
+
+    <div class="container panel-app">
+
+        <div class="mb-4">
+            <h2 class="h5 d-flex align-items-center gap-2">
+                <span class="material-symbols-outlined" aria-hidden="true">
+                    fact_check
+                </span>
+                Progreso del registro
+            </h2>
+
+            <p class="text-muted">
+                Completa correctamente los campos obligatorios.
+            </p>
+
+            <div class="progress" role="progressbar" aria-label="Progreso del formulario" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="contenedorProgreso">
+                <div class="progress-bar" id="barraProgreso" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <form id="formPaciente" class="form-app row g-3" action="pacientes-registro.html" method="post" novalidate>
+
+            <div class="col-md-6">
+                <label for="p-nombre" class="form-label">Nombre(s)</label>
+                <input type="text" class="form-control campo" id="p-nombre" name="p-nombre" placeholder="Ej. María" required>
+                <div class="invalid-feedback">
+                    Ingresa el nombre del paciente.
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <label for="p-apellidos" class="form-label">Apellidos</label>
+                <input type="text" class="form-control campo" id="p-apellidos" name="p-apellidos" placeholder="Ej. Hernández López" required>
+                <div class="invalid-feedback">
+                    Ingresa los apellidos del paciente.
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <label for="p-tel" class="form-label">Teléfono (10 dígitos)</label>
+                <input type="tel" class="form-control campo" id="p-tel" name="p-tel" placeholder="7711234567" pattern="[0-9]{10}" inputmode="numeric" required>
+                <div class="invalid-feedback">
+                    Escribe un número de teléfono de 10 dígitos.
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <label for="p-correo" class="form-label">Correo electrónico</label>
+                <input type="email" class="form-control campo" id="p-correo" name="p-correo" placeholder="nombre@correo.com" required>
+                <div class="invalid-feedback">
+                    Ingresa un correo electrónico válido.
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <label for="p-nac" class="form-label">Fecha de nacimiento</label>
+                <input type="date" class="form-control campo" id="p-nac" name="p-nac" required>
+                <div class="invalid-feedback">
+                    Selecciona la fecha de nacimiento.
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <label for="p-sexo" class="form-label">Sexo</label>
+                <select class="form-select campo" id="p-sexo" name="p-sexo" required>
+                    <option value="" selected disabled>Selecciona una opción</option>
+                    <option>Femenino</option>
+                    <option>Masculino</option>
+                    <option>Prefiero no decirlo</option>
+                </select>
+                <div class="invalid-feedback">
+                    Selecciona una opción.
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <label for="p-emerg" class="form-label">
+                    Contacto de emergencia
+                    <span class="fw-normal">(opcional)</span>
+                </label>
+                <input type="tel" class="form-control" id="p-emerg" name="p-emerg" pattern="[0-9]{10}" inputmode="numeric">
+                <div class="invalid-feedback">
+                    Escribe un número de teléfono de 10 dígitos.
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <label for="p-alergias" class="form-label">
+                    Alergias conocidas
+                    <span class="fw-normal">(opcional)</span>
+                </label>
+                <input type="text" class="form-control" id="p-alergias" name="p-alergias">
+            </div>
+
+            <div class="col-12">
+                <label for="p-obs" class="form-label">
+                    Observaciones
+                    <span class="fw-normal">(opcional)</span>
+                </label>
+                <textarea class="form-control" id="p-obs" name="p-obs" rows="3"></textarea>
+            </div>
+
+            <div class="col-12 d-flex flex-wrap gap-2">
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-check-circle" aria-hidden="true"></i>
+                    Guardar paciente
+                </button>
+
+                <a class="btn btn-outline-primary" href="panel.html">
+                    <i class="bi bi-x-circle" aria-hidden="true"></i>
+                    Cancelar
+                </a>
+            </div>
+
+        </form>
+    </div>
 </main>
 
 <footer class="py-3 text-center">
@@ -53,6 +255,7 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+<script src="js/validacion.js"></script>
 
+</body>
 </html>
