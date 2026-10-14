@@ -1,15 +1,18 @@
 # CitaFácil
 *Tu tiempo también importa*
 
+## Sitio publicado
+https://vazquezespinozaelizabeth1-lang.github.io/CitaFacil/
+
 ## Integrantes
 | Integrante | Rol |
 |---|---|
 | Elizabeth Vázquez Espinoza | Líder de equipo |
-| Aram Jael Morales Peña | Frontend |
-| Luis Ángel Ruiz Bautista | Frontend |
-| Liam Tonatihu Villanueva Cerón | Backend |
-| Victor Hugo Ramírez | Analista |
 | Corona Téllez Jonathan | Analista |
+| Aram Jael Morales Peña | Backend |
+| Victor Hugo Ramírez | Backend |
+| Luis Ángel Ruiz Bautista | Frontend |
+| Liam Tonatihu Villanueva Cerón | Frontend |
 
 ## Descripción de la aplicación
 CitaFácil es una aplicación web para que consultorios pequeños gestionen sus citas: agendar, cancelar, reprogramar, consultar horarios disponibles y recibir recordatorios.
@@ -20,18 +23,20 @@ Evitar citas duplicadas, olvidadas o mal organizadas mediante una interfaz simpl
 ## Tecnologías utilizadas
 - HTML5
 - CSS3
+- JavaScript (DOM, eventos y funciones con nombre)
 - Bootstrap 5.3 y Bootstrap Icons
 - Git y GitHub (control de versiones y tablero Kanban)
 - LaTeX (SRS y Guía de diseño)
 
 ## Características principales
-- Sitio multipágina: Inicio, Nosotros, Servicios y Contacto
+- Sitio multipágina: 4 páginas públicas (Inicio, Nosotros, Servicios y Contacto) y un panel para el consultorio (pacientes, citas, horarios, recordatorios y usuarios)
+- Interacciones dinámicas con JavaScript: validación en tiempo real, barra de progreso, modal con información dinámica, toast, filtrado de pacientes, agregar y eliminar usuarios y mostrar/ocultar contraseña
 - Diseño responsive para computadora, tableta y móvil
-- Formulario de contacto con validación HTML5
+- Formularios con validación de Bootstrap
 - Interfaz sencilla y accesible
 
 ## Componentes de Bootstrap utilizados
-Navbar responsive, sistema de rejilla (container, row, col), cards, carousel, accordion, modal, formularios, botones y utilidades.
+Navbar responsive, sistema de rejilla (container, row, col), cards, carousel, accordion, modal, toast, progress, input-group, tablas, validación de formularios (`is-valid`, `is-invalid`, `invalid-feedback`), botones, badges y utilidades.
 
 ## Estructura del proyecto
 ```
@@ -40,11 +45,29 @@ CitaFacil/
 ├── nosotros.html
 ├── servicios.html
 ├── contacto.html
+├── login.html
+├── panel.html
+├── pacientes-registro.html
+├── pacientes-buscar.html
+├── citas-agendar.html
+├── citas-consulta.html
+├── citas-modificar.html
+├── citas-cancelar.html
+├── citas-duplicada.html
+├── horarios.html
+├── recordatorios.html
+├── usuarios.html
 ├── README.md
 ├── css/
 │   └── estilos.css
 ├── js/
-│   └── app.js
+│   ├── app.js
+│   ├── validacion.js
+│   ├── modal-cita.js
+│   ├── toast.js
+│   ├── filtro.js
+│   ├── usuarios.js
+│   └── password.js
 ├── img/
 │   └── (capturas e imágenes del proyecto)
 └── docs/
@@ -60,21 +83,67 @@ CitaFacil/
 2. Abrir la carpeta `CitaFacil`.
 3. Abrir `index.html` en el navegador (doble clic) o usar la extensión Live Server en VS Code.
 
-
-## La Reflexión del Equipo
-
-Durante el desarrollo de esta práctica, el equipo logró fortalecer de manera significativa sus competencias en el uso de flujos de trabajo colaborativos con Git, GitHub y metodologías ágiles mediante el tablero Kanban. La coordinación a través de ramas individuales (feature/), la aplicación rigurosa de buenas prácticas en JavaScript vanilla y la revisión cruzada de Pull Requests nos permitieron garantizar la calidad del código e identificar errores a tiempo. A pesar de los retos iniciales para sincronizar los archivos base y coordinar las entregas sin generar conflictos de fusión, la comunicación constante y el apego a los roles asignados fueron clave para superar cada obstáculo. Esta experiencia consolidó nuestro entendimiento sobre la importancia del control de versiones en proyectos reales y la responsabilidad compartida dentro de un equipo de desarrollo software.   
-
 ## Tabla de Interacciones JavaScript
 
-| Integrante | Página / Componente | Elementos y Selectores Utilizados | Eventos Implementados | Descripción de la Interacción |
-| :--- | :--- | :--- | :--- | :--- |
-| **Jonathan** | `pacientes-buscar.html` | `getElementById('q')`, `querySelectorAll('tbody tr')`, `querySelector('form')` | `input`, `submit` | Filtro de búsqueda de pacientes en tiempo real con ocultamiento de filas vía `classList.toggle('d-none')`. |
-| **[Nombre 2]** | `[pagina.html]` | `getElementById(...)`, `querySelector(...)` | `click` | [Breve descripción de su interacción] |
-| **[Nombre 3]** | `[pagina.html]` | `querySelector(...)` | `change` | [Breve descripción de su interacción] |
-| **[Nombre 4]** | `[pagina.html]` | `querySelectorAll(...)` | `submit` | [Breve descripción de su interacción] |
+| Interacción | Tipo | Responsable | Página | Selectores usados | Eventos usados | Componente Bootstrap |
+|---|---|---|---|---|---|---|
+| Filtrado de pacientes en tiempo real | Obligatoria | Jonathan | `pacientes-buscar.html` | `getElementById('q')`, `querySelectorAll('tbody tr')`, `querySelector('form')` | `input`, `submit` | Tabla (`table`) y utilidad `d-none` |
+| Validación de formulario en tiempo real | Obligatoria | Angel | `pacientes-registro.html` | `getElementById`, `querySelectorAll` | `input`, `blur`, `submit`, `preventDefault()` | `is-valid`, `is-invalid`, `invalid-feedback` |
+| Barra de progreso del registro | Libre | Angel | `pacientes-registro.html` | `getElementById` | `input` | Progress |
+| Modal con información dinámica | Obligatoria | Liam | `citas-consulta.html` | `getElementById`, `querySelector` | `show.bs.modal`, `dataset` | Modal (`data-bs-*`) |
+| Notificación tras una acción | Obligatoria | Victor | `citas-agendar.html`, `citas-cancelar.html` | `getElementById`, `querySelector` | `submit`, `preventDefault()` | Toast |
+| Agregar y eliminar usuarios | Obligatoria | Aram | `usuarios.html` | `getElementById`, `querySelector` | `submit`, `click` (delegación de eventos) | Tabla, badge, botones |
+| Mostrar/ocultar contraseña | Libre | Elizabeth | `login.html` | `getElementById`, `querySelector` | `click` | Input-group |
+
+## Reflexión por integrante
+
+Cada integrante responde: ¿qué fue lo más difícil de su interacción?, ¿qué aprendió al combinar JavaScript con Bootstrap? y, en el caso de la delegación de eventos, ¿qué ventaja ofrece?
+
+### Elizabeth Vázquez Espinoza (Líder) · Mostrar/ocultar contraseña
+Lo más difícil fue coordinar al equipo: repartir las interacciones, revisar los Pull Requests y hacer los merges sin conflictos. Mi interacción (mostrar/ocultar contraseña) me enseñó a cambiar el `type` del input y el ícono con `classList`, usando `input-group` de Bootstrap sin `style` en línea.
+
+### Corona Téllez Jonathan (Analista) · Filtrado de pacientes
+Implementar el filtro en tiempo real me ayudó a dominar la manipulación del DOM y el uso de eventos como `input` combinados con clases de Bootstrap. Adaptarme al flujo de trabajo con ramas en Git y el tablero Kanban fue clave para mantener la organización y coordinar entregas de calidad con el equipo.
+
+### Aram Jael Morales Peña (Backend) · Agregar y eliminar usuarios
+Lo más difícil fue implementar la función para agregar y eliminar usuarios, porque tenía que validar que las contraseñas coincidieran y asegurar que los botones funcionaran correctamente. Aprendí a combinar JavaScript con Bootstrap para crear filas dinámicamente y utilizar sus clases para dar estilo a los botones y estados. La ventaja de la delegación de eventos es que permite eliminar usuarios nuevos y existentes con un solo listener, sin agregar un evento a cada botón.
+
+### Victor Hugo Ramírez (Backend) · Toast de notificación
+Lo difícil fue recordar cada cosa (rama, commits, push y PR) y revisar que los ids del HTML coincidieran con los que usaba el JavaScript, porque si no coinciden el toast no muestra bien los datos. Aprendí que Bootstrap pone el estilo y la estructura, pero el JavaScript es el que lo activa (`bootstrap.Toast.getOrCreateInstance`) y que con `classList` puedo cambiar el color del toast sin usar `style` en línea.
+
+### Luis Ángel Ruiz Bautista (Frontend) · Validación en tiempo real y barra de progreso
+Lo más difícil fue lograr que la validación se viera en tiempo real y que la barra de progreso avanzara solo con los campos válidos, usando clases de Bootstrap (`w-25`, `w-50`, etc.) en lugar de `style` en línea. Aprendí que Bootstrap da los estados visuales (`is-valid`, `is-invalid`, `invalid-feedback`) y que JavaScript decide cuándo aplicarlos con `classList` y `checkValidity()`.
+
+### Liam Tonatihu Villanueva Cerón (Frontend) · Modal con información dinámica
+Lo más difícil fue que un solo modal mostrara información distinta según el botón, leyendo los datos con `dataset` y el evento `show.bs.modal`, cuidando que los `data-*` coincidieran con lo que leía el JavaScript. Aprendí que Bootstrap abre y cierra el modal, pero JavaScript es quien le da el contenido dinámico.
 
 ## Capturas de pantalla
+
+### Interacciones JavaScript (Práctica 1)
+
+**Validación en tiempo real y barra de progreso**
+
+![Validación y barra de progreso](img/p1-validacion.png)
+
+**Modal con información dinámica**
+
+![Modal con información dinámica](img/p1-modal.png)
+
+**Toast tras una acción**
+
+![Toast](img/p1-toast.png)
+
+**Filtrado de pacientes**
+
+![Filtrado de pacientes](img/p1-filtro.png)
+
+**Agregar y eliminar usuarios**
+
+![Agregar y eliminar usuarios](img/p1-usuarios.png)
+
+**Mostrar/ocultar contraseña**
+
+![Mostrar u ocultar contraseña](img/p1-mostrar-clave.png)
 
 ### Pruebas de diseño responsive (móvil)
 <img width="1600" height="900" alt="respon1" src="https://github.com/user-attachments/assets/0c1d8615-42ad-49f5-82c7-d49378cc3954" />
@@ -91,7 +160,14 @@ Durante el desarrollo de esta práctica, el equipo logró fortalecer de manera s
 <img width="1131" height="682" alt="cap1" src="https://github.com/user-attachments/assets/2192f005-0b56-41a0-b683-ca0a0b95f06d" />
 
 ### Tablero Kanban
+
+**Entrega anterior**
+
 <img width="752" height="211" alt="cap2" src="https://github.com/user-attachments/assets/180ab2bc-87e9-4a3a-9a9d-bfa49da51b8e" /><img width="727" height="237" alt="cap3" src="https://github.com/user-attachments/assets/d4e32557-5220-4229-b883-40d61fd241d7" />
+
+**Práctica 1 (interacciones con DOM y Bootstrap)**
+
+![Tablero Kanban de la Práctica 1](img/p1-kanban.png)
 
 ### Colaboradores del repositorio
 <img width="1246" height="777" alt="colaboradores" src="https://github.com/user-attachments/assets/4ab3fca6-d580-461c-9fd5-0f5b22624d13" />
