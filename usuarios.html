@@ -1,52 +1,370 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>CitaFácil | Administración de usuarios</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 
 <body>
+
 <header>
-<a class="visually-hidden-focusable" href="#contenido">Saltar al contenido</a>
-<nav class="navbar navbar-expand-lg bg-body-tertiary" aria-label="Menú del consultorio">
-<div class="container">
-<a class="navbar-brand d-flex align-items-center" href="panel.html"><img src="img/logo.jpg.jpeg" alt="Logo CitaFácil" width="30" height="30" class="me-2">CitaFácil</a>
-<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir menú"><span class="navbar-toggler-icon"></span></button>
-<div class="collapse navbar-collapse" id="menu"><ul class="navbar-nav ms-auto">
-<li class="nav-item"><a class="nav-link" href="panel.html">Panel</a></li>
-<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pacientes</a><ul class="dropdown-menu"><li><a class="dropdown-item" href="pacientes-registro.html">Registrar paciente</a></li><li><a class="dropdown-item" href="pacientes-buscar.html">Buscar paciente</a></li></ul></li>
-<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Citas</a><ul class="dropdown-menu"><li><a class="dropdown-item" href="citas-agendar.html">Agendar cita</a></li><li><a class="dropdown-item" href="citas-consulta.html">Consultar citas</a></li><li><a class="dropdown-item" href="citas-modificar.html">Modificar cita</a></li><li><a class="dropdown-item" href="citas-cancelar.html">Cancelar cita</a></li></ul></li>
-<li class="nav-item"><a class="nav-link" href="horarios.html">Horarios</a></li>
-<li class="nav-item"><a class="nav-link" href="recordatorios.html">Recordatorios</a></li>
-<li class="nav-item"><a class="nav-link active" href="usuarios.html">Usuarios</a></li>
-<li class="nav-item"><a class="nav-link" href="login.html"><i class="bi bi-box-arrow-right"></i> Salir</a></li>
-</ul></div></div></nav></header>
+    <a class="visually-hidden-focusable" href="#contenido">
+        Saltar al contenido
+    </a>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary"
+        aria-label="Menú del consultorio">
+
+        <div class="container">
+
+            <a class="navbar-brand d-flex align-items-center" href="panel.html">
+                <img src="img/logo.jpg.jpeg" alt="Logo CitaFácil"
+                    width="30" height="30" class="me-2">
+                CitaFácil
+            </a>
+
+            <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#menu"
+                aria-controls="menu" aria-expanded="false"
+                aria-label="Abrir menú">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="panel.html">Panel</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#"
+                            role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Pacientes</a>
+
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="pacientes-registro.html">
+                                    Registrar paciente
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="pacientes-buscar.html">
+                                    Buscar paciente
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#"
+                            role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Citas</a>
+
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="citas-agendar.html">
+                                    Agendar cita
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="citas-consulta.html">
+                                    Consultar citas
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="citas-modificar.html">
+                                    Modificar cita
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="citas-cancelar.html">
+                                    Cancelar cita
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="horarios.html">Horarios</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="recordatorios.html">Recordatorios</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="usuarios.html"
+                            aria-current="page">Usuarios</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">
+                            <i class="bi bi-box-arrow-right" aria-hidden="true"></i>
+                            Salir
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
 
 <main id="contenido">
-<section class="encabezado-pagina"><div class="container">
-<nav aria-label="breadcrumb"><ol class="breadcrumb mb-2"><li class="breadcrumb-item"><a href="panel.html">Panel</a></li><li class="breadcrumb-item active" aria-current="page">Usuarios</li></ol></nav>
-<h1><i class="bi bi-people" aria-hidden="true"></i> Administración de usuarios</h1>
-<p class="mb-0">Crea cuentas de acceso para médicos y recepcionistas.</p>
-</div></section>
-<div class="container panel-app">
 
-<div class="row g-4"><div class="col-lg-7">
-<h2 class="h4">Cuentas registradas</h2>
-<div class="table-responsive"><table class="table tabla-app align-middle"><caption class="visually-hidden">Usuarios del sistema</caption>
-<thead><tr><th scope="col">Nombre</th><th scope="col">Usuario</th><th scope="col">Rol</th><th scope="col">Estado</th><th scope="col">Acción</th></tr></thead><tbody><tr><td>Dra. Laura Mendoza</td><td>lmendoza</td><td>Médico</td><td><span class="badge chip estado-exito"><i class="bi bi-check-circle" aria-hidden="true"></i> Activo</span></td><td><a class="btn btn-outline-primary btn-sm" href="#"><i class="bi bi-pencil" aria-hidden="true"></i> Editar</a></td></tr><tr><td>Dr. Carlos Rivera</td><td>crivera</td><td>Médico</td><td><span class="badge chip estado-exito"><i class="bi bi-check-circle" aria-hidden="true"></i> Activo</span></td><td><a class="btn btn-outline-primary btn-sm" href="#"><i class="bi bi-pencil" aria-hidden="true"></i> Editar</a></td></tr><tr><td>Sofía Herrera</td><td>sherrera</td><td>Médico</td><td><span class="badge chip estado-exito"><i class="bi bi-check-circle" aria-hidden="true"></i> Activo</span></td><td><a class="btn btn-outline-primary btn-sm" href="#"><i class="bi bi-pencil" aria-hidden="true"></i> Editar</a></td></tr><tr><td>Paola Ramírez</td><td>pramirez</td><td>Recepcionista</td><td><span class="badge chip estado-exito"><i class="bi bi-check-circle" aria-hidden="true"></i> Activo</span></td><td><a class="btn btn-outline-primary btn-sm" href="#"><i class="bi bi-pencil" aria-hidden="true"></i> Editar</a></td></tr><tr><td>Diego Torres</td><td>dtorres</td><td>Recepcionista</td><td><span class="badge chip estado-error"><i class="bi bi-x-circle" aria-hidden="true"></i> Inactivo</span></td><td><a class="btn btn-outline-primary btn-sm" href="#"><i class="bi bi-pencil" aria-hidden="true"></i> Editar</a></td></tr></tbody></table></div></div>
-<div class="col-lg-5"><form class="form-app row g-3" action="usuarios.html" method="post"><h2 class="h4 col-12">Nueva cuenta</h2>
-<div class="col-12"><label for="u-nombre" class="form-label">Nombre completo</label><input type="text" class="form-control" id="u-nombre" name="u-nombre" placeholder="" required ></div><div class="col-12"><label for="u-usuario" class="form-label">Nombre de usuario</label><input type="text" class="form-control" id="u-usuario" name="u-usuario" placeholder="" required ></div>
-<div class="col-12"><label for="u-rol" class="form-label">Rol</label><select class="form-select" id="u-rol" name="u-rol" required><option value="" selected disabled>Selecciona una opción</option><option>Médico</option><option>Recepcionista</option></select></div>
-<div class="col-12"><label for="u-clave" class="form-label">Contraseña temporal</label><input type="password" class="form-control" id="u-clave" name="u-clave" placeholder="" required minlength="8" autocomplete="new-password"></div>
-<div class="col-12"><label for="u-clave2" class="form-label">Confirmar contraseña</label><input type="password" class="form-control" id="u-clave2" name="u-clave2" placeholder="" required minlength="8" autocomplete="new-password"></div>
-<div class="col-12"><button type="submit" class="btn btn-primary w-100"><i class="bi bi-person-plus" aria-hidden="true"></i> Crear cuenta</button></div></form></div></div>
-</div>
+    <section class="encabezado-pagina">
+        <div class="container">
+
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-2">
+                    <li class="breadcrumb-item">
+                        <a href="panel.html">Panel</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        Usuarios
+                    </li>
+                </ol>
+            </nav>
+
+            <h1>
+                <i class="bi bi-people" aria-hidden="true"></i>
+                Administración de usuarios
+            </h1>
+
+            <p class="mb-0">
+                Crea cuentas de acceso para médicos y recepcionistas.
+            </p>
+
+        </div>
+    </section>
+
+    <div class="container panel-app">
+
+        <div class="row g-4">
+
+            <!-- Tabla de cuentas -->
+            <div class="col-lg-7">
+
+                <h2 class="h4">Cuentas registradas</h2>
+
+                <div class="table-responsive">
+                    <table class="table tabla-app align-middle">
+
+                        <caption class="visually-hidden">
+                            Usuarios del sistema
+                        </caption>
+
+                        <thead>
+                            <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Usuario</th>
+                                <th scope="col">Rol</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Acción</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="listaUsuarios">
+
+                            <tr>
+                                <td>Dra. Laura Mendoza</td>
+                                <td>lmendoza</td>
+                                <td>Médico</td>
+                                <td>
+                                    <span class="badge chip estado-exito">
+                                        <i class="bi bi-check-circle" aria-hidden="true"></i>
+                                        Activo
+                                    </span>
+                                </td>
+                                <td>
+                                    <a class="btn btn-outline-primary btn-sm" href="#">
+                                        <i class="bi bi-pencil" aria-hidden="true"></i>
+                                        Editar
+                                    </a>
+
+                                    <button type="button"
+                                        class="btn btn-outline-danger btn-sm eliminar">
+                                        Eliminar
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Dr. Carlos Rivera</td>
+                                <td>crivera</td>
+                                <td>Médico</td>
+                                <td>
+                                    <span class="badge chip estado-exito">
+                                        <i class="bi bi-check-circle" aria-hidden="true"></i>
+                                        Activo
+                                    </span>
+                                </td>
+                                <td>
+                                    <a class="btn btn-outline-primary btn-sm" href="#">
+                                        <i class="bi bi-pencil" aria-hidden="true"></i>
+                                        Editar
+                                    </a>
+
+                                    <button type="button"
+                                        class="btn btn-outline-danger btn-sm eliminar">
+                                        Eliminar
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Sofía Herrera</td>
+                                <td>sherrera</td>
+                                <td>Médico</td>
+                                <td>
+                                    <span class="badge chip estado-exito">
+                                        <i class="bi bi-check-circle" aria-hidden="true"></i>
+                                        Activo
+                                    </span>
+                                </td>
+                                <td>
+                                    <a class="btn btn-outline-primary btn-sm" href="#">
+                                        <i class="bi bi-pencil" aria-hidden="true"></i>
+                                        Editar
+                                    </a>
+
+                                    <button type="button"
+                                        class="btn btn-outline-danger btn-sm eliminar">
+                                        Eliminar
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Paola Ramírez</td>
+                                <td>pramirez</td>
+                                <td>Recepcionista</td>
+                                <td>
+                                    <span class="badge chip estado-exito">
+                                        <i class="bi bi-check-circle" aria-hidden="true"></i>
+                                        Activo
+                                    </span>
+                                </td>
+                                <td>
+                                    <a class="btn btn-outline-primary btn-sm" href="#">
+                                        <i class="bi bi-pencil" aria-hidden="true"></i>
+                                        Editar
+                                    </a>
+
+                                    <button type="button"
+                                        class="btn btn-outline-danger btn-sm eliminar">
+                                        Eliminar
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Diego Torres</td>
+                                <td>dtorres</td>
+                                <td>Recepcionista</td>
+                                <td>
+                                    <span class="badge chip estado-error">
+                                        <i class="bi bi-x-circle" aria-hidden="true"></i>
+                                        Inactivo
+                                    </span>
+                                </td>
+                                <td>
+                                    <a class="btn btn-outline-primary btn-sm" href="#">
+                                        <i class="bi bi-pencil" aria-hidden="true"></i>
+                                        Editar
+                                    </a>
+
+                                    <button type="button"
+                                        class="btn btn-outline-danger btn-sm eliminar">
+                                        Eliminar
+                                    </button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Formulario para crear usuarios -->
+            <div class="col-lg-5">
+
+                <form id="formUsuario" class="form-app row g-3">
+
+                    <h2 class="h4 col-12">Nueva cuenta</h2>
+
+                    <div class="col-12">
+                        <label for="u-nombre" class="form-label">
+                            Nombre completo
+                        </label>
+                        <input type="text" class="form-control"
+                            id="u-nombre" name="u-nombre" required>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="u-usuario" class="form-label">
+                            Nombre de usuario
+                        </label>
+                        <input type="text" class="form-control"
+                            id="u-usuario" name="u-usuario" required>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="u-rol" class="form-label">Rol</label>
+
+                        <select class="form-select" id="u-rol"
+                            name="u-rol" required>
+                            <option value="" selected disabled>
+                                Selecciona una opción
+                            </option>
+                            <option value="Médico">Médico</option>
+                            <option value="Recepcionista">Recepcionista</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="u-clave" class="form-label">
+                            Contraseña temporal
+                        </label>
+                        <input type="password" class="form-control"
+                            id="u-clave" name="u-clave"
+                            required minlength="8" autocomplete="new-password">
+                    </div>
+
+                    <div class="col-12">
+                        <label for="u-clave2" class="form-label">
+                            Confirmar contraseña
+                        </label>
+                        <input type="password" class="form-control"
+                            id="u-clave2" name="u-clave2"
+                            required minlength="8" autocomplete="new-password">
+                    </div>
+
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary w-100">
+                            <i class="bi bi-person-plus" aria-hidden="true"></i>
+                            Crear cuenta
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
 </main>
 
 <footer class="py-3 text-center">
@@ -54,7 +372,11 @@
     <p class="mb-0">&copy; 2026 CitaFácil. Todos los derechos reservados.</p>
 </footer>
 
+<!-- Bootstrap JS ya estaba incluido en el proyecto -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
 
+<!-- JavaScript de la interacción de Aram -->
+<script src="js/usuarios.js"></script>
+
+</body>
 </html>
