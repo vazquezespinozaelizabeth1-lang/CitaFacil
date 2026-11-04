@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\CitaController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::redirect('/', '/citas');
+Route::resource('citas', CitaController::class);
