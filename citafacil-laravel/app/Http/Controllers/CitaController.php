@@ -56,7 +56,10 @@ class CitaController extends Controller
 
     public function index()
     {
-        return view('citas.index', ['citas' => $this->citas()]);
+        $citas = $this->citas();
+        uasort($citas, fn ($a, $b) => [$a['fecha'], $a['hora']] <=> [$b['fecha'], $b['hora']]);
+
+        return view('citas.index', ['citas' => $citas]);
     }
 
     public function create()
@@ -67,15 +70,17 @@ class CitaController extends Controller
     public function show($id)
     {
         $citas = $this->citas();
+        abort_unless(isset($citas[$id]), 404);
 
-        return view('citas.show', ['cita' => $citas[$id] ?? []]);
+        return view('citas.show', ['cita' => $citas[$id]]);
     }
 
     public function edit($id)
     {
         $citas = $this->citas();
+        abort_unless(isset($citas[$id]), 404);
 
-        return view('citas.edit', ['cita' => $citas[$id] ?? [], 'estados' => self::ESTADOS]);
+        return view('citas.edit', ['cita' => $citas[$id], 'estados' => self::ESTADOS]);
     }
 
     // =====================================================
@@ -83,18 +88,71 @@ class CitaController extends Controller
     // ZONA POST / PUT / DELETE (responsable: Victor)
     // =====================================================
 
-    public function store(Request $request)
-    {
-        abort(501);
+    
+public function store(Request $request)
+{
+    $datos = $request->validate([
+        'paciente' => 'required|string|max:255',
+        'fecha' => 'required|date',
+        'hora' => 'required',
+        'motivo' => 'required|string|max:255',
+        'estado' => 'required|in:Pendiente,Confirmada,Cancelada',
+    ]);
+
+    $citas = $this->citas();
+
+    $id = empty($citas) ? 1 : max(array_keys($citas)) + 1;
+
+    $datos['id'] = $id;
+
+    $citas[$id] = $datos;
+
+    session(['citas' => $citas]);
+
+    return redirect()->route('citas.index')
+        ->with('exito', 'Cita registrada correctamente.');
+}
+
+public function update(Request $request, $id)
+{
+    $citas = $this->citas();
+
+    if (!isset($citas[$id])) {
+        abort(404);
     }
 
-    public function update(Request $request, $id)
-    {
-        abort(501);
+    $datos = $request->validate([
+        'paciente' => 'required|string|max:255',
+        'fecha' => 'required|date',
+        'hora' => 'required',
+        'motivo' => 'required|string|max:255',
+        'estado' => 'required|in:Pendiente,Confirmada,Cancelada',
+    ]);
+
+    $datos['id'] = $id;
+
+    $citas[$id] = $datos;
+
+    session(['citas' => $citas]);
+
+    return redirect()->route('citas.index')
+        ->with('exito', 'Cita actualizada correctamente.');
+}
+
+public function destroy($id)
+{
+    $citas = $this->citas();
+
+    if (!isset($citas[$id])) {
+        abort(404);
     }
 
-    public function destroy($id)
-    {
-        abort(501);
-    }
+    unset($citas[$id]);
+
+    session(['citas' => $citas]);
+
+    return redirect()->route('citas.index')
+        ->with('exito', 'Cita eliminada correctamente.');
+}
+
 }
