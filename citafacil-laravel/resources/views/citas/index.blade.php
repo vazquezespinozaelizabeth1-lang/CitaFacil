@@ -45,4 +45,28 @@
             </tbody>
         </table>
     </div>
+
+    @foreach ($citas as $cita)
+        <div class="modal fade" id="modalEliminar{{ $cita['id'] }}" tabindex="-1" aria-labelledby="tituloEliminar{{ $cita['id'] }}" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title fs-5" id="tituloEliminar{{ $cita['id'] }}">Eliminar cita</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        ¿Seguro que deseas eliminar la cita de <strong>{{ $cita['paciente'] }}</strong> del {{ $cita['fecha'] }} a las {{ $cita['hora'] }}? Esta acción no se puede deshacer.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <form method="POST" action="{{ route('citas.destroy', $cita['id']) }}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
 @endsection
