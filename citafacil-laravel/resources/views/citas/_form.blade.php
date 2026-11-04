@@ -34,7 +34,9 @@
     <label for="estado" class="form-label">Estado</label>
     <select id="estado" name="estado" class="form-select @error('estado') is-invalid @enderror">
         @foreach ($estados as $estado)
-            <option value="{{ $estado }}" @selected(old('estado', $cita['estado'] ?? 'Pendiente') === $estado)>{{ $estado }}</option>
+            <option value="{{ $estado }}" @selected(old('estado', $cita['estado'] ?? 'Pendiente') == $estado)>
+                {{ $estado }}
+            </option>
         @endforeach
     </select>
     @error('estado')
@@ -42,5 +44,5 @@
     @enderror
 </div>
 
-<button type="submit" class="btn btn-primario">{{ $textoBoton }}</button>
+<button type="submit" class="btn btn-primary">{{ $textoBoton }}</button>
 <a href="{{ route('citas.index') }}" class="btn btn-secondary">Cancelar</a>
