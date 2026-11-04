@@ -56,7 +56,10 @@ class CitaController extends Controller
 
     public function index()
     {
-        return view('citas.index', ['citas' => $this->citas()]);
+        $citas = $this->citas();
+        uasort($citas, fn ($a, $b) => [$a['fecha'], $a['hora']] <=> [$b['fecha'], $b['hora']]);
+
+        return view('citas.index', ['citas' => $citas]);
     }
 
     public function create()
@@ -67,7 +70,6 @@ class CitaController extends Controller
     public function show($id)
     {
         $citas = $this->citas();
-
         abort_unless(isset($citas[$id]), 404);
 
         return view('citas.show', ['cita' => $citas[$id]]);
@@ -76,12 +78,12 @@ class CitaController extends Controller
     public function edit($id)
     {
         $citas = $this->citas();
-
         abort_unless(isset($citas[$id]), 404);
 
         return view('citas.edit', ['cita' => $citas[$id], 'estados' => self::ESTADOS]);
     }
 
+    // =====================================================
     // =====================================================
     // ZONA POST / PUT / DELETE (responsable: Victor)
     // =====================================================
