@@ -1,5 +1,7 @@
 # CitaFácil · Módulo de Citas (Laravel 12)
 *Tu tiempo también importa.*
+# CitaFácil · Módulo de Citas (Laravel 12)
+*Tu tiempo también importa.*
 
 ## 1. Descripción
 CitaFácil es una aplicación web desarrollada en Laravel para la gestión eficiente de citas médicas y atención al paciente.
@@ -10,15 +12,15 @@ CitaFácil es una aplicación web desarrollada en Laravel para la gestión efici
 - Bootstrap 5
 - MySQL
 
-## 3. Integrantes
-| Nombre | Rol | Usuario GitHub | Rama |
-| :--- | :--- | :--- | :--- |
-| Elizabeth Vázquez Espinoza | Líder / Dev | vazquezespinozaelizabeth1-lang | main |
+## Integrantes
+| Integrante | Rol | Usuario de GitHub | Rama |
+|---|---|---|---|
+| Elizabeth Vázquez Espinoza | Líder | vazquezespinozaelizabeth1-lang | feature/base-laravel |
 | Jonathan Corona Téllez | Analista | jonathancorona-rgb | feature/readme-docs |
-| [Integrante 3] | Dev / Tester | [Usuario] | [Rama] |
-| [Integrante 4] | Dev / Tester | [Usuario] | [Rama] |
-| [Integrante 5] | Dev / Tester | [Usuario] | [Rama] |
-| [Integrante 6] | Dev / Tester | [Usuario] | [Rama] |
+| Aram Jael Morales Peña | Backend | arammorales | feature/rutas-controller-get |
+| Victor Hugo Ramírez | Backend | petevictor1-maker | feature/controller-post-put-delete |
+| Luis Ángel Ruiz Bautista | Frontend | angelrb2531126237 | feature/vistas-index-show |
+| Liam Tonatihu Villanueva Cerón | Frontend | LiamVillanueva777 | feature/vistas-create-edit |
 
 ## 4. Instalación
 1. Clonar el repositorio: `git clone <URL-del-repositorio>`
