@@ -68,17 +68,20 @@ class CitaController extends Controller
     {
         $citas = $this->citas();
 
-        return view('citas.show', ['cita' => $citas[$id] ?? []]);
+        abort_unless(isset($citas[$id]), 404);
+
+        return view('citas.show', ['cita' => $citas[$id]]);
     }
 
     public function edit($id)
     {
         $citas = $this->citas();
 
-        return view('citas.edit', ['cita' => $citas[$id] ?? [], 'estados' => self::ESTADOS]);
+        abort_unless(isset($citas[$id]), 404);
+
+        return view('citas.edit', ['cita' => $citas[$id], 'estados' => self::ESTADOS]);
     }
 
-    // =====================================================
     // =====================================================
     // ZONA POST / PUT / DELETE (responsable: Victor)
     // =====================================================
