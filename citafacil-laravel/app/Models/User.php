@@ -12,6 +12,13 @@ class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
+        public const ROL_ADMIN = 'admin';
+    public const ROL_RECEPCION = 'recepcion';
+
+    public function esAdmin(): bool
+    {
+        return $this->role === self::ROL_ADMIN;
+    }
 
     /**
      * The attributes that are mass assignable.
