@@ -9,7 +9,9 @@
     </div>
 
     @if (count($citas) === 0)
-        <div class="alert alert-info">Todavía no hay citas registradas.</div>
+        <x-alerta tipo="info" :descartable="false">
+            Todavía no hay citas registradas.
+        </x-alerta>
     @else
         <div class="table-responsive">
             <table class="table table-hover align-middle">
@@ -47,19 +49,23 @@
                                 <a href="{{ route('citas.edit', $cita['id']) }}" class="btn btn-sm btn-outline-primary" aria-label="Editar cita de {{ $cita['paciente'] }}">
                                     <i class="bi bi-pencil" aria-hidden="true"></i>
                                 </a>
-                                <form action="{{ route('citas.destroy', $cita['id']) }}" method="POST" class="d-inline"
-                                      onsubmit="return confirm('¿Eliminar la cita de {{ $cita['paciente'] }}?');">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-outline-danger" aria-label="Eliminar cita de {{ $cita['paciente'] }}">
-                                        <i class="bi bi-trash" aria-hidden="true"></i>
-                                    </button>
-                                </form>
+                                <!-- Botón que abre el modal -->
+<button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modal-cita-{{ $cita['id'] }}" aria-label="Eliminar cita de {{ $cita['paciente'] }}">
+    <i class="bi bi-trash" aria-hidden="true"></i>
+</button>
+
+<!-- Tu componente dinámico (Modal) -->
+<x-modal-eliminar 
+    idModal="modal-cita-{{ $cita['id'] }}" 
+    rutaAccion="{{ route('citas.destroy', $cita['id']) }}">
+    ¿Estás seguro de que deseas cancelar la cita de {{ $cita['paciente'] }}? Esta acción no se puede deshacer.
+</x-modal-eliminar>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
+        <x-paginacion :coleccion="$citas" />
     @endif
 @endsection
