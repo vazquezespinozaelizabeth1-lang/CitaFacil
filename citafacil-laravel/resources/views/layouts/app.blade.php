@@ -11,14 +11,14 @@
     <link rel="stylesheet" href="{{ asset('css/citafacil.css') }}">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg" aria-label="Menú principal">
+<nav class="navbar navbar-expand-lg bg-primario" data-bs-theme="dark" aria-label="Menú principal">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center" href="{{ Route::has('panel') ? route('panel') : url('/') }}">
             <span class="bg-white rounded-3 px-2 py-1">
                 <img src="{{ asset('img/logo-app.png') }}" alt="CitaFácil" height="40">
             </span>
         </a>
-        <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir menú">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Alternar menú">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="menu">
@@ -94,8 +94,9 @@
     @include('partials.alertas')
     @yield('contenido')
 </main>
-<footer class="container py-3 text-center small">CitaFácil · Tu tiempo también importa</footer>
+<footer class="container border-top py-3 text-center small">CitaFácil · {{ date('Y') }}</footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 @stack('scripts')
+{{-- modal-eliminar (T04) --}}
 </body>
 </html>
