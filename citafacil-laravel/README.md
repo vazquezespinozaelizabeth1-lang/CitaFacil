@@ -127,9 +127,15 @@ El seeder crea un administrador (credenciales en `.env.example`), 8 pacientes, 4
 *Pendiente: la completa Jonathan (T12).*
 <!-- FIN: Roles y permisos -->
 
-<!-- INICIO: Pacientes -->
+<!-- <!-- INICIO: Pacientes -->
 ### Pacientes
-*Pendiente: la completa Liam (T06).*
+Módulo CRUD completo para la gestión de pacientes conectado a PostgreSQL mediante Eloquent (`App\Models\Paciente`). Incluye búsqueda por nombre (`scopeBuscar`), paginación con conservación de filtros (`paginate(10)->withQueryString()`), consulta del historial de citas del paciente y bloqueo de eliminación cuando existen citas asociadas.
+
+#### Reglas de validación (`StorePacienteRequest` / `UpdatePacienteRequest`)
+- `nombre`: obligatorio, texto, entre 3 y 100 caracteres.
+- `telefono`: obligatorio, exactamente 10 dígitos (`digits:10`).
+- `email`: opcional, formato de correo válido, máximo 100 caracteres, único en `pacientes` (ignorando el registro actual al actualizar).
+- `fecha_nacimiento`: opcional, fecha válida anterior a hoy (`before:today`).
 <!-- FIN: Pacientes -->
 
 <!-- INICIO: Servicios -->
@@ -190,6 +196,13 @@ Se amplía con cada módulo. Rutas actuales:
 | `GET` | `citas/{cita}/edit` | `citas.edit` | `CitaController@edit` | Formulario de edición |
 | `PUT` | `citas/{cita}` | `citas.update` | `CitaController@update` | Actualiza la cita |
 | `DELETE` | `citas/{cita}` | `citas.destroy` | `CitaController@destroy` | Elimina la cita |
+| `GET` | `pacientes` | `pacientes.index` | `PacienteController@index` | Listado de pacientes con búsqueda y paginación |
+| `GET` | `pacientes/create` | `pacientes.create` | `PacienteController@create` | Formulario para registrar un paciente |
+| `POST` | `pacientes` | `pacientes.store` | `PacienteController@store` | Guarda un nuevo paciente |
+| `GET` | `pacientes/{paciente}` | `pacientes.show` | `PacienteController@show` | Detalle del paciente y sus citas |
+| `GET` | `pacientes/{paciente}/edit` | `pacientes.edit` | `PacienteController@edit` | Formulario de edición del paciente |
+| `PUT` | `pacientes/{paciente}` | `pacientes.update` | `PacienteController@update` | Actualiza los datos del paciente |
+| `DELETE` | `pacientes/{paciente}` | `pacientes.destroy` | `PacienteController@destroy` | Elimina el paciente (si no tiene citas) |
 
 ## 8. Capturas de pantalla
 ![Listado de Citas](docs/capturas/01-listado.png)
