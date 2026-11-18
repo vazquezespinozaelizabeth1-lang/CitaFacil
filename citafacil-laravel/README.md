@@ -149,7 +149,33 @@ El seeder crea un administrador (credenciales en `.env.example`), 8 pacientes, 4
 
 <!-- INICIO: Recordatorios -->
 ### Recordatorios
-*Pendiente: la completa Angel (T10).*
+
+El módulo registra, lista, consulta, edita y elimina avisos programados para las citas. Cada recordatorio pertenece a una cita de PostgreSQL y muestra al paciente asociado. Al eliminar la cita en PostgreSQL, su clave foránea elimina los recordatorios en cascada. El envío real por correo, SMS o WhatsApp queda fuera de esta entrega.
+
+| Método | Ruta | Acción |
+| --- | --- | --- |
+| GET | `/recordatorios` | Listar y filtrar |
+| GET | `/recordatorios/create` | Abrir el formulario de creación |
+| POST | `/recordatorios` | Guardar |
+| GET | `/recordatorios/{recordatorio}` | Consultar el detalle |
+| GET | `/recordatorios/{recordatorio}/edit` | Abrir el formulario de edición |
+| PUT / PATCH | `/recordatorios/{recordatorio}` | Actualizar |
+| DELETE | `/recordatorios/{recordatorio}` | Eliminar tras confirmar |
+
+La cita debe existir en `citas`. El mensaje es obligatorio y admite de 5 a 255 caracteres. La fecha y hora de envío son obligatorias y usan el formato `AAAA-MM-DDTHH:MM` del control `datetime-local`. El canal es obligatorio y se valida con `Recordatorio::CANALES` (Correo, SMS y WhatsApp). La casilla Enviado se guarda como valor booleano.
+
+Los filtros por canal y estado se pueden combinar. Pendiente corresponde a `enviado=0`; Enviado corresponde a `enviado=1`. El listado muestra diez registros por página y conserva los filtros al navegar. **Limpiar filtros** vuelve al listado completo.
+
+| Pantalla | Escritorio a 1280 px | Móvil a 375 px |
+| --- | --- | --- |
+| Listado | [Ver captura](docs/capturas/t10/listado-escritorio.png) | [Ver captura](docs/capturas/t10/listado-movil.png) |
+| Creación | [Ver captura](docs/capturas/t10/creacion-escritorio.png) | [Ver captura](docs/capturas/t10/creacion-movil.png) |
+| Edición | [Ver captura](docs/capturas/t10/edicion-escritorio.png) | [Ver captura](docs/capturas/t10/edicion-movil.png) |
+| Detalle | [Ver captura](docs/capturas/t10/detalle-escritorio.png) | [Ver captura](docs/capturas/t10/detalle-movil.png) |
+| Confirmación de eliminación | [Ver captura](docs/capturas/t10/modal-escritorio.png) | [Ver captura](docs/capturas/t10/modal-movil.png) |
+
+Las pruebas de `tests/Feature/RecordatorioTest.php` cubren el CRUD, las validaciones, la recuperación de valores, los filtros, la paginación y la cascada.
+
 <!-- FIN: Recordatorios -->
 
 <!-- INICIO: Panel -->
