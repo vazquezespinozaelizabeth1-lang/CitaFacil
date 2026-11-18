@@ -12,13 +12,10 @@ class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
-        public const ROL_ADMIN = 'admin';
-    public const ROL_RECEPCION = 'recepcion';
 
-    public function esAdmin(): bool
-    {
-        return $this->role === self::ROL_ADMIN;
-    }
+    public const ROL_ADMIN = 'admin';
+
+    public const ROL_RECEPCION = 'recepcion';
 
     /**
      * The attributes that are mass assignable.
@@ -52,5 +49,10 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function esAdmin(): bool
+    {
+        return $this->role === self::ROL_ADMIN;
     }
 }
