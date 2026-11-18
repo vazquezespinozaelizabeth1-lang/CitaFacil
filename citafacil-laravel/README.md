@@ -139,7 +139,35 @@ El seeder crea un administrador (credenciales en `.env.example`), 8 pacientes, 4
 
 <!-- INICIO: Horarios -->
 ### Horarios
-*Pendiente: la completa Victor (T08).*
+
+CRUD completo de los horarios de atención, con filtro por día y paginación (10 por página).
+
+#### Rutas
+
+| Método | URI | Nombre | Controlador@Método |
+|---|---|---|---|
+| `GET` | `/horarios` | `horarios.index` | `HorarioController@index` |
+| `GET` | `/horarios/create` | `horarios.create` | `HorarioController@create` |
+| `POST` | `/horarios` | `horarios.store` | `HorarioController@store` |
+| `GET` | `/horarios/{horario}/edit` | `horarios.edit` | `HorarioController@edit` |
+| `PUT` | `/horarios/{horario}` | `horarios.update` | `HorarioController@update` |
+| `DELETE` | `/horarios/{horario}` | `horarios.destroy` | `HorarioController@destroy` |
+
+#### Reglas de validación
+
+| Campo | Reglas |
+|---|---|
+| dia_semana | obligatorio, entero del 1 (lunes) al 7 (domingo) |
+| hora_inicio | obligatorio, formato `H:i`, único por día (al editar se ignora el registro actual) |
+| hora_fin | obligatorio, formato `H:i`, posterior a la hora de inicio |
+| activo | booleano |
+
+La validación está en `StoreHorarioRequest` y `UpdateHorarioRequest`, con mensajes en español.
+
+#### Comportamiento
+
+- No se permite repetir la misma hora de inicio en el mismo día.
+- El borrado pide confirmación en un modal.
 <!-- FIN: Horarios -->
 
 <!-- INICIO: Citas -->
