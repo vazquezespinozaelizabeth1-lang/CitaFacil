@@ -179,7 +179,7 @@ Este módulo implementa el sistema de registro, inicio de sesión y control de a
 *Pendiente: la completa Aram (T11).*
 <!-- FIN: Panel -->
 
-<!-- INICIO: Roles -->
+<!-- INICIO: Roles y permisos -->
 ### Roles y Permisos
 El sistema cuenta con control de acceso basado en roles (RBAC) con dos perfiles principales:
 
@@ -189,9 +189,9 @@ El sistema cuenta con control de acceso basado en roles (RBAC) con dos perfiles 
 | **recepcion** | Gestión de pacientes, citas y recordatorios; acceso de solo lectura (index y show) a servicios y horarios. |
 
 **Credenciales de prueba (Admin):**
-* **Correo:** `corona2306@gmail.com`
-* **Contraseña:** `password`
-<!-- FIN: Roles -->
+* **Correo:** `admin@citafacil.test`
+* **Contraseña:** `cambia-esta-clave`
+<!-- FIN: Roles y permisos -->
 
 ### Páginas de error
 ## Páginas de Error Personalizadas

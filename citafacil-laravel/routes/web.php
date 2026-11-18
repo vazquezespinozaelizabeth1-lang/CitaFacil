@@ -25,7 +25,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('horarios', HorarioController::class)->only(['index', 'show']);
 
     // Módulos generales de la aplicación
-    Route::resource('citas', CitaController::class);
     Route::resource('pacientes', PacienteController::class);
     Route::resource('recordatorios', RecordatorioController::class); // Si aplica
     

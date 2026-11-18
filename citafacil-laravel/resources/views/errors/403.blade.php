@@ -6,6 +6,6 @@
 <div class="text-center py-5">
     <h1 class="display-5 text-danger">403</h1>
     <p class="lead">No tienes permisos para acceder a esta sección.</p>
-    <a href="{{ url('/') }}" class="btn btn-primary">Volver al inicio</a>
+    <a href="{{ url('/') }}" class="btn btn-primario">Volver al inicio</a>
 </div>
 @endsection
