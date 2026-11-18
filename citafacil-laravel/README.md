@@ -109,7 +109,27 @@ El seeder crea un administrador (credenciales en `.env.example`), 8 pacientes, 4
 
 <!-- INICIO: Interfaz y layout -->
 ### Interfaz y layout
-*Pendiente: la completa Angel (T03).*
+
+El layout compartido `resources/views/layouts/app.blade.php` usa el logo de CitaFácil como marca del navbar y favicon. El logo se muestra a 40 px de alto, conserva su proporción y tiene fondo blanco. El navbar usa el verde institucional, se puede expandir en móvil y marca la sección activa con `aria-current="page"`. El pie de página muestra el año actual.
+
+| Enlace | Ruta de Laravel |
+| --- | --- |
+| Panel | `panel` |
+| Citas | `citas.index` |
+| Pacientes | `pacientes.index` |
+| Servicios | `servicios.index` |
+| Horarios | `horarios.index` |
+| Recordatorios | `recordatorios.index` |
+| Iniciar sesión | `login` |
+| Registrarse | `register` |
+| Cerrar sesión | `logout` |
+
+Cada enlace se muestra cuando existe su ruta. La zona de usuario muestra el nombre de la persona autenticada y, cuando está disponible, un formulario de cierre de sesión por POST con CSRF.
+
+![Navbar en escritorio a 1280 px](docs/capturas/t03/navbar-escritorio.png)
+
+![Navbar expandido en móvil a 375 px](docs/capturas/t03/navbar-movil.png)
+
 <!-- FIN: Interfaz y layout -->
 
 <!-- INICIO: Componentes compartidos -->
