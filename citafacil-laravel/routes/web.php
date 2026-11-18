@@ -27,7 +27,7 @@ Route::resource('citas', CitaController::class);                       // Aram (
 
 // Route::resource('servicios', ServicioController::class);            // Victor (T07)
 
-// Route::resource('horarios', HorarioController::class);              // Victor (T08)
+Route::resource('horarios', HorarioController::class);              // Victor (T08)
 
 // Route::resource('recordatorios', RecordatorioController::class);    // Angel (T10)
 
