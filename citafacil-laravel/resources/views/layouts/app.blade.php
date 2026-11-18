@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('titulo', 'Citas') | CitaFácil</title>
+    <link rel="icon" type="image/png" href="{{ asset('img/logo-app.png') }}">
     <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -13,7 +14,9 @@
 <nav class="navbar navbar-expand-lg" aria-label="Menú principal">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center" href="{{ route('citas.index') }}">
-            <img src="{{ asset('img/logo-app.png') }}" alt="Logo de CitaFácil" width="30" height="30" class="me-2">CitaFácil
+            <span class="bg-white rounded-3 px-2 py-1">
+                <img src="{{ asset('img/logo-app.png') }}" alt="CitaFácil" height="40">
+            </span>
         </a>
         <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir menú">
             <span class="navbar-toggler-icon"></span>
