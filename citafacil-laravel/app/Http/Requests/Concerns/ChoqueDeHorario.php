@@ -3,8 +3,6 @@
 namespace App\Http\Requests\Concerns;
 
 use App\Models\Cita;
-use App\Models\Servicio;
-use Illuminate\Support\Carbon;
 
 trait ChoqueDeHorario
 {
@@ -15,23 +13,14 @@ trait ChoqueDeHorario
                 return;
             }
 
-            $inicio = Carbon::createFromFormat('H:i', $this->hora);
-            $fin = $inicio->copy()->addMinutes(Servicio::find($this->servicio_id)->duracion_min);
-
-            $choca = Cita::with('servicio')
-                ->whereDate('fecha', $this->fecha)
+            $choca = Cita::whereDate('fecha', $this->fecha)
+                ->where('hora', $this->hora)
                 ->where('estado', '!=', 'Cancelada')
                 ->when($this->route('cita'), fn ($q, $cita) => $q->where('id', '!=', $cita->id))
-                ->get()
-                ->contains(function ($otra) use ($inicio, $fin) {
-                    $otraIni = Carbon::createFromFormat('H:i', $otra->hora);
-                    $otraFin = $otraIni->copy()->addMinutes($otra->servicio->duracion_min);
-
-                    return $inicio < $otraFin && $fin > $otraIni;
-                });
+                ->exists();
 
             if ($choca) {
-                $validator->errors()->add('hora', 'Ya hay una cita en ese horario.');
+                $validator->errors()->add('hora', 'Ya existe una cita en esa fecha y hora.');
             }
         }];
     }
