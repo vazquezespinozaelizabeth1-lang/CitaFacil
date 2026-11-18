@@ -19,7 +19,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="menu">
-            < class="navbar-nav ms-auto">
+        <ul class="navbar-nav ms-auto">
     <li class="nav-item"><a class="nav-link" href="{{ route('citas.index') }}">Citas</a></li>
     <li class="nav-item"><a class="nav-link" href="{{ route('citas.create') }}">Nueva cita</a></li>
     <li class="nav-item"><a class="nav-link" href="{{ route('pacientes.index') }}">Pacientes</a></li>
