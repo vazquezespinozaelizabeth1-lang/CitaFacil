@@ -22,6 +22,27 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="{{ route('citas.index') }}">Citas</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('citas.create') }}">Nueva cita</a></li>
+                
+                @auth
+                    <!-- Menú para usuario autenticado -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ Auth::user()->name }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item">Cerrar sesión</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                @else
+                    <!-- Enlaces para invitados -->
+                    <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Iniciar sesión</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Registrarse</a></li>
+                @endauth
             </ul>
         </div>
     </div>
