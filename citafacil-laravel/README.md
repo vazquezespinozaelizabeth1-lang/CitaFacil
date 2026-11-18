@@ -109,7 +109,27 @@ El seeder crea un administrador (credenciales en `.env.example`), 8 pacientes, 4
 
 <!-- INICIO: Interfaz y layout -->
 ### Interfaz y layout
-*Pendiente: la completa Angel (T03).*
+
+El layout compartido `resources/views/layouts/app.blade.php` usa el logo de CitaFácil como marca del navbar y favicon. El logo se muestra a 40 px de alto, conserva su proporción y tiene fondo blanco. El navbar usa el verde institucional, se puede expandir en móvil y marca la sección activa con `aria-current="page"`. El pie de página muestra el año actual.
+
+| Enlace | Ruta de Laravel |
+| --- | --- |
+| Panel | `panel` |
+| Citas | `citas.index` |
+| Pacientes | `pacientes.index` |
+| Servicios | `servicios.index` |
+| Horarios | `horarios.index` |
+| Recordatorios | `recordatorios.index` |
+| Iniciar sesión | `login` |
+| Registrarse | `register` |
+| Cerrar sesión | `logout` |
+
+Cada enlace se muestra cuando existe su ruta. La zona de usuario muestra el nombre de la persona autenticada y, cuando está disponible, un formulario de cierre de sesión por POST con CSRF.
+
+![Navbar en escritorio a 1280 px](docs/capturas/t03/navbar-escritorio.png)
+
+![Navbar expandido en móvil a 375 px](docs/capturas/t03/navbar-movil.png)
+
 <!-- FIN: Interfaz y layout -->
 
 <!-- INICIO: Componentes compartidos -->
@@ -119,39 +139,33 @@ El seeder crea un administrador (credenciales en `.env.example`), 8 pacientes, 4
 
 <!-- INICIO: Autenticación -->
 ### Autenticación
-Este módulo implementa el sistema de registro, inicio de sesión y control de acceso seguro para la aplicación **CitaFácil**.
-
-### Flujo y Características
-* **Control de Acceso**: Rutas protegidas mediante los middlewares `guest` (para invitados) y `auth` (para usuarios autenticados).
-* **Validación en Español**: Uso de `LoginRequest` y `RegisterRequest` extendiendo de `BaseFormRequest` para asegurar datos únicos y seguros.
-* **Seguridad de Contraseñas**: Cifrado automático mediante el casting de Laravel y validación de coincidencia en el registro.
-* **Interfaz Adaptable**: Diseño responsivo validado en dispositivos móviles (375 px) y escritorio utilizando Bootstrap 5 y un script de visibilidad de contraseña (`public/js/password.js`).
-
-### Rutas Registradas
-| Método | Ruta | Nombre de Ruta | Descripción |
-| :--- | :--- | :--- | :--- |
-| **GET** | `/login` | `login` | Muestra la vista del formulario de inicio de sesión. |
-| **POST** | `/login` | — | Procesa las credenciales y autentica al usuario (con control de intentos / *throttle*). |
-| **GET** | `/register` | `register` | Muestra la vista del formulario de registro de nuevos usuarios. |
-| **POST** | `/register` | — | Valida y crea un nuevo usuario en la base de datos, iniciando sesión automáticamente. |
-| **POST** | `/logout` | `logout` | Cierra la sesión activa del usuario y destruye el token de seguridad. |
-
-### Capturas de Pantalla
-
-**Vista de Registro (`/register`)**
-![Formulario de Registro](docs/img/register.png)
-
-**Vista de Inicio de Sesión (`/login`)**
-![Formulario de Inicio de Sesión](docs/img/login.png)
+*Pendiente: la completa Jonathan (T05).*
+<!-- FIN: Autenticación -->
 
 <!-- INICIO: Roles y permisos -->
 ### Roles y permisos
-*Pendiente: la completa Jonathan (T12).*
+Control de acceso por rol con el middleware `role` (`App\Http\Middleware\RoleMiddleware`). Quien no tiene el rol requerido recibe la vista `403`. El registro público siempre crea usuarios con el rol `recepcion`.
+
+| Rol | Qué puede hacer |
+| :--- | :--- |
+| **admin** | Todo: crea, edita y elimina servicios y horarios, y gestiona pacientes, citas y recordatorios. |
+| **recepcion** | Gestiona pacientes, citas y recordatorios; solo consulta (`index` y `show`) servicios y horarios. |
+
+Credenciales de ejemplo del admin (de `.env.example`):
+
+- Correo: `admin@citafacil.test`
+- Contraseña: `cambia-esta-clave`
 <!-- FIN: Roles y permisos -->
 
-<!-- INICIO: Pacientes -->
+<!-- <!-- INICIO: Pacientes -->
 ### Pacientes
-*Pendiente: la completa Liam (T06).*
+Módulo CRUD completo para la gestión de pacientes conectado a PostgreSQL mediante Eloquent (`App\Models\Paciente`). Incluye búsqueda por nombre (`scopeBuscar`), paginación con conservación de filtros (`paginate(10)->withQueryString()`), consulta del historial de citas del paciente y bloqueo de eliminación cuando existen citas asociadas.
+
+#### Reglas de validación (`StorePacienteRequest` / `UpdatePacienteRequest`)
+- `nombre`: obligatorio, texto, entre 3 y 100 caracteres.
+- `telefono`: obligatorio, exactamente 10 dígitos (`digits:10`).
+- `email`: opcional, formato de correo válido, máximo 100 caracteres, único en `pacientes` (ignorando el registro actual al actualizar).
+- `fecha_nacimiento`: opcional, fecha válida anterior a hoy (`before:today`).
 <!-- FIN: Pacientes -->
 
 <!-- INICIO: Servicios -->
@@ -179,25 +193,10 @@ Este módulo implementa el sistema de registro, inicio de sesión y control de a
 *Pendiente: la completa Aram (T11).*
 <!-- FIN: Panel -->
 
-<!-- INICIO: Roles y permisos -->
-### Roles y Permisos
-El sistema cuenta con control de acceso basado en roles (RBAC) con dos perfiles principales:
-
-| Rol | Permisos / Acceso |
-| :--- | :--- |
-| **admin** | Acceso total al sistema, incluyendo la gestión completa (crear, editar, eliminar) de servicios, horarios, pacientes y citas. |
-| **recepcion** | Gestión de pacientes, citas y recordatorios; acceso de solo lectura (index y show) a servicios y horarios. |
-
-**Credenciales de prueba (Admin):**
-* **Correo:** `admin@citafacil.test`
-* **Contraseña:** `cambia-esta-clave`
-<!-- FIN: Roles y permisos -->
-
+<!-- INICIO: Páginas de error -->
 ### Páginas de error
-## Páginas de Error Personalizadas
-El sistema cuenta con vistas personalizadas en español para los códigos de error principales (`404`, `419`, `500` y `503`), integradas con el diseño de la aplicación y Bootstrap 5.
-Ejemplo de vista 404:
-![Error 404](docs/capturas/t13/404.png) <!-- (o la ruta donde tengas tu captura) -->
+*Pendiente: la completa Jonathan (T13).*
+<!-- FIN: Páginas de error -->
 
 <!-- INICIO: Seguridad -->
 ### Seguridad
@@ -227,11 +226,39 @@ Se amplía con cada módulo. Rutas actuales:
 | `GET` | `citas/{cita}/edit` | `citas.edit` | `CitaController@edit` | Formulario de edición |
 | `PUT` | `citas/{cita}` | `citas.update` | `CitaController@update` | Actualiza la cita |
 | `DELETE` | `citas/{cita}` | `citas.destroy` | `CitaController@destroy` | Elimina la cita |
+| `GET` | `pacientes` | `pacientes.index` | `PacienteController@index` | Listado de pacientes con búsqueda y paginación |
+| `GET` | `pacientes/create` | `pacientes.create` | `PacienteController@create` | Formulario para registrar un paciente |
+| `POST` | `pacientes` | `pacientes.store` | `PacienteController@store` | Guarda un nuevo paciente |
+| `GET` | `pacientes/{paciente}` | `pacientes.show` | `PacienteController@show` | Detalle del paciente y sus citas |
+| `GET` | `pacientes/{paciente}/edit` | `pacientes.edit` | `PacienteController@edit` | Formulario de edición del paciente |
+| `PUT` | `pacientes/{paciente}` | `pacientes.update` | `PacienteController@update` | Actualiza los datos del paciente |
+| `DELETE` | `pacientes/{paciente}` | `pacientes.destroy` | `PacienteController@destroy` | Elimina el paciente (si no tiene citas) |
 
 ## 8. Capturas de pantalla
 ![Listado de Citas](docs/capturas/01-listado.png)
 ![Errores en Formulario](docs/capturas/02-crear-errores.png)
 ![Cita Creada](docs/capturas/03-crear-exito.png)
+---
+
+## Auditoría de Validación y Seguridad (T16)
+
+Se realizó la revisión integral de seguridad y validación sobre el proyecto **CitaFácil** (Laravel 12 + PostgreSQL):
+
+| Control de Seguridad | Estado | Evidencia / Implementación |
+| :--- | :---: | :--- |
+| **FormRequests independientes** | Cumple | `StorePacienteRequest` y `UpdatePacienteRequest` heredan de `BaseFormRequest` con reglas dedicadas (`unique` ignorando el ID actual al editar) y mensajes en español. |
+| **Protección CSRF** | Cumple | Todos los formularios `POST`, `PUT` y `DELETE` incluyen `@csrf` y `@method(...)`. Peticiones sin token devuelven `419 Page Expired`. |
+| **Prevención XSS** | Cumple | Sanitización automática en `BaseFormRequest` (`strip_tags`) y escape nativo `{{ }}` en vistas Blade (sin uso de `{!! !!}`). |
+| **Mass Assignment** | Cumple | Todos los modelos (`Cita`, `Horario`, `Paciente`, `Recordatorio`, `Servicio`, `User`) definen `$fillable` explícito; `User` excluye `role` y los controladores usan `$request->validated()`. |
+| **Prevención SQL Injection** | Cumple | Consultas exclusivas mediante Eloquent ORM y parámetros vinculados (sin `DB::raw` ni `whereRaw`). |
+
+### Evidencias de pruebas manuales
+
+- **Sanitización XSS al registrar paciente con etiquetas `<script>`:**
+  ![Prueba XSS](docs/capturas/11-prueba-xss.png)
+
+- **Bloqueo CSRF (419 Page Expired) al omitir `_token`:**
+  ![Prueba CSRF 419](docs/capturas/12-prueba-csrf-419.png)
 ![Detalle de Cita](docs/capturas/04-detalle.png)
 ![Edición de Cita](docs/capturas/05-editar.png)
 ![Modal Eliminar](docs/capturas/06-modal-eliminar.png)
