@@ -75,13 +75,14 @@ Abre http://127.0.0.1:8000
 ## 6. Módulos
 Cada sección la completa su responsable: descripción, rutas, reglas de validación y capturas.
 
-## Base de datos
+<!-- INICIO: Base de datos -->
+### Base de datos
 
 CitaFácil usa PostgreSQL. Todo el esquema se crea con migraciones y se llena con seeders.
 
     php artisan migrate:fresh --seed
 
-### Tablas
+#### Tablas
 
 | Tabla | Descripción | Relaciones |
 |---|---|---|
@@ -92,18 +93,19 @@ CitaFácil usa PostgreSQL. Todo el esquema se crea con migraciones y se llena co
 | citas | Fecha, hora, motivo y estado (Pendiente, Confirmada o Cancelada) | Pertenece a un paciente y a un servicio; tiene muchos recordatorios |
 | recordatorios | Mensaje, fecha de envío, canal (correo, sms o whatsapp) y `enviado` (boolean) | Pertenece a una cita |
 
-### Política de borrado
+#### Política de borrado
 
 - Un paciente o un servicio con citas **no se puede borrar** (`restrictOnDelete`).
 - Al borrar una cita se borran sus recordatorios (`cascadeOnDelete`).
 
-### Datos de ejemplo
+#### Datos de ejemplo
 
 El seeder crea un administrador (credenciales en `.env.example`), 8 pacientes, 4 servicios, horarios de lunes a viernes, 10 citas y 5 recordatorios.
 
 ![Tablas en PostgreSQL](../docs/capturas/tables.png)
 
 ![Columnas de la tabla servicios](../docs/capturas/campos.png)
+<!-- FIN: Base de datos -->
 
 <!-- INICIO: Interfaz y layout -->
 ### Interfaz y layout
