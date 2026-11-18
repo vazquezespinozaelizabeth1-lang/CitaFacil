@@ -11,14 +11,23 @@ use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/citas');
 
-// ---- Autenticación (Jonathan, T05): quita el // cuando termines ----
-// Route::middleware('guest')->group(function () {
-//     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
-//     Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:5,1');
-//     Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
-//     Route::post('/register', [AuthController::class, 'register']);
-// });
-// Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+// Rutas protegidas por autenticación y roles
+Route::middleware(['auth'])->group(function () {
+    
+    // 1. Rutas de administración (crear, editar, eliminar) van PRIMERO
+    Route::middleware(['role:admin'])->group(function () {
+        Route::resource('servicios', ServicioController::class)->except(['index', 'show']);
+        Route::resource('horarios', HorarioController::class)->except(['index', 'show']);
+    });
+
+    // 2. Rutas de consulta pública/recepción (index y show) van DESPUÉS
+    Route::resource('servicios', ServicioController::class)->only(['index', 'show']);
+    Route::resource('horarios', HorarioController::class)->only(['index', 'show']);
+
+    // Módulo de citas y pacientes (según corresponda a la recepción / citas)
+    Route::resource('citas', CitaController::class);
+    Route::resource('pacientes', PacienteController::class);
+});
 
 // ---- Módulos: cada responsable quita el // de SU línea ----
 Route::resource('citas', CitaController::class);                       // Aram (T09)
