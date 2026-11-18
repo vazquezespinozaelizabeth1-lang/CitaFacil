@@ -144,7 +144,29 @@ El seeder crea un administrador (credenciales en `.env.example`), 8 pacientes, 4
 
 <!-- INICIO: Citas -->
 ### Citas
-*Pendiente: la completa Aram (T09).*
+<!-- INICIO: Citas -->
+### Citas
+
+Módulo central de CitaFácil: permite listar, agendar, consultar, editar y eliminar citas guardadas en PostgreSQL. Cada cita pertenece a un paciente y a un servicio.
+
+#### Validación (`StoreCitaRequest` y `UpdateCitaRequest`)
+
+| Campo | Reglas |
+|---|---|
+| paciente_id | Obligatorio, entero, debe existir en `pacientes` |
+| servicio_id | Obligatorio, entero, debe existir en `servicios` |
+| fecha | Obligatoria, fecha válida (al agendar no puede ser pasada) |
+| hora | Obligatoria, formato `H:i` |
+| motivo | Obligatorio, de 3 a 150 caracteres |
+| estado | Pendiente, Confirmada o Cancelada |
+
+#### Regla de choque de horario
+
+Una cita no puede traslaparse con otra de la misma fecha. Se compara el rango de cada cita (hora de inicio más la duración de su servicio). Las citas canceladas no cuentan, y al editar una cita se excluye a sí misma.
+
+#### Rutas
+
+Ver la tabla de rutas de este README (`citas.*`, `Route::resource`).
 <!-- FIN: Citas -->
 
 <!-- INICIO: Recordatorios -->
