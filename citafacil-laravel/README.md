@@ -208,6 +208,27 @@ Se amplía con cada módulo. Rutas actuales:
 ![Listado de Citas](docs/capturas/01-listado.png)
 ![Errores en Formulario](docs/capturas/02-crear-errores.png)
 ![Cita Creada](docs/capturas/03-crear-exito.png)
+---
+
+## Auditoría de Validación y Seguridad (T16)
+
+Se realizó la revisión integral de seguridad y validación sobre el proyecto **CitaFácil** (Laravel 12 + PostgreSQL):
+
+| Control de Seguridad | Estado | Evidencia / Implementación |
+| :--- | :---: | :--- |
+| **FormRequests independientes** | Cumple | `StorePacienteRequest` y `UpdatePacienteRequest` heredan de `BaseFormRequest` con reglas dedicadas (`unique` ignorando el ID actual al editar) y mensajes en español. |
+| **Protección CSRF** | Cumple | Todos los formularios `POST`, `PUT` y `DELETE` incluyen `@csrf` y `@method(...)`. Peticiones sin token devuelven `419 Page Expired`. |
+| **Prevención XSS** | Cumple | Sanitización automática en `BaseFormRequest` (`strip_tags`) y escape nativo `{{ }}` en vistas Blade (sin uso de `{!! !!}`). |
+| **Mass Assignment** | Cumple | Todos los modelos (`Cita`, `Horario`, `Paciente`, `Recordatorio`, `Servicio`, `User`) definen `$fillable` explícito; `User` excluye `role` y los controladores usan `$request->validated()`. |
+| **Prevención SQL Injection** | Cumple | Consultas exclusivas mediante Eloquent ORM y parámetros vinculados (sin `DB::raw` ni `whereRaw`). |
+
+### Evidencias de pruebas manuales
+
+- **Sanitización XSS al registrar paciente con etiquetas `<script>`:**
+  ![Prueba XSS](docs/capturas/11-prueba-xss.png)
+
+- **Bloqueo CSRF (419 Page Expired) al omitir `_token`:**
+  ![Prueba CSRF 419](docs/capturas/12-prueba-csrf-419.png)
 ![Detalle de Cita](docs/capturas/04-detalle.png)
 ![Edición de Cita](docs/capturas/05-editar.png)
 ![Modal Eliminar](docs/capturas/06-modal-eliminar.png)
