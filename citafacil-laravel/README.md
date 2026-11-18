@@ -134,7 +134,36 @@ El seeder crea un administrador (credenciales en `.env.example`), 8 pacientes, 4
 
 <!-- INICIO: Servicios -->
 ### Servicios
-*Pendiente: la completa Victor (T07).*
+
+CRUD completo de los servicios del consultorio, con búsqueda por nombre y paginación (10 por página).
+
+#### Rutas
+
+| Método | URI | Nombre | Controlador@Método |
+|---|---|---|---|
+| `GET` | `/servicios` | `servicios.index` | `ServicioController@index` |
+| `GET` | `/servicios/create` | `servicios.create` | `ServicioController@create` |
+| `POST` | `/servicios` | `servicios.store` | `ServicioController@store` |
+| `GET` | `/servicios/{servicio}/edit` | `servicios.edit` | `ServicioController@edit` |
+| `PUT` | `/servicios/{servicio}` | `servicios.update` | `ServicioController@update` |
+| `DELETE` | `/servicios/{servicio}` | `servicios.destroy` | `ServicioController@destroy` |
+
+#### Reglas de validación
+
+| Campo | Reglas |
+|---|---|
+| nombre | obligatorio, texto de 3 a 100 caracteres, único (al editar se ignora el registro actual) |
+| descripcion | opcional, máximo 255 caracteres |
+| duracion_min | obligatorio, entero entre 5 y 480 |
+| precio | obligatorio, numérico entre 0 y 999999.99 |
+| activo | booleano |
+
+La validación está en `StoreServicioRequest` y `UpdateServicioRequest`, con mensajes en español.
+
+#### Comportamiento
+
+- Un servicio con citas asociadas **no se puede eliminar**: se muestra un mensaje de error y se sugiere desactivarlo.
+- El borrado pide confirmación en un modal.
 <!-- FIN: Servicios -->
 
 <!-- INICIO: Horarios -->
