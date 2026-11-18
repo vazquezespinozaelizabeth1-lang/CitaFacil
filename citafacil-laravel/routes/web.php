@@ -9,7 +9,7 @@ use App\Http\Controllers\RecordatorioController;
 use App\Http\Controllers\ServicioController;
 use Illuminate\Support\Facades\Route;
 
-Route::redirect('/', '/citas');
+Route::redirect('/', '/panel');
 
 // ---- Autenticación (Jonathan, T05): quita el // cuando termines ----
 // Route::middleware('guest')->group(function () {
@@ -31,4 +31,4 @@ Route::resource('pacientes', PacienteController::class);            // Liam (T06
 
 // Route::resource('recordatorios', RecordatorioController::class);    // Angel (T10)
 
-// Route::get('/panel', PanelController::class)->name('panel');       // Aram (T11)
+Route::get('/panel', PanelController::class)->name('panel');       // Aram (T11)
