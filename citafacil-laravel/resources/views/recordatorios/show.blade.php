@@ -27,6 +27,7 @@
         <div class="card-footer d-flex flex-wrap gap-2">
             <a class="btn btn-outline-secondary" href="{{ route('recordatorios.index') }}">Volver</a>
             <a class="btn btn-primario" href="{{ route('recordatorios.edit', $recordatorio) }}">Editar</a>
+            @include('recordatorios._eliminar', ['soloIcono' => false])
         </div>
     </div>
 @endsection

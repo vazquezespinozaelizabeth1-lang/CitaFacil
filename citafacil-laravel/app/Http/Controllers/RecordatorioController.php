@@ -8,19 +8,25 @@ use App\Models\Cita;
 use App\Models\Recordatorio;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class RecordatorioController extends Controller
 {
-    public function index(): View
+    public function index(Request $request): View
     {
+        $canal = $request->query('canal');
+        $estado = $request->query('enviado');
+
         $recordatorios = Recordatorio::with('cita.paciente')
+            ->when(in_array($canal, Recordatorio::CANALES, true), fn ($query) => $query->where('canal', $canal))
+            ->when(in_array($estado, ['0', '1'], true), fn ($query) => $query->where('enviado', $estado === '1'))
             ->orderByDesc('fecha_envio')
             ->orderByDesc('id')
             ->paginate(10)
             ->withQueryString();
 
-        return view('recordatorios.index', compact('recordatorios'));
+        return view('recordatorios.index', compact('recordatorios', 'canal', 'estado'));
     }
 
     public function create(): View

@@ -8,6 +8,32 @@
         <a class="btn btn-primario" href="{{ route('recordatorios.create') }}">Nuevo recordatorio</a>
     </div>
 
+    <form action="{{ route('recordatorios.index') }}" method="GET" class="row g-2 align-items-end mb-3">
+        <div class="col-6 col-md-auto">
+            <label for="filtro-canal" class="form-label">Canal</label>
+            <select id="filtro-canal" name="canal" class="form-select">
+                <option value="">Todos</option>
+                @foreach (\App\Models\Recordatorio::CANALES as $opcion)
+                    <option value="{{ $opcion }}" @selected($canal === $opcion)>
+                        @include('recordatorios._canal', ['canal' => $opcion, 'conIcono' => false])
+                    </option>
+                @endforeach
+            </select>
+        </div>
+        <div class="col-6 col-md-auto">
+            <label for="filtro-enviado" class="form-label">Estado</label>
+            <select id="filtro-enviado" name="enviado" class="form-select">
+                <option value="">Todos</option>
+                <option value="1" @selected($estado === '1')>Enviado</option>
+                <option value="0" @selected($estado === '0')>Pendiente</option>
+            </select>
+        </div>
+        <div class="col-12 col-md-auto d-flex flex-wrap gap-2">
+            <button type="submit" class="btn btn-primario">Filtrar</button>
+            <a class="btn btn-outline-secondary" href="{{ route('recordatorios.index') }}">Limpiar filtros</a>
+        </div>
+    </form>
+
     <div class="list-group">
         @forelse ($recordatorios as $recordatorio)
             <article class="list-group-item py-3">
@@ -34,10 +60,14 @@
                        aria-label="Editar recordatorio {{ $recordatorio->id }}">
                         <i class="bi bi-pencil" aria-hidden="true"></i>
                     </a>
+                    @include('recordatorios._eliminar', ['soloIcono' => true])
                 </div>
             </article>
         @empty
-            <x-alerta tipo="info" :descartable="false">No hay recordatorios para mostrar.</x-alerta>
+            <x-alerta tipo="info" :descartable="false">
+                {{ $canal || in_array($estado, ['0', '1'], true) ? 'No hay recordatorios que coincidan con los filtros.' : 'No hay recordatorios para mostrar.' }}
+            </x-alerta>
         @endforelse
     </div>
+    <x-paginacion :coleccion="$recordatorios" />
 @endsection
