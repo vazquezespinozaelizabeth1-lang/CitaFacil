@@ -109,27 +109,7 @@ El seeder crea un administrador (credenciales en `.env.example`), 8 pacientes, 4
 
 <!-- INICIO: Interfaz y layout -->
 ### Interfaz y layout
-
-El layout compartido `resources/views/layouts/app.blade.php` usa el logo de CitaFácil como marca del navbar y favicon. El logo se muestra a 40 px de alto, conserva su proporción y tiene fondo blanco. El navbar usa el verde institucional, se puede expandir en móvil y marca la sección activa con `aria-current="page"`. El pie de página muestra el año actual.
-
-| Enlace | Ruta de Laravel |
-| --- | --- |
-| Panel | `panel` |
-| Citas | `citas.index` |
-| Pacientes | `pacientes.index` |
-| Servicios | `servicios.index` |
-| Horarios | `horarios.index` |
-| Recordatorios | `recordatorios.index` |
-| Iniciar sesión | `login` |
-| Registrarse | `register` |
-| Cerrar sesión | `logout` |
-
-Cada enlace se muestra cuando existe su ruta. La zona de usuario muestra el nombre de la persona autenticada y, cuando está disponible, un formulario de cierre de sesión por POST con CSRF.
-
-![Navbar en escritorio a 1280 px](docs/capturas/t03/navbar-escritorio.png)
-
-![Navbar expandido en móvil a 375 px](docs/capturas/t03/navbar-movil.png)
-
+*Pendiente: la completa Angel (T03).*
 <!-- FIN: Interfaz y layout -->
 
 <!-- INICIO: Componentes compartidos -->
@@ -139,8 +119,30 @@ Cada enlace se muestra cuando existe su ruta. La zona de usuario muestra el nomb
 
 <!-- INICIO: Autenticación -->
 ### Autenticación
-*Pendiente: la completa Jonathan (T05).*
-<!-- FIN: Autenticación -->
+Este módulo implementa el sistema de registro, inicio de sesión y control de acceso seguro para la aplicación **CitaFácil**.
+
+### Flujo y Características
+* **Control de Acceso**: Rutas protegidas mediante los middlewares `guest` (para invitados) y `auth` (para usuarios autenticados).
+* **Validación en Español**: Uso de `LoginRequest` y `RegisterRequest` extendiendo de `BaseFormRequest` para asegurar datos únicos y seguros.
+* **Seguridad de Contraseñas**: Cifrado automático mediante el casting de Laravel y validación de coincidencia en el registro.
+* **Interfaz Adaptable**: Diseño responsivo validado en dispositivos móviles (375 px) y escritorio utilizando Bootstrap 5 y un script de visibilidad de contraseña (`public/js/password.js`).
+
+### Rutas Registradas
+| Método | Ruta | Nombre de Ruta | Descripción |
+| :--- | :--- | :--- | :--- |
+| **GET** | `/login` | `login` | Muestra la vista del formulario de inicio de sesión. |
+| **POST** | `/login` | — | Procesa las credenciales y autentica al usuario (con control de intentos / *throttle*). |
+| **GET** | `/register` | `register` | Muestra la vista del formulario de registro de nuevos usuarios. |
+| **POST** | `/register` | — | Valida y crea un nuevo usuario en la base de datos, iniciando sesión automáticamente. |
+| **POST** | `/logout` | `logout` | Cierra la sesión activa del usuario y destruye el token de seguridad. |
+
+### Capturas de Pantalla
+
+**Vista de Registro (`/register`)**
+![Formulario de Registro](docs/img/register.png)
+
+**Vista de Inicio de Sesión (`/login`)**
+![Formulario de Inicio de Sesión](docs/img/login.png)
 
 <!-- INICIO: Roles y permisos -->
 ### Roles y permisos
@@ -149,13 +151,7 @@ Cada enlace se muestra cuando existe su ruta. La zona de usuario muestra el nomb
 
 <!-- INICIO: Pacientes -->
 ### Pacientes
-Módulo CRUD completo para la gestión de pacientes conectado a PostgreSQL mediante Eloquent (`App\Models\Paciente`). Incluye búsqueda por nombre (`scopeBuscar`), paginación con conservación de filtros (`paginate(10)->withQueryString()`), consulta del historial de citas del paciente y bloqueo de eliminación cuando existen citas asociadas.
-
-#### Reglas de validación (`StorePacienteRequest` / `UpdatePacienteRequest`)
-- `nombre`: obligatorio, texto, entre 3 y 100 caracteres.
-- `telefono`: obligatorio, exactamente 10 dígitos (`digits:10`).
-- `email`: opcional, formato de correo válido, máximo 100 caracteres, único en `pacientes` (ignorando el registro actual al actualizar).
-- `fecha_nacimiento`: opcional, fecha válida anterior a hoy (`before:today`).
+*Pendiente: la completa Liam (T06).*
 <!-- FIN: Pacientes -->
 
 <!-- INICIO: Servicios -->
@@ -183,10 +179,25 @@ Módulo CRUD completo para la gestión de pacientes conectado a PostgreSQL media
 *Pendiente: la completa Aram (T11).*
 <!-- FIN: Panel -->
 
-<!-- INICIO: Páginas de error -->
+<!-- INICIO: Roles -->
+### Roles y Permisos
+El sistema cuenta con control de acceso basado en roles (RBAC) con dos perfiles principales:
+
+| Rol | Permisos / Acceso |
+| :--- | :--- |
+| **admin** | Acceso total al sistema, incluyendo la gestión completa (crear, editar, eliminar) de servicios, horarios, pacientes y citas. |
+| **recepcion** | Gestión de pacientes, citas y recordatorios; acceso de solo lectura (index y show) a servicios y horarios. |
+
+**Credenciales de prueba (Admin):**
+* **Correo:** `corona2306@gmail.com`
+* **Contraseña:** `password`
+<!-- FIN: Roles -->
+
 ### Páginas de error
-*Pendiente: la completa Jonathan (T13).*
-<!-- FIN: Páginas de error -->
+## Páginas de Error Personalizadas
+El sistema cuenta con vistas personalizadas en español para los códigos de error principales (`404`, `419`, `500` y `503`), integradas con el diseño de la aplicación y Bootstrap 5.
+Ejemplo de vista 404:
+![Error 404](docs/capturas/t13/404.png) <!-- (o la ruta donde tengas tu captura) -->
 
 <!-- INICIO: Seguridad -->
 ### Seguridad

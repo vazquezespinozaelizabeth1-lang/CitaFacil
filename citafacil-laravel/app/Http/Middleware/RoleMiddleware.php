@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Response; // <-- Agrega esta línea
 
 class RoleMiddleware
 {
@@ -15,7 +15,7 @@ class RoleMiddleware
      */
     public function handle(Request $request, Closure $next, string $role): Response
     {
-        if (!$request->user() || $request->user()->role !== $role) {
+        if (!auth()->check() || auth()->user()->role !== $role) {
             abort(403);
         }
 
