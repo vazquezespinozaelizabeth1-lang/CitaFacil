@@ -23,7 +23,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middl
 // ---- Módulos: cada responsable quita el // de SU línea ----
 Route::resource('citas', CitaController::class);                       // Aram (T09)
 
-// Route::resource('pacientes', PacienteController::class);            // Liam (T06)
+Route::resource('pacientes', PacienteController::class);            // Liam (T06)
 
 // Route::resource('servicios', ServicioController::class);            // Victor (T07)
 
