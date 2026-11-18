@@ -6,13 +6,6 @@
         <div class="card-body p-4">
             <h3 class="text-center mb-4 fw-bold">Iniciar Sesión</h3>
 
-            @if(session('success'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ session('success') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            @endif
-
             <form method="POST" action="{{ route('login') }}">
                 @csrf
 
@@ -26,10 +19,10 @@
 
                 <div class="mb-3">
                     <label for="password" class="form-label">Contraseña <span class="text-danger">*</span></label>
-                    <div class="input-group">
+                    <div class="input-group has-validation">
                         <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" required>
                         <button class="btn btn-outline-secondary toggle-password" type="button" data-target="password">
-                            <i class="fas fa-eye"></i>
+                            <i class="bi bi-eye"></i>
                         </button>
                         @error('password')
                             <div class="invalid-feedback">{{ $message }}</div>

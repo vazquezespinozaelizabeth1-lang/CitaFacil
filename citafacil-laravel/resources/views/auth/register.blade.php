@@ -27,10 +27,10 @@
 
                 <div class="mb-3">
                     <label for="password" class="form-label">Contraseña <span class="text-danger">*</span></label>
-                    <div class="input-group">
+                    <div class="input-group has-validation">
                         <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" required>
                         <button class="btn btn-outline-secondary toggle-password" type="button" data-target="password">
-                            <i class="fas fa-eye"></i>
+                            <i class="bi bi-eye"></i>
                         </button>
                         @error('password')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -43,7 +43,7 @@
                     <div class="input-group">
                         <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
                         <button class="btn btn-outline-secondary toggle-password" type="button" data-target="password_confirmation">
-                            <i class="fas fa-eye"></i>
+                            <i class="bi bi-eye"></i>
                         </button>
                     </div>
                 </div>

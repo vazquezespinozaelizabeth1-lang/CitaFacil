@@ -7,7 +7,12 @@ document.addEventListener('DOMContentLoaded', function () {
             if (passwordInput) {
                 const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
                 passwordInput.setAttribute('type', type);
-                this.classList.toggle('fa-eye-slash');
+
+                const icono = this.querySelector('i');
+                if (icono) {
+                    icono.classList.toggle('bi-eye');
+                    icono.classList.toggle('bi-eye-slash');
+                }
             }
         });
     });

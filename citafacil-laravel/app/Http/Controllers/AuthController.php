@@ -41,7 +41,7 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('citas.index')->with('success', '¡Registro exitoso! Bienvenido a CitaFácil.');
+        return redirect()->route('citas.index')->with('exito', '¡Registro exitoso! Bienvenido a CitaFácil.');
     }
 
     public function logout(Request $request): RedirectResponse
@@ -51,6 +51,6 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('login')->with('success', 'Has cerrado sesión correctamente.');
+        return redirect()->route('login')->with('exito', 'Has cerrado sesión correctamente.');
     }
 }
