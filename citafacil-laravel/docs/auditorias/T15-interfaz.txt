@@ -1,7 +1,18 @@
-# Revisión de interfaz (T15)
+]633;E;echo "# Revisión de interfaz (T15)";0608b20e-dd31-4eae-9ccd-36ab5ca7aebf]633;C# Revisión de interfaz (T15)
 
-## Botones con clase vieja (debe estar vacío)
+## Botones con clase btn-primary
 
-## Íconos sin aria-hidden (debe estar vacío)
+## Íconos i sin aria-hidden
 
-## Formularios sin novalidate (debe estar vacío)
+## SVG sin aria-hidden
+
+## Formularios GET sin novalidate
+resources/views/citas/index.blade.php:11:    <form method="GET" action="{{ route('citas.index') }}" class="row g-2 mb-3">
+resources/views/pacientes/index.blade.php:13:    <form method="GET" action="{{ route('pacientes.index') }}" class="row g-2 mb-4">
+resources/views/horarios/index.blade.php:17:    <form method="GET" action="{{ route('horarios.index') }}" class="row g-2 mb-3">
+resources/views/recordatorios/index.blade.php:13:    <form action="{{ route('recordatorios.index') }}" method="GET" class="row g-2 align-items-end mb-3">
+resources/views/servicios/index.blade.php:17:    <form method="GET" action="{{ route('servicios.index') }}" class="row g-2 mb-3" role="search">
+
+## Formularios POST sin novalidate
+resources/views/layouts/app.blade.php:82:                            <form method="POST" action="{{ route('logout') }}">
+resources/views/components/modal-eliminar.blade.php:15:                <form action="{{ $rutaAccion }}" method="POST" class="d-inline">
