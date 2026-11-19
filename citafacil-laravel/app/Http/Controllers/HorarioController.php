@@ -15,10 +15,17 @@ class HorarioController extends Controller
             ->when($request->filled('dia'), fn ($q) => $q->where('dia_semana', (int) $request->query('dia')))
             ->orderBy('dia_semana')
             ->orderBy('hora_inicio')
-            ->paginate(10)
+            ->paginate(15)
             ->withQueryString();
 
-        return view('horarios.index', ['horarios' => $horarios, 'dias' => Horario::DIAS]);
+        // Se agrupa por día la página actual para mostrarla en tarjetas
+        $porDia = $horarios->getCollection()->groupBy('dia_semana');
+
+        return view('horarios.index', [
+            'horarios' => $horarios,
+            'porDia' => $porDia,
+            'dias' => Horario::DIAS,
+        ]);
     }
 
     public function create()

@@ -45,5 +45,5 @@
     <label for="activo" class="form-check-label">Horario activo</label>
 </div>
 
-<button type="submit" class="btn btn-primary">{{ $textoBoton }}</button>
+<button type="submit" class="btn btn-primario">{{ $textoBoton }}</button>
 <a href="{{ route('horarios.index') }}" class="btn btn-secondary">Cancelar</a>
