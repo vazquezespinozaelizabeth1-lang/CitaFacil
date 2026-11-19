@@ -32,12 +32,13 @@ class ServicioController extends Controller
         return redirect()->route('servicios.index')
             ->with('exito', 'Servicio registrado correctamente.');
     }
-    public function show(Servicio $servicio)
-{
-    $servicio->loadCount('citas');
 
-    return view('servicios.show', compact('servicio'));
-}
+    public function show(Servicio $servicio)
+    {
+        $servicio->loadCount('citas');
+
+        return view('servicios.show', compact('servicio'));
+    }
 
     public function edit(Servicio $servicio)
     {
