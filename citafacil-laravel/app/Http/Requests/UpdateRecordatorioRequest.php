@@ -2,6 +2,4 @@
 
 namespace App\Http\Requests;
 
-class UpdateRecordatorioRequest extends StoreRecordatorioRequest
-{
-}
+class UpdateRecordatorioRequest extends StoreRecordatorioRequest {}

@@ -12,14 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('servicios', function (Blueprint $table) {
-    $table->id();
-    $table->string('nombre', 100)->unique();
-    $table->string('descripcion', 255)->nullable();
-    $table->unsignedSmallInteger('duracion_min')->default(30);
-    $table->decimal('precio', 8, 2)->default(0);
-    $table->boolean('activo')->default(true);
-    $table->timestamps();
-});
+            $table->id();
+            $table->string('nombre', 100)->unique();
+            $table->string('descripcion', 255)->nullable();
+            $table->unsignedSmallInteger('duracion_min')->default(30);
+            $table->decimal('precio', 8, 2)->default(0);
+            $table->boolean('activo')->default(true);
+            $table->timestamps();
+        });
     }
 
     /**

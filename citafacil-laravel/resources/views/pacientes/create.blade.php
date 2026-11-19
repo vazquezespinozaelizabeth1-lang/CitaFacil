@@ -18,8 +18,8 @@
                         @include('pacientes._form')
 
                         <div class="d-flex justify-content-end gap-2 mt-4">
-                            <a href="{{ route('pacientes.index') }}" class="btn btn-secondary">Cancelar</a>
-                            <button type="submit" class="btn btn-primary">Guardar paciente</button>
+                            <a href="{{ route('pacientes.index') }}" class="btn btn-outline-secondary">Cancelar</a>
+                            <button type="submit" class="btn btn-primario">Guardar paciente</button>
                         </div>
                     </form>
                 </div>

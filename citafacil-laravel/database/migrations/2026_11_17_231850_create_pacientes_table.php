@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-       Schema::create('pacientes', function (Blueprint $table) {
-    $table->id();
-    $table->string('nombre', 100);
-    $table->string('telefono', 10);
-    $table->string('email', 100)->nullable()->unique();
-    $table->date('fecha_nacimiento')->nullable();
-    $table->timestamps();
-});
+        Schema::create('pacientes', function (Blueprint $table) {
+            $table->id();
+            $table->string('nombre', 100);
+            $table->string('telefono', 10);
+            $table->string('email', 100)->nullable()->unique();
+            $table->date('fecha_nacimiento')->nullable();
+            $table->timestamps();
+        });
     }
 
     /**

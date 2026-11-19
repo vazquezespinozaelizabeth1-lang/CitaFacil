@@ -6,7 +6,7 @@
     <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
         <h1 class="h3 mb-0">{{ $paciente->nombre }}</h1>
         <div class="d-flex gap-2">
-            <a href="{{ route('pacientes.edit', $paciente) }}" class="btn btn-primary btn-sm">Editar</a>
+            <a href="{{ route('pacientes.edit', $paciente) }}" class="btn btn-primario btn-sm">Editar</a>
             <a href="{{ route('pacientes.index') }}" class="btn btn-outline-secondary btn-sm">Volver al listado</a>
         </div>
     </div>
