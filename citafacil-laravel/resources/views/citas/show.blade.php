@@ -38,7 +38,7 @@
     <a href="{{ route('citas.index') }}" class="btn btn-outline-secondary">
         <i class="bi bi-arrow-left" aria-hidden="true"></i> Volver
     </a>
-    <a href="{{ route('citas.edit', $cita) }}" class="btn btn-primary">
+        <a href="{{ route('citas.edit', $cita) }}" class="btn btn-primario">
         <i class="bi bi-pencil" aria-hidden="true"></i> Editar
     </a>
 @endsection

@@ -3,13 +3,40 @@
 @section('contenido')
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h1 class="h3 mb-0">Citas</h1>
-        <a href="{{ route('citas.create') }}" class="btn btn-primary">
+        <a href="{{ route('citas.create') }}" class="btn btn-primario">
             <i class="bi bi-plus-lg" aria-hidden="true"></i> Nueva cita
         </a>
     </div>
 
+    <form method="GET" action="{{ route('citas.index') }}" class="row g-2 mb-3">
+        <div class="col-md-4">
+            <label for="paciente" class="visually-hidden">Paciente</label>
+            <input type="search" id="paciente" name="paciente" class="form-control"
+                   value="{{ request('paciente') }}" placeholder="Buscar por paciente">
+        </div>
+        <div class="col-md-3">
+            <label for="estado" class="visually-hidden">Estado</label>
+            <select id="estado" name="estado" class="form-select">
+                <option value="">Todos los estados</option>
+                @foreach (\App\Models\Cita::ESTADOS as $estado)
+                    <option value="{{ $estado }}" @selected(request('estado') === $estado)>{{ $estado }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label for="fecha" class="visually-hidden">Fecha</label>
+            <input type="date" id="fecha" name="fecha" class="form-control" value="{{ request('fecha') }}">
+        </div>
+        <div class="col-md-2 d-flex gap-2">
+            <button type="submit" class="btn btn-outline-primary">Filtrar</button>
+            <a href="{{ route('citas.index') }}" class="btn btn-outline-secondary">Limpiar</a>
+        </div>
+    </form>
+
     @if ($citas->isEmpty())
-        <div class="alert alert-info">Todavía no hay citas registradas.</div>
+        <div class="alert alert-info" role="alert">
+            {{ request()->hasAny(['paciente', 'estado', 'fecha']) ? 'No hay citas con esos filtros.' : 'Todavía no hay citas registradas.' }}
+        </div>
     @else
         <div class="table-responsive">
             <table class="table table-hover align-middle">
@@ -47,19 +74,23 @@
                                 <a href="{{ route('citas.edit', $cita) }}" class="btn btn-sm btn-outline-primary" aria-label="Editar cita de {{ $cita->paciente->nombre }}">
                                     <i class="bi bi-pencil" aria-hidden="true"></i>
                                 </a>
-                                <form action="{{ route('citas.destroy', $cita) }}" method="POST" class="d-inline"
-                                      onsubmit="return confirm('¿Eliminar la cita de {{ $cita->paciente->nombre }}?');">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-outline-danger" aria-label="Eliminar cita de {{ $cita->paciente->nombre }}">
-                                        <i class="bi bi-trash" aria-hidden="true"></i>
-                                    </button>
-                                </form>
+                                <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
+                                        data-bs-target="#modal-cita-{{ $cita->id }}"
+                                        aria-label="Eliminar cita de {{ $cita->paciente->nombre }}">
+                                    <i class="bi bi-trash" aria-hidden="true"></i>
+                                </button>
+                                <x-modal-eliminar :idModal="'modal-cita-'.$cita->id"
+                                                  :rutaAccion="route('citas.destroy', $cita)">
+                                    ¿Eliminar la cita de <strong>{{ $cita->paciente->nombre }}</strong>
+                                    del {{ $cita->fecha->format('d/m/Y') }} a las {{ $cita->hora }}?
+                                    También se eliminarán sus recordatorios. Esta acción no se puede deshacer.
+                                </x-modal-eliminar>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
+        <x-paginacion :coleccion="$citas" />
     @endif
 @endsection
