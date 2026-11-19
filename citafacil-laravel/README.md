@@ -139,7 +139,27 @@ Cada enlace se muestra cuando existe su ruta. La zona de usuario muestra el nomb
 
 <!-- INICIO: Autenticación -->
 ### Autenticación
-*Pendiente: la completa Jonathan (T05).*
+
+**Flujo**
+1. El visitante entra a `/login` o `/register` (solo invitados).
+2. Al registrarse, se crea el usuario y se inicia sesión automáticamente.
+3. Al iniciar sesión se redirige a la página que intentaba abrir, o al listado de citas.
+4. `POST /logout` cierra la sesión e invalida el token.
+
+**Rutas**
+
+| Método | Ruta | Nombre | Acceso |
+|--------|------|--------|--------|
+| GET | `/login` | `login` | invitados |
+| POST | `/login` | – | invitados (máx. 5 intentos por minuto) |
+| GET | `/register` | `register` | invitados |
+| POST | `/register` | – | invitados |
+| POST | `/logout` | `logout` | autenticados |
+
+**Capturas**
+
+![Login](../docs/capturas/login.png)
+![Registro](../docs/capturas/register.png)
 <!-- FIN: Autenticación -->
 
 <!-- INICIO: Roles y permisos -->
