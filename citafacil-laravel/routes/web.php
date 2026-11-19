@@ -28,15 +28,16 @@ Route::middleware('auth')->group(function () {
     Route::middleware('role:admin')->group(function () {
         Route::resource('servicios', ServicioController::class)->except(['index', 'show']);
         Route::resource('horarios', HorarioController::class)->except(['index', 'show']);
+        Route::resource('recordatorios', RecordatorioController::class)->except(['index', 'show']);
     });
 
     // Consulta para admin y recepción
     Route::resource('servicios', ServicioController::class)->only(['index', 'show']);
-    Route::resource('horarios', HorarioController::class)->only(['index', 'show']);
+    Route::resource('horarios', HorarioController::class)->only('index');
+    Route::resource('recordatorios', RecordatorioController::class)->only(['index', 'show']);
 
     Route::resource('citas', CitaController::class);
     Route::resource('pacientes', PacienteController::class);
-    Route::resource('recordatorios', RecordatorioController::class);
 
     // Route::get('/panel', PanelController::class)->name('panel');  // Aram (T11)
 });
