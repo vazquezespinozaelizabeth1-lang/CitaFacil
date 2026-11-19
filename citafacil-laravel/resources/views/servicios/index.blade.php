@@ -41,9 +41,7 @@
                         <th scope="col">Duración</th>
                         <th scope="col">Precio</th>
                         <th scope="col">Estado</th>
-                        @if ($esAdmin)
                         <th scope="col" class="text-end">Acciones</th>
-                        @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -58,26 +56,29 @@
                                     {{ $servicio->activo ? 'Activo' : 'Inactivo' }}
                                 </span>
                             </td>
-                            @if ($esAdmin)
                             <td class="text-end">
-                                <a href="{{ route('servicios.edit', $servicio) }}" class="btn btn-sm btn-outline-primary" aria-label="Editar {{ $servicio->nombre }}">
-                                    <i class="bi bi-pencil" aria-hidden="true"></i>
-                                </a>
-                                <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
-                                        data-bs-target="#modal-servicio-{{ $servicio->id }}" aria-label="Eliminar {{ $servicio->nombre }}">
-                                    <i class="bi bi-trash" aria-hidden="true"></i>
-                                </button>
-                                <x-modal-eliminar :idModal="'modal-servicio-'.$servicio->id"
-                                                  :rutaAccion="route('servicios.destroy', $servicio)">
-                                    ¿Eliminar el servicio <strong>{{ $servicio->nombre }}</strong>? Esta acción no se puede deshacer.
-                                    @if ($servicio->citas_count > 0)
-                                        <div class="alert alert-warning mt-3 mb-0">
-                                            Tiene {{ $servicio->citas_count }} cita(s) asociada(s), por lo que no podrá eliminarse.
-                                        </div>
-                                    @endif
-                                </x-modal-eliminar>
-                            </td>
-                            @endif
+    <a href="{{ route('servicios.show', $servicio) }}" class="btn btn-sm btn-outline-secondary" aria-label="Consultar {{ $servicio->nombre }}">
+        <i class="bi bi-eye" aria-hidden="true"></i>
+    </a>
+    @if ($esAdmin)
+        <a href="{{ route('servicios.edit', $servicio) }}" class="btn btn-sm btn-outline-primary" aria-label="Editar {{ $servicio->nombre }}">
+            <i class="bi bi-pencil" aria-hidden="true"></i>
+        </a>
+        <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
+                data-bs-target="#modal-servicio-{{ $servicio->id }}" aria-label="Eliminar {{ $servicio->nombre }}">
+            <i class="bi bi-trash" aria-hidden="true"></i>
+        </button>
+        <x-modal-eliminar :idModal="'modal-servicio-'.$servicio->id"
+                          :rutaAccion="route('servicios.destroy', $servicio)">
+            ¿Eliminar el servicio <strong>{{ $servicio->nombre }}</strong>? Esta acción no se puede deshacer.
+            @if ($servicio->citas_count > 0)
+                <div class="alert alert-warning mt-3 mb-0">
+                    Tiene {{ $servicio->citas_count }} cita(s) asociada(s), por lo que no podrá eliminarse.
+                </div>
+            @endif
+        </x-modal-eliminar>
+    @endif
+</td>
                         </tr>
                     @endforeach
                 </tbody>

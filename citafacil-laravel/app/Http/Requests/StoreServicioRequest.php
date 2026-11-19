@@ -15,7 +15,7 @@ class StoreServicioRequest extends BaseFormRequest
             'nombre' => ['required', 'string', 'min:3', 'max:100', 'unique:servicios,nombre'],
             'descripcion' => ['nullable', 'string', 'max:255'],
             'duracion_min' => ['required', 'integer', 'between:5,480'],
-            'precio' => ['required', 'numeric', 'between:0,999999.99'],
+            'precio' => ['required', 'numeric', 'between:0,99999.99'],
             'activo' => ['boolean'],
         ];
     }
