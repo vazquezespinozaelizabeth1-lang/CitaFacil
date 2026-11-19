@@ -4,7 +4,7 @@
     <h1 class="h3 mb-3">Detalle de la Cita</h1>
 
     @php
-        $color = match ($cita['estado']) {
+        $color = match ($cita->estado) {
             'Confirmada' => 'success',
             'Cancelada' => 'danger',
             default => 'warning',
@@ -15,19 +15,22 @@
         <div class="card-body">
             <dl class="row mb-0">
                 <dt class="col-sm-3">Paciente</dt>
-                <dd class="col-sm-9">{{ $cita['paciente'] }}</dd>
+                <dd class="col-sm-9">{{ $cita->paciente->nombre }}</dd>
+
+                <dt class="col-sm-3">Servicio</dt>
+                <dd class="col-sm-9">{{ $cita->servicio->nombre }} ({{ $cita->servicio->duracion_min }} min)</dd>
 
                 <dt class="col-sm-3">Fecha</dt>
-                <dd class="col-sm-9">{{ $cita['fecha'] }}</dd>
+                <dd class="col-sm-9">{{ $cita->fecha->format('d/m/Y') }}</dd>
 
                 <dt class="col-sm-3">Hora</dt>
-                <dd class="col-sm-9">{{ $cita['hora'] }}</dd>
+                <dd class="col-sm-9">{{ $cita->hora }}</dd>
 
                 <dt class="col-sm-3">Motivo</dt>
-                <dd class="col-sm-9">{{ $cita['motivo'] }}</dd>
+                <dd class="col-sm-9">{{ $cita->motivo }}</dd>
 
                 <dt class="col-sm-3">Estado</dt>
-                <dd class="col-sm-9"><span class="badge text-bg-{{ $color }}">{{ $cita['estado'] }}</span></dd>
+                <dd class="col-sm-9"><span class="badge text-bg-{{ $color }}">{{ $cita->estado }}</span></dd>
             </dl>
         </div>
     </div>
@@ -35,7 +38,7 @@
     <a href="{{ route('citas.index') }}" class="btn btn-outline-secondary">
         <i class="bi bi-arrow-left" aria-hidden="true"></i> Volver
     </a>
-    <a href="{{ route('citas.edit', $cita['id']) }}" class="btn btn-primary">
+        <a href="{{ route('citas.edit', $cita) }}" class="btn btn-primario">
         <i class="bi bi-pencil" aria-hidden="true"></i> Editar
     </a>
 @endsection
