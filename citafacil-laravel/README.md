@@ -164,7 +164,17 @@ Cada enlace se muestra cuando existe su ruta. La zona de usuario muestra el nomb
 
 <!-- INICIO: Roles y permisos -->
 ### Roles y permisos
-*Pendiente: la completa Jonathan (T12).*
+Control de acceso por rol con el middleware `role` (`App\Http\Middleware\RoleMiddleware`). Quien no tiene el rol requerido recibe la vista `403`. El registro público siempre crea usuarios con el rol `recepcion`.
+
+| Rol | Qué puede hacer |
+| :--- | :--- |
+| **admin** | Todo: crea, edita y elimina servicios y horarios, y gestiona pacientes, citas y recordatorios. |
+| **recepcion** | Gestiona pacientes, citas y recordatorios; solo consulta (`index` y `show`) servicios y horarios. |
+
+Credenciales de ejemplo del admin (de `.env.example`):
+
+- Correo: `admin@citafacil.test`
+- Contraseña: `cambia-esta-clave`
 <!-- FIN: Roles y permisos -->
 
 <!-- <!-- INICIO: Pacientes -->
