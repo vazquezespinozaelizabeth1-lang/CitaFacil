@@ -164,7 +164,17 @@ Cada enlace se muestra cuando existe su ruta. La zona de usuario muestra el nomb
 
 <!-- INICIO: Roles y permisos -->
 ### Roles y permisos
-*Pendiente: la completa Jonathan (T12).*
+Control de acceso por rol con el middleware `role` (`App\Http\Middleware\RoleMiddleware`). Quien no tiene el rol requerido recibe la vista `403`. El registro público siempre crea usuarios con el rol `recepcion`.
+
+| Rol | Qué puede hacer |
+| :--- | :--- |
+| **admin** | Todo: crea, edita y elimina servicios y horarios, y gestiona pacientes, citas y recordatorios. |
+| **recepcion** | Gestiona pacientes, citas y recordatorios; solo consulta (`index` y `show`) servicios y horarios. |
+
+Credenciales de ejemplo del admin (de `.env.example`):
+
+- Correo: `admin@citafacil.test`
+- Contraseña: `cambia-esta-clave`
 <!-- FIN: Roles y permisos -->
 
 <!-- <!-- INICIO: Pacientes -->
@@ -180,12 +190,69 @@ Módulo CRUD completo para la gestión de pacientes conectado a PostgreSQL media
 
 <!-- INICIO: Servicios -->
 ### Servicios
-*Pendiente: la completa Victor (T07).*
+
+CRUD completo de los servicios del consultorio, con búsqueda por nombre y paginación (10 por página).
+
+#### Rutas
+
+| Método | URI | Nombre | Controlador@Método |
+|---|---|---|---|
+| `GET` | `/servicios` | `servicios.index` | `ServicioController@index` |
+| `GET` | `/servicios/create` | `servicios.create` | `ServicioController@create` |
+| `POST` | `/servicios` | `servicios.store` | `ServicioController@store` |
+| `GET` | `/servicios/{servicio}/edit` | `servicios.edit` | `ServicioController@edit` |
+| `PUT` | `/servicios/{servicio}` | `servicios.update` | `ServicioController@update` |
+| `DELETE` | `/servicios/{servicio}` | `servicios.destroy` | `ServicioController@destroy` |
+
+#### Reglas de validación
+
+| Campo | Reglas |
+|---|---|
+| nombre | obligatorio, texto de 3 a 100 caracteres, único (al editar se ignora el registro actual) |
+| descripcion | opcional, máximo 255 caracteres |
+| duracion_min | obligatorio, entero entre 5 y 480 |
+| precio | obligatorio, numérico entre 0 y 999999.99 |
+| activo | booleano |
+
+La validación está en `StoreServicioRequest` y `UpdateServicioRequest`, con mensajes en español.
+
+#### Comportamiento
+
+- Un servicio con citas asociadas **no se puede eliminar**: se muestra un mensaje de error y se sugiere desactivarlo.
+- El borrado pide confirmación en un modal.
 <!-- FIN: Servicios -->
 
 <!-- INICIO: Horarios -->
 ### Horarios
-*Pendiente: la completa Victor (T08).*
+
+CRUD completo de los horarios de atención, con filtro por día y paginación (10 por página).
+
+#### Rutas
+
+| Método | URI | Nombre | Controlador@Método |
+|---|---|---|---|
+| `GET` | `/horarios` | `horarios.index` | `HorarioController@index` |
+| `GET` | `/horarios/create` | `horarios.create` | `HorarioController@create` |
+| `POST` | `/horarios` | `horarios.store` | `HorarioController@store` |
+| `GET` | `/horarios/{horario}/edit` | `horarios.edit` | `HorarioController@edit` |
+| `PUT` | `/horarios/{horario}` | `horarios.update` | `HorarioController@update` |
+| `DELETE` | `/horarios/{horario}` | `horarios.destroy` | `HorarioController@destroy` |
+
+#### Reglas de validación
+
+| Campo | Reglas |
+|---|---|
+| dia_semana | obligatorio, entero del 1 (lunes) al 7 (domingo) |
+| hora_inicio | obligatorio, formato `H:i`, único por día (al editar se ignora el registro actual) |
+| hora_fin | obligatorio, formato `H:i`, posterior a la hora de inicio |
+| activo | booleano |
+
+La validación está en `StoreHorarioRequest` y `UpdateHorarioRequest`, con mensajes en español.
+
+#### Comportamiento
+
+- No se permite repetir la misma hora de inicio en el mismo día.
+- El borrado pide confirmación en un modal.
 <!-- FIN: Horarios -->
 
 <!-- INICIO: Citas -->
@@ -217,7 +284,33 @@ Ver la tabla de rutas de este README (`citas.*`, `Route::resource`).
 
 <!-- INICIO: Recordatorios -->
 ### Recordatorios
-*Pendiente: la completa Angel (T10).*
+
+El módulo registra, lista, consulta, edita y elimina avisos programados para las citas. Cada recordatorio pertenece a una cita de PostgreSQL y muestra al paciente asociado. Al eliminar la cita en PostgreSQL, su clave foránea elimina los recordatorios en cascada. El envío real por correo, SMS o WhatsApp queda fuera de esta entrega.
+
+| Método | Ruta | Acción |
+| --- | --- | --- |
+| GET | `/recordatorios` | Listar y filtrar |
+| GET | `/recordatorios/create` | Abrir el formulario de creación |
+| POST | `/recordatorios` | Guardar |
+| GET | `/recordatorios/{recordatorio}` | Consultar el detalle |
+| GET | `/recordatorios/{recordatorio}/edit` | Abrir el formulario de edición |
+| PUT / PATCH | `/recordatorios/{recordatorio}` | Actualizar |
+| DELETE | `/recordatorios/{recordatorio}` | Eliminar tras confirmar |
+
+La cita debe existir en `citas`. El mensaje es obligatorio y admite de 5 a 255 caracteres. La fecha y hora de envío son obligatorias y usan el formato `AAAA-MM-DDTHH:MM` del control `datetime-local`. El canal es obligatorio y se valida con `Recordatorio::CANALES` (Correo, SMS y WhatsApp). La casilla Enviado se guarda como valor booleano.
+
+Los filtros por canal y estado se pueden combinar. Pendiente corresponde a `enviado=0`; Enviado corresponde a `enviado=1`. El listado muestra diez registros por página y conserva los filtros al navegar. **Limpiar filtros** vuelve al listado completo.
+
+| Pantalla | Escritorio a 1280 px | Móvil a 375 px |
+| --- | --- | --- |
+| Listado | [Ver captura](docs/capturas/t10/listado-escritorio.png) | [Ver captura](docs/capturas/t10/listado-movil.png) |
+| Creación | [Ver captura](docs/capturas/t10/creacion-escritorio.png) | [Ver captura](docs/capturas/t10/creacion-movil.png) |
+| Edición | [Ver captura](docs/capturas/t10/edicion-escritorio.png) | [Ver captura](docs/capturas/t10/edicion-movil.png) |
+| Detalle | [Ver captura](docs/capturas/t10/detalle-escritorio.png) | [Ver captura](docs/capturas/t10/detalle-movil.png) |
+| Confirmación de eliminación | [Ver captura](docs/capturas/t10/modal-escritorio.png) | [Ver captura](docs/capturas/t10/modal-movil.png) |
+
+Las pruebas de `tests/Feature/RecordatorioTest.php` cubren el CRUD, las validaciones, la recuperación de valores, los filtros, la paginación y la cascada.
+
 <!-- FIN: Recordatorios -->
 
 <!-- INICIO: Panel -->
