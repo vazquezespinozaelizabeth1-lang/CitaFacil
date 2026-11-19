@@ -315,7 +315,10 @@ Las pruebas de `tests/Feature/RecordatorioTest.php` cubren el CRUD, las validaci
 
 <!-- INICIO: Panel -->
 ### Panel
-*Pendiente: la completa Aram (T11).*
+
+Pantalla de inicio (`/panel`). Muestra las citas de hoy, las pendientes, el total de pacientes, los servicios activos, los recordatorios por enviar y las próximas 5 citas.
+
+![Panel](../docs/capturas/panel.png)
 <!-- FIN: Panel -->
 
 <!-- INICIO: Páginas de error -->

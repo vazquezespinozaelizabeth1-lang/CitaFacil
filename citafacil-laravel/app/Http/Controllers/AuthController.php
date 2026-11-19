@@ -22,7 +22,7 @@ class AuthController extends Controller
         if (Auth::attempt($request->validated(), $request->boolean('remember'))) {
             $request->session()->regenerate();
 
-            return redirect()->intended(route('citas.index'));
+            return redirect()->intended(route('panel'));
         }
 
         return back()
@@ -41,7 +41,7 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('citas.index')->with('exito', '¡Registro exitoso! Bienvenido a CitaFácil.');
+        return redirect()->route('panel')->with('exito', '¡Registro exitoso! Bienvenido a CitaFácil.');
     }
 
     public function logout(Request $request): RedirectResponse

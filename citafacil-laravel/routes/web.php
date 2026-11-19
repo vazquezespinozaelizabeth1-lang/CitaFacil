@@ -9,7 +9,7 @@ use App\Http\Controllers\RecordatorioController;
 use App\Http\Controllers\ServicioController;
 use Illuminate\Support\Facades\Route;
 
-Route::redirect('/', '/citas');
+Route::redirect('/', '/panel');
 
 // ---- Autenticación (T05) ----
 Route::middleware('guest')->group(function () {
@@ -23,6 +23,8 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middl
 
 // ---- Rutas protegidas (T12) ----
 Route::middleware('auth')->group(function () {
+
+    Route::get('/panel', PanelController::class)->name('panel');
 
     // Solo admin: crear, editar y eliminar. Va ANTES de index/show.
     Route::middleware('role:admin')->group(function () {
@@ -38,6 +40,4 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('citas', CitaController::class);
     Route::resource('pacientes', PacienteController::class);
-
-    // Route::get('/panel', PanelController::class)->name('panel');  // Aram (T11)
 });
