@@ -320,7 +320,9 @@ Las pruebas de `tests/Feature/RecordatorioTest.php` cubren el CRUD, las validaci
 
 <!-- INICIO: Páginas de error -->
 ### Páginas de error
-*Pendiente: la completa Jonathan (T13).*
+Vistas personalizadas en español para los errores `404`, `419`, `500` y `503`, en `resources/views/errors/`. Las de `500` y `503` no consultan la base de datos ni muestran detalles técnicos, y todas incluyen un botón para volver al inicio.
+
+![Error 404](docs/capturas/404.png)
 <!-- FIN: Páginas de error -->
 
 <!-- INICIO: Seguridad -->
