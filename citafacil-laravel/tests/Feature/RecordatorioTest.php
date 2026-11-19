@@ -14,10 +14,14 @@ use App\Models\User;
 class RecordatorioTest extends TestCase
 {
     use RefreshDatabase;
-
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->actingAs(User::factory()->create(['role' => User::ROL_ADMIN]));
+    }
     public function test_guarda_consulta_edita_y_elimina_un_recordatorio(): void
     {
-        $this->actingAs(User::factory()->create(['role' => User::ROL_ADMIN]));
+        
         $datos = $this->datos($this->cita());
 
         $this->post(route('recordatorios.store'), $datos)->assertSessionHas('exito');
