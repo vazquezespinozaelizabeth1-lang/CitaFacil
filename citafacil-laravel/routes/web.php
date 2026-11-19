@@ -11,24 +11,33 @@ use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/panel');
 
-// ---- Autenticación (Jonathan, T05): quita el // cuando termines ----
+// ---- Autenticación (T05) ----
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
     Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:5,1');
     Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
     Route::post('/register', [AuthController::class, 'register']);
 });
+
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
-// ---- Módulos: cada responsable quita el // de SU línea ----
-Route::resource('citas', CitaController::class);                       // Aram (T09)
+// ---- Rutas protegidas (T12) ----
+Route::middleware('auth')->group(function () {
 
-Route::resource('pacientes', PacienteController::class);            // Liam (T06)
+    Route::get('/panel', PanelController::class)->name('panel');
 
-// Route::resource('servicios', ServicioController::class);            // Victor (T07)
+    // Solo admin: crear, editar y eliminar. Va ANTES de index/show.
+    Route::middleware('role:admin')->group(function () {
+        Route::resource('servicios', ServicioController::class)->except(['index', 'show']);
+        Route::resource('horarios', HorarioController::class)->except(['index', 'show']);
+        Route::resource('recordatorios', RecordatorioController::class)->except(['index', 'show']);
+    });
 
-// Route::resource('horarios', HorarioController::class);              // Victor (T08)
+    // Consulta para admin y recepción
+    Route::resource('servicios', ServicioController::class)->only(['index', 'show']);
+    Route::resource('horarios', HorarioController::class)->only('index');
+    Route::resource('recordatorios', RecordatorioController::class)->only(['index', 'show']);
 
-// Route::resource('recordatorios', RecordatorioController::class);    // Angel (T10)
-
-Route::get('/panel', PanelController::class)->name('panel');       // Aram (T11)
+    Route::resource('citas', CitaController::class);
+    Route::resource('pacientes', PacienteController::class);
+});

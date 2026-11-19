@@ -3,156 +3,77 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreCitaRequest;
+use App\Http\Requests\UpdateCitaRequest;
+use App\Models\Cita;
+use App\Models\Paciente;
+use App\Models\Servicio;
 
 class CitaController extends Controller
 {
-    private const ESTADOS = ['Pendiente', 'Confirmada', 'Cancelada'];
-
-    /** Citas guardadas en sesión (con datos de ejemplo la primera vez). */
-    private function citas(): array
-    {
-        if (!session()->has('citas')) {
-            session(['citas' => [
-                1 => ['id' => 1, 'paciente' => 'Ana López', 'fecha' => '2026-11-10', 'hora' => '09:00', 'motivo' => 'Consulta general', 'estado' => 'Pendiente'],
-                2 => ['id' => 2, 'paciente' => 'Luis Pérez', 'fecha' => '2026-11-11', 'hora' => '11:30', 'motivo' => 'Revisión de resultados', 'estado' => 'Confirmada'],
-                3 => ['id' => 3, 'paciente' => 'María Torres', 'fecha' => '2026-11-12', 'hora' => '16:00', 'motivo' => 'Limpieza dental', 'estado' => 'Cancelada'],
-            ]]);
-        }
-
-        return session('citas');
-    }
-
-    private function guardar(array $citas): void
-    {
-        session(['citas' => $citas]);
-    }
-
-    private function reglas(): array
+    private function catalogos(): array
     {
         return [
-            'paciente' => ['required', 'string', 'min:3', 'max:80'],
-            'fecha' => ['required', 'date'],
-            'hora' => ['required', 'date_format:H:i'],
-            'motivo' => ['required', 'string', 'min:3', 'max:150'],
-            'estado' => ['required', 'in:Pendiente,Confirmada,Cancelada'],
+            'pacientes' => Paciente::orderBy('nombre')->get(),
+            'servicios' => Servicio::where('activo', true)->orderBy('nombre')->get(),
+            'estados' => Cita::ESTADOS,
         ];
     }
 
-    private function mensajes(): array
-    {
-        return [
-            'required' => 'El campo :attribute es obligatorio.',
-            'min' => 'El campo :attribute debe tener al menos :min caracteres.',
-            'max' => 'El campo :attribute no puede superar :max caracteres.',
-            'date' => 'El campo :attribute debe ser una fecha válida.',
-            'date_format' => 'El campo :attribute debe tener el formato HH:MM.',
-            'in' => 'El valor elegido en :attribute no es válido.',
-        ];
-    }
+    public function index(Request $request)
+{
+    $citas = Cita::with(['paciente', 'servicio'])
+        ->when($request->query('paciente'), fn ($q, $texto) =>
+            $q->whereHas('paciente', fn ($p) => $p->where('nombre', 'ilike', '%'.$texto.'%')))
+        ->when(in_array($request->query('estado'), Cita::ESTADOS, true), fn ($q) =>
+            $q->where('estado', $request->query('estado')))
+        ->when($request->query('fecha'), fn ($q, $fecha) => $q->whereDate('fecha', $fecha))
+        ->orderBy('fecha')
+        ->orderBy('hora')
+        ->paginate(10)
+        ->withQueryString();
 
-    // =====================================================
-    // ZONA GET (responsable: Aram)
-    // =====================================================
-
-    public function index()
-    {
-        $citas = $this->citas();
-        uasort($citas, fn ($a, $b) => [$a['fecha'], $a['hora']] <=> [$b['fecha'], $b['hora']]);
-
-        return view('citas.index', ['citas' => $citas]);
-    }
+    return view('citas.index', compact('citas'));
+}
 
     public function create()
     {
-        return view('citas.create', ['estados' => self::ESTADOS]);
+        return view('citas.create', $this->catalogos());
     }
 
-    public function show($id)
+    public function store(StoreCitaRequest $request)
     {
-        $citas = $this->citas();
-        abort_unless(isset($citas[$id]), 404);
+        Cita::create($request->validated());
 
-        return view('citas.show', ['cita' => $citas[$id]]);
+        return redirect()->route('citas.index')
+            ->with('exito', 'Cita registrada correctamente.');
     }
 
-    public function edit($id)
+    public function show(Cita $cita)
     {
-        $citas = $this->citas();
-        abort_unless(isset($citas[$id]), 404);
+        $cita->load(['paciente', 'servicio']);
 
-        return view('citas.edit', ['cita' => $citas[$id], 'estados' => self::ESTADOS]);
+        return view('citas.show', compact('cita'));
     }
 
-    // =====================================================
-    // =====================================================
-    // ZONA POST / PUT / DELETE (responsable: Victor)
-    // =====================================================
-
-    
-public function store(Request $request)
-{
-    $datos = $request->validate([
-        'paciente' => 'required|string|max:255',
-        'fecha' => 'required|date',
-        'hora' => 'required',
-        'motivo' => 'required|string|max:255',
-        'estado' => 'required|in:Pendiente,Confirmada,Cancelada',
-    ]);
-
-    $citas = $this->citas();
-
-    $id = empty($citas) ? 1 : max(array_keys($citas)) + 1;
-
-    $datos['id'] = $id;
-
-    $citas[$id] = $datos;
-
-    session(['citas' => $citas]);
-
-    return redirect()->route('citas.index')
-        ->with('exito', 'Cita registrada correctamente.');
-}
-
-public function update(Request $request, $id)
-{
-    $citas = $this->citas();
-
-    if (!isset($citas[$id])) {
-        abort(404);
+    public function edit(Cita $cita)
+    {
+        return view('citas.edit', ['cita' => $cita] + $this->catalogos());
     }
 
-    $datos = $request->validate([
-        'paciente' => 'required|string|max:255',
-        'fecha' => 'required|date',
-        'hora' => 'required',
-        'motivo' => 'required|string|max:255',
-        'estado' => 'required|in:Pendiente,Confirmada,Cancelada',
-    ]);
+    public function update(UpdateCitaRequest $request, Cita $cita)
+    {
+        $cita->update($request->validated());
 
-    $datos['id'] = $id;
-
-    $citas[$id] = $datos;
-
-    session(['citas' => $citas]);
-
-    return redirect()->route('citas.index')
-        ->with('exito', 'Cita actualizada correctamente.');
-}
-
-public function destroy($id)
-{
-    $citas = $this->citas();
-
-    if (!isset($citas[$id])) {
-        abort(404);
+        return redirect()->route('citas.index')
+            ->with('exito', 'Cita actualizada correctamente.');
     }
 
-    unset($citas[$id]);
+    public function destroy(Cita $cita)
+    {
+        $cita->delete();
 
-    session(['citas' => $citas]);
-
-    return redirect()->route('citas.index')
-        ->with('exito', 'Cita eliminada correctamente.');
-}
-
+        return redirect()->route('citas.index')
+            ->with('exito', 'Cita eliminada correctamente.');
+    }
 }
