@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\StoreCitaRequest;
 use App\Http\Requests\UpdateCitaRequest;
 use App\Models\Cita;
 use App\Models\Paciente;
 use App\Models\Servicio;
+use Illuminate\Http\Request;
 
 class CitaController extends Controller
 {
@@ -21,20 +21,18 @@ class CitaController extends Controller
     }
 
     public function index(Request $request)
-{
-    $citas = Cita::with(['paciente', 'servicio'])
-        ->when($request->query('paciente'), fn ($q, $texto) =>
-            $q->whereHas('paciente', fn ($p) => $p->where('nombre', 'ilike', '%'.$texto.'%')))
-        ->when(in_array($request->query('estado'), Cita::ESTADOS, true), fn ($q) =>
-            $q->where('estado', $request->query('estado')))
-        ->when($request->query('fecha'), fn ($q, $fecha) => $q->whereDate('fecha', $fecha))
-        ->orderBy('fecha')
-        ->orderBy('hora')
-        ->paginate(10)
-        ->withQueryString();
+    {
+        $citas = Cita::with(['paciente', 'servicio'])
+            ->when($request->query('paciente'), fn ($q, $texto) => $q->whereHas('paciente', fn ($p) => $p->where('nombre', 'ilike', '%'.$texto.'%')))
+            ->when(in_array($request->query('estado'), Cita::ESTADOS, true), fn ($q) => $q->where('estado', $request->query('estado')))
+            ->when($request->query('fecha'), fn ($q, $fecha) => $q->whereDate('fecha', $fecha))
+            ->orderBy('fecha')
+            ->orderBy('hora')
+            ->paginate(10)
+            ->withQueryString();
 
-    return view('citas.index', compact('citas'));
-}
+        return view('citas.index', compact('citas'));
+    }
 
     public function create()
     {

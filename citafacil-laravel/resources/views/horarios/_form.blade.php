@@ -46,4 +46,4 @@
 </div>
 
 <button type="submit" class="btn btn-primario">{{ $textoBoton }}</button>
-<a href="{{ route('horarios.index') }}" class="btn btn-secondary">Cancelar</a>
+<a href="{{ route('horarios.index') }}" class="btn btn-outline-secondary">Cancelar</a>

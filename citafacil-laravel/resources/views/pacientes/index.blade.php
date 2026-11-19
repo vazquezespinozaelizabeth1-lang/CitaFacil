@@ -5,8 +5,8 @@
 @section('contenido')
     <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
         <h1 class="h3 mb-0">Pacientes</h1>
-        <a href="{{ route('pacientes.create') }}" class="btn btn-primary">
-            <i class="bi bi-person-plus me-1"></i>Nuevo paciente
+        <a href="{{ route('pacientes.create') }}" class="btn btn-primario">
+            <i class="bi bi-person-plus me-1" aria-hidden="true"></i>Nuevo paciente
         </a>
     </div>
 
@@ -22,7 +22,7 @@
                     aria-label="Buscar paciente por nombre"
                 >
                 <button class="btn btn-outline-secondary" type="submit">
-                    <i class="bi bi-search me-1"></i>Buscar
+                    <i class="bi bi-search me-1" aria-hidden="true"></i>Buscar
                 </button>
                 @if ($buscar)
                     <a href="{{ route('pacientes.index') }}" class="btn btn-outline-danger" title="Limpiar búsqueda">

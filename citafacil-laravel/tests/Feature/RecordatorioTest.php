@@ -6,22 +6,24 @@ use App\Models\Cita;
 use App\Models\Paciente;
 use App\Models\Recordatorio;
 use App\Models\Servicio;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Tests\TestCase;
-use App\Models\User;
 
 class RecordatorioTest extends TestCase
 {
     use RefreshDatabase;
+
     protected function setUp(): void
     {
         parent::setUp();
         $this->actingAs(User::factory()->create(['role' => User::ROL_ADMIN]));
     }
+
     public function test_guarda_consulta_edita_y_elimina_un_recordatorio(): void
     {
-        
+
         $datos = $this->datos($this->cita());
 
         $this->post(route('recordatorios.store'), $datos)->assertSessionHas('exito');

@@ -15,10 +15,10 @@ class StoreCitaRequest extends BaseFormRequest
         return [
             'paciente_id' => ['required', 'integer', 'exists:pacientes,id'],
             'servicio_id' => ['required', 'integer', 'exists:servicios,id'],
-            'fecha'       => ['required', 'date', 'after_or_equal:today'],
-            'hora'        => ['required', 'date_format:H:i'],
-            'motivo'      => ['required', 'string', 'min:3', 'max:150'],
-            'estado'      => ['required', Rule::in(Cita::ESTADOS)],
+            'fecha' => ['required', 'date', 'after_or_equal:today'],
+            'hora' => ['required', 'date_format:H:i'],
+            'motivo' => ['required', 'string', 'min:3', 'max:150'],
+            'estado' => ['required', Rule::in(Cita::ESTADOS)],
         ];
     }
 
@@ -26,4 +26,7 @@ class StoreCitaRequest extends BaseFormRequest
     {
         return [
             'paciente_id' => 'paciente',
-            'servicio_id' =>
+            'servicio_id' => 'servicio',
+        ];
+    }
+}

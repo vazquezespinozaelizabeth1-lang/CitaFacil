@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-       Schema::create('horarios', function (Blueprint $table) {
-    $table->id();
-    $table->unsignedTinyInteger('dia_semana');
-    $table->time('hora_inicio');
-    $table->time('hora_fin');
-    $table->boolean('activo')->default(true);
-    $table->timestamps();
-    $table->unique(['dia_semana', 'hora_inicio']);
-});
+        Schema::create('horarios', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedTinyInteger('dia_semana');
+            $table->time('hora_inicio');
+            $table->time('hora_fin');
+            $table->boolean('activo')->default(true);
+            $table->timestamps();
+            $table->unique(['dia_semana', 'hora_inicio']);
+        });
     }
 
     /**

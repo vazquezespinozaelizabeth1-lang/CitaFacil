@@ -12,14 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('recordatorios', function (Blueprint $table) {
-    $table->id();
-    $table->foreignId('cita_id')->constrained('citas')->cascadeOnDelete();
-    $table->string('mensaje', 255);
-    $table->dateTime('fecha_envio');
-    $table->string('canal', 20)->default('correo');
-    $table->boolean('enviado')->default(false);
-    $table->timestamps();
-});
+            $table->id();
+            $table->foreignId('cita_id')->constrained('citas')->cascadeOnDelete();
+            $table->string('mensaje', 255);
+            $table->dateTime('fecha_envio');
+            $table->string('canal', 20)->default('correo');
+            $table->boolean('enviado')->default(false);
+            $table->timestamps();
+        });
     }
 
     /**
