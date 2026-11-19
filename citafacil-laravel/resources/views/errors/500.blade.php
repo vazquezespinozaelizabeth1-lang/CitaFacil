@@ -10,7 +10,7 @@
     <div class="text-center">
         <h1 class="display-5 text-danger">500</h1>
         <p class="lead">Error interno del servidor. Estamos trabajando para solucionarlo.</p>
-        <a href="{{ url('/') }}" class="btn btn-primary">Volver al inicio</a>
+        <a href="{{ url('/') }}" class="btn btn-primario">Volver al inicio</a>
     </div>
 </body>
 </html>

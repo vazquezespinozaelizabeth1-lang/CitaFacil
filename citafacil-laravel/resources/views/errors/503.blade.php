@@ -10,7 +10,7 @@
     <div class="text-center">
         <h1 class="display-5 text-secondary">503</h1>
         <p class="lead">El sistema se encuentra en mantenimiento temporal.</p>
-        <a href="{{ url('/') }}" class="btn btn-secondary">Volver al inicio</a>
+        <a href="{{ url('/') }}" class="btn btn-primario">Volver al inicio</a>
     </div>
 </body>
 </html>
