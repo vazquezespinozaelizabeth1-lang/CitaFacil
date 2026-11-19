@@ -1,56 +1,34 @@
 <?php
 
-namespace App\Http\Controllers;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CitaController;
+use App\Http\Controllers\HorarioController;
+use App\Http\Controllers\PacienteController;
+use App\Http\Controllers\PanelController;
+use App\Http\Controllers\RecordatorioController;
+use App\Http\Controllers\ServicioController;
+use Illuminate\Support\Facades\Route;
 
-use App\Http\Requests\LoginRequest;
-use App\Http\Requests\RegisterRequest;
-use App\Models\User;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\View\View;
+Route::redirect('/', '/panel');
 
-class AuthController extends Controller
-{
-    public function showLogin(): View
-    {
-        return view('auth.login');
-    }
+// ---- Autenticación (Jonathan, T05): quita el // cuando termines ----
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+    Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:5,1');
+    Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
+    Route::post('/register', [AuthController::class, 'register']);
+});
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
-    public function login(LoginRequest $request): RedirectResponse
-    {
-        if (Auth::attempt($request->validated(), $request->boolean('remember'))) {
-            $request->session()->regenerate();
+// ---- Módulos: cada responsable quita el // de SU línea ----
+Route::resource('citas', CitaController::class);                       // Aram (T09)
 
-            return redirect()->intended(route('panel'));
-        }
+Route::resource('pacientes', PacienteController::class);            // Liam (T06)
 
-        return back()
-            ->withErrors(['email' => 'Correo o contraseña incorrectos.'])
-            ->onlyInput('email');
-    }
+// Route::resource('servicios', ServicioController::class);            // Victor (T07)
 
-    public function showRegister(): View
-    {
-        return view('auth.register');
-    }
+// Route::resource('horarios', HorarioController::class);              // Victor (T08)
 
-    public function register(RegisterRequest $request): RedirectResponse
-    {
-        $user = User::create($request->validated());
+// Route::resource('recordatorios', RecordatorioController::class);    // Angel (T10)
 
-        Auth::login($user);
-
-        return redirect()->route('panel')->with('exito', '¡Registro exitoso! Bienvenido a CitaFácil.');
-    }
-
-    public function logout(Request $request): RedirectResponse
-    {
-        Auth::logout();
-
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return redirect()->route('login')->with('exito', 'Has cerrado sesión correctamente.');
-    }
-}
+Route::get('/panel', PanelController::class)->name('panel');       // Aram (T11)

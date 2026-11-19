@@ -35,7 +35,7 @@
 
 <div class="mb-4">
     <a href="{{ route('citas.create') }}" class="btn btn-primario">Nueva cita</a>
-    <a href="{{ route('pacientes.create') }}" class="btn btn-secondary">Nuevo paciente</a>
+    <a href="{{ route('pacientes.create') }}" class="btn btn-primario">Nuevo paciente</a>
 </div>
 
 <h3>Próximas citas</h3>
