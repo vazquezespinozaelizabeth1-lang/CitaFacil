@@ -34,7 +34,7 @@
 </div>
 
 <div class="mb-4">
-    <a href="{{ route('citas.create') }}" class="btn btn-primary">Nueva cita</a>
+    <a href="{{ route('citas.create') }}" class="btn btn-primario">Nueva cita</a>
     <a href="{{ route('pacientes.create') }}" class="btn btn-secondary">Nuevo paciente</a>
 </div>
 
@@ -58,8 +58,8 @@
                 <tr>
                     <td>{{ $cita->fecha->format('d/m/Y') }}</td>
                     <td>{{ $cita->hora }}</td>
-                    <td>{{ $cita->paciente->nombre }}</td>
-                    <td>{{ $cita->servicio->nombre }}</td>
+                    <td>{{ $cita->paciente?->nombre }}</td>
+                    <td>{{ $cita->servicio?->nombre }}</td>
                     <td>{{ $cita->estado }}</td>
                 </tr>
             @endforeach

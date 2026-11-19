@@ -160,6 +160,12 @@ Módulo CRUD completo para la gestión de pacientes conectado a PostgreSQL media
 
 <!-- INICIO: Panel -->
 ### Panel
+
+Pantalla de inicio (`/panel`). Muestra las citas de hoy, las pendientes, el total de pacientes, los servicios activos, los recordatorios por enviar y las próximas 5 citas.
+
+![Panel](../docs/capturas/panel.png)
+<!-- FIN: Panel -->
+### Panel
 ## Panel
 
 Pantalla de inicio (`/panel`). Muestra las citas de hoy, las pendientes, el total de pacientes, los servicios activos, los recordatorios por enviar y las próximas 5 citas.
