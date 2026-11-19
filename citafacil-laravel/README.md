@@ -312,8 +312,61 @@ Las pruebas de `tests/Feature/RecordatorioTest.php` cubren el CRUD, las validaci
 <!-- FIN: Revisión de interfaz -->
 
 <!-- INICIO: Despliegue -->
+
 ### Despliegue
-*Pendiente: la completa Victor (T14).*
+
+#### Requisitos previos
+- PHP 8.2 o superior.
+- Composer.
+- Base de datos PostgreSQL.
+- Servidor web con soporte para PHP.
+
+#### Instalación
+1. Clonar el repositorio.
+2. Instalar dependencias:
+
+   ```bash
+   composer install --no-dev --optimize-autoloader
+   ```
+
+3. Crear el archivo `.env` a partir de `.env.production.example`.
+4. Configurar las variables de entorno y los datos de conexión a la base de datos.
+5. Generar la clave de aplicación:
+
+   ```bash
+   php artisan key:generate
+   ```
+
+6. Ejecutar las migraciones:
+
+   ```bash
+   php artisan migrate --force
+   ```
+
+7. Preparar las cachés para producción:
+
+   ```bash
+   php artisan config:cache
+   php artisan route:cache
+   php artisan view:cache
+   ```
+
+#### Configuración de producción
+- Establecer `APP_ENV=production`.
+- Establecer `APP_DEBUG=false`.
+- Configurar `APP_URL` con el dominio HTTPS.
+- Configurar correctamente las credenciales de la base de datos.
+- No subir el archivo `.env` al repositorio.
+
+#### Checklist de despliegue
+- [ ] Configurar variables de entorno.
+- [ ] Configurar la base de datos.
+- [ ] Ejecutar migraciones.
+- [ ] Verificar conexión HTTPS.
+- [ ] Comprobar la ruta `/up`.
+- [ ] Verificar páginas de error 404 y 500.
+- [ ] Confirmar que la aplicación funciona correctamente.
+
 <!-- FIN: Despliegue -->
 
 ## 7. Tabla de rutas
