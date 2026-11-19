@@ -5,7 +5,9 @@
 @section('contenido')
     <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
         <h1 class="h3 mb-0">Recordatorios</h1>
-        <a class="btn btn-primario" href="{{ route('recordatorios.create') }}">Nuevo recordatorio</a>
+        @if (auth()->user()?->esAdmin())
+            <a class="btn btn-primario" href="{{ route('recordatorios.create') }}">Nuevo recordatorio</a>
+        @endif
     </div>
 
     <form action="{{ route('recordatorios.index') }}" method="GET" class="row g-2 align-items-end mb-3">
@@ -56,11 +58,13 @@
                        aria-label="Consultar recordatorio {{ $recordatorio->id }}">
                         <i class="bi bi-eye" aria-hidden="true"></i>
                     </a>
-                    <a class="btn btn-sm btn-outline-secondary" href="{{ route('recordatorios.edit', $recordatorio) }}"
-                       aria-label="Editar recordatorio {{ $recordatorio->id }}">
-                        <i class="bi bi-pencil" aria-hidden="true"></i>
-                    </a>
-                    @include('recordatorios._eliminar', ['soloIcono' => true])
+                    @if (auth()->user()?->esAdmin())
+                        <a class="btn btn-sm btn-outline-secondary" href="{{ route('recordatorios.edit', $recordatorio) }}"
+                           aria-label="Editar recordatorio {{ $recordatorio->id }}">
+                            <i class="bi bi-pencil" aria-hidden="true"></i>
+                        </a>
+                        @include('recordatorios._eliminar', ['soloIcono' => true])
+                    @endif
                 </div>
             </article>
         @empty

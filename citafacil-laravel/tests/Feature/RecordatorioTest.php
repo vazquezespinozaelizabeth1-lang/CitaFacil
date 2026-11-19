@@ -9,6 +9,7 @@ use App\Models\Servicio;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Tests\TestCase;
+use App\Models\User;
 
 class RecordatorioTest extends TestCase
 {
@@ -16,6 +17,7 @@ class RecordatorioTest extends TestCase
 
     public function test_guarda_consulta_edita_y_elimina_un_recordatorio(): void
     {
+        $this->actingAs(User::factory()->create(['role' => User::ROL_ADMIN]));
         $datos = $this->datos($this->cita());
 
         $this->post(route('recordatorios.store'), $datos)->assertSessionHas('exito');
