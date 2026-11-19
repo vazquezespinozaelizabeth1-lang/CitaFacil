@@ -1,0 +1,25 @@
+# Seguridad (T16)
+
+## Sintaxis sin escapar (debe estar vacio)
+
+## request->all() (debe estar vacio)
+
+## guarded (debe estar vacio)
+
+## SQL crudo (debe estar vacio)
+
+## Requests Store y Update
+BaseFormRequest.php
+Concerns
+LoginRequest.php
+RegisterRequest.php
+StoreCitaRequest.php
+StoreHorarioRequest.php
+StorePacienteRequest.php
+StoreRecordatorioRequest.php
+StoreServicioRequest.php
+UpdateCitaRequest.php
+UpdateHorarioRequest.php
+UpdatePacienteRequest.php
+UpdateRecordatorioRequest.php
+UpdateServicioRequest.php

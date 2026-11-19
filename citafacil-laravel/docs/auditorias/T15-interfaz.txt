@@ -1,0 +1,7 @@
+# Revisión de interfaz (T15)
+
+## Botones con clase vieja (debe estar vacío)
+
+## Íconos sin aria-hidden (debe estar vacío)
+
+## Formularios sin novalidate (debe estar vacío)
