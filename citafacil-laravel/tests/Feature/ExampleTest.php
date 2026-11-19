@@ -10,6 +10,6 @@ class ExampleTest extends TestCase
     {
         $response = $this->get('/');
 
-        $response->assertRedirect('/citas');
+        $response->assertRedirect('/panel');
     }
 }
