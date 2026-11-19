@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('titulo', 'Registro')
 
 @section('contenido')
 <div class="container d-flex justify-content-center align-items-center min-vh-75 py-5">
@@ -6,7 +7,7 @@
         <div class="card-body p-4">
             <h3 class="text-center mb-4 fw-bold">Registro de Usuario</h3>
 
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('register') }}" novalidate>
                 @csrf
 
                 <div class="mb-3">
@@ -29,8 +30,8 @@
                     <label for="password" class="form-label">Contraseña <span class="text-danger">*</span></label>
                     <div class="input-group has-validation">
                         <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" required>
-                        <button class="btn btn-outline-secondary toggle-password" type="button" data-target="password">
-                            <i class="bi bi-eye"></i>
+                        <button class="btn btn-outline-secondary toggle-password" type="button" data-target="password" aria-label="Mostrar contraseña">
+                            <i class="bi bi-eye" aria-hidden="true"></i>
                         </button>
                         @error('password')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -42,14 +43,14 @@
                     <label for="password_confirmation" class="form-label">Confirmar contraseña <span class="text-danger">*</span></label>
                     <div class="input-group">
                         <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
-                        <button class="btn btn-outline-secondary toggle-password" type="button" data-target="password_confirmation">
-                            <i class="bi bi-eye"></i>
+                        <button class="btn btn-outline-secondary toggle-password" type="button" data-target="password_confirmation" aria-label="Mostrar contraseña">
+                            <i class="bi bi-eye" aria-hidden="true"></i>
                         </button>
                     </div>
                 </div>
 
                 <div class="d-grid gap-2">
-                    <button type="submit" class="btn btn-primary">Registrarse</button>
+                    <button type="submit" class="btn btn-primario">Registrarse</button>
                 </div>
 
                 <div class="text-center mt-3">

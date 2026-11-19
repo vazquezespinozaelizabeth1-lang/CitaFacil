@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (passwordInput) {
                 const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
                 passwordInput.setAttribute('type', type);
+                this.setAttribute('aria-label', type === 'password' ? 'Mostrar contraseña' : 'Ocultar contraseña');
 
                 const icono = this.querySelector('i');
                 if (icono) {
