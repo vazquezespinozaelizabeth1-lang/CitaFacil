@@ -102,9 +102,9 @@ CitaFácil usa PostgreSQL. Todo el esquema se crea con migraciones y se llena co
 
 El seeder crea un administrador (credenciales en `.env.example`), 8 pacientes, 4 servicios, horarios de lunes a viernes, 10 citas y 5 recordatorios.
 
-![Tablas en PostgreSQL](../docs/capturas/tables.png)
 
-![Columnas de la tabla servicios](../docs/capturas/campos.png)
+
+
 <!-- FIN: Base de datos -->
 
 <!-- INICIO: Interfaz y layout -->
@@ -158,8 +158,8 @@ Cada enlace se muestra cuando existe su ruta. La zona de usuario muestra el nomb
 
 **Capturas**
 
-![Login](../docs/capturas/login.png)
-![Registro](../docs/capturas/register.png)
+
+
 <!-- FIN: Autenticación -->
 
 <!-- INICIO: Roles y permisos -->
@@ -177,7 +177,7 @@ Credenciales de ejemplo del admin (de `.env.example`):
 - Contraseña: `cambia-esta-clave`
 <!-- FIN: Roles y permisos -->
 
-<!-- <!-- INICIO: Pacientes -->
+<!-- INICIO: Pacientes -->
 ### Pacientes
 Módulo CRUD completo para la gestión de pacientes conectado a PostgreSQL mediante Eloquent (`App\Models\Paciente`). Incluye búsqueda por nombre (`scopeBuscar`), paginación con conservación de filtros (`paginate(10)->withQueryString()`), consulta del historial de citas del paciente y bloqueo de eliminación cuando existen citas asociadas.
 
@@ -257,8 +257,6 @@ La validación está en `StoreHorarioRequest` y `UpdateHorarioRequest`, con mens
 
 <!-- INICIO: Citas -->
 ### Citas
-<!-- INICIO: Citas -->
-### Citas
 
 Módulo central de CitaFácil: permite listar, agendar, consultar, editar y eliminar citas guardadas en PostgreSQL. Cada cita pertenece a un paciente y a un servicio.
 
@@ -318,7 +316,7 @@ Las pruebas de `tests/Feature/RecordatorioTest.php` cubren el CRUD, las validaci
 
 Pantalla de inicio (`/panel`). Muestra las citas de hoy, las pendientes, el total de pacientes, los servicios activos, los recordatorios por enviar y las próximas 5 citas.
 
-![Panel](../docs/capturas/panel.png)
+
 <!-- FIN: Panel -->
 
 <!-- INICIO: Páginas de error -->
@@ -330,12 +328,12 @@ Vistas personalizadas en español para los errores `404`, `419`, `500` y `503`, 
 
 <!-- INICIO: Seguridad -->
 ### Seguridad
-*Pendiente: la completa Liam (T16).*
+Se revisaron las solicitudes, la validación de datos, la asignación masiva, las consultas y la protección CSRF. La evidencia de la revisión se encuentra en `docs/auditorias/T16-seguridad.txt`.
 <!-- FIN: Seguridad -->
 
 <!-- INICIO: Revisión de interfaz -->
 ### Revisión de interfaz
-*Pendiente: la completa Angel (T15).*
+Se revisaron las clases de botones, los atributos de accesibilidad de los íconos y los formularios. Los resultados y observaciones se encuentran en `docs/auditorias/T15-interfaz.txt`.
 <!-- FIN: Revisión de interfaz -->
 
 <!-- INICIO: Despliegue -->
@@ -344,30 +342,64 @@ Vistas personalizadas en español para los errores `404`, `419`, `500` y `503`, 
 <!-- FIN: Despliegue -->
 
 ## 7. Tabla de rutas
-Se amplía con cada módulo. Rutas actuales:
+
+Rutas registradas en Laravel mediante `php artisan route:list --except-vendor` (41 rutas).
 
 | Método | URI | Nombre | Controlador@Método | Descripción |
 | :--- | :--- | :--- | :--- | :--- |
-| `GET` | `/` | — | Redirect | Redirige a la lista de citas (`/citas`) |
-| `GET` | `citas` | `citas.index` | `CitaController@index` | Listado de citas |
-| `GET` | `citas/create` | `citas.create` | `CitaController@create` | Formulario para agendar una cita |
-| `POST` | `citas` | `citas.store` | `CitaController@store` | Guarda la nueva cita |
-| `GET` | `citas/{cita}` | `citas.show` | `CitaController@show` | Detalle de una cita |
-| `GET` | `citas/{cita}/edit` | `citas.edit` | `CitaController@edit` | Formulario de edición |
-| `PUT` | `citas/{cita}` | `citas.update` | `CitaController@update` | Actualiza la cita |
-| `DELETE` | `citas/{cita}` | `citas.destroy` | `CitaController@destroy` | Elimina la cita |
-| `GET` | `pacientes` | `pacientes.index` | `PacienteController@index` | Listado de pacientes con búsqueda y paginación |
-| `GET` | `pacientes/create` | `pacientes.create` | `PacienteController@create` | Formulario para registrar un paciente |
-| `POST` | `pacientes` | `pacientes.store` | `PacienteController@store` | Guarda un nuevo paciente |
-| `GET` | `pacientes/{paciente}` | `pacientes.show` | `PacienteController@show` | Detalle del paciente y sus citas |
-| `GET` | `pacientes/{paciente}/edit` | `pacientes.edit` | `PacienteController@edit` | Formulario de edición del paciente |
-| `PUT` | `pacientes/{paciente}` | `pacientes.update` | `PacienteController@update` | Actualiza los datos del paciente |
-| `DELETE` | `pacientes/{paciente}` | `pacientes.destroy` | `PacienteController@destroy` | Elimina el paciente (si no tiene citas) |
+| ANY | `/` | — | `RedirectController` | Redirige al panel (`/panel`) |
+| GET | `citas` | `citas.index` | `CitaController@index` | Listado de citas |
+| POST | `citas` | `citas.store` | `CitaController@store` | Guarda una cita |
+| GET | `citas/create` | `citas.create` | `CitaController@create` | Formulario para agendar |
+| GET | `citas/{cita}` | `citas.show` | `CitaController@show` | Detalle de una cita |
+| PUT/PATCH | `citas/{cita}` | `citas.update` | `CitaController@update` | Actualiza una cita |
+| DELETE | `citas/{cita}` | `CitaController@destroy` | `CitaController@destroy` | Elimina una cita |
+| GET | `citas/{cita}/edit` | `citas.edit` | `CitaController@edit` | Formulario de edición |
+| POST | `horarios` | `horarios.store` | `HorarioController@store` | Guarda un horario |
+| GET | `horarios` | `horarios.index` | `HorarioController@index` | Lista de horarios |
+| GET | `horarios/create` | `horarios.create` | `HorarioController@create` | Formulario para crear horario |
+| PUT/PATCH | `horarios/{horario}` | `horarios.update` | `HorarioController@update` | Actualiza un horario |
+| DELETE | `horarios/{horario}` | `horarios.destroy` | `HorarioController@destroy` | Elimina un horario |
+| GET | `horarios/{horario}/edit` | `horarios.edit` | `HorarioController@edit` | Formulario de edición |
+| GET | `login` | `login` | `AuthController@showLogin` | Muestra el inicio de sesión |
+| POST | `login` | — | `AuthController@login` | Procesa el inicio de sesión |
+| POST | `logout` | `logout` | `AuthController@logout` | Cierra la sesión |
+| GET | `pacientes` | `pacientes.index` | `PacienteController@index` | Lista de pacientes |
+| POST | `pacientes` | `pacientes.store` | `PacienteController@store` | Guarda un paciente |
+| GET | `pacientes/create` | `pacientes.create` | `PacienteController@create` | Formulario para registrar paciente |
+| GET | `pacientes/{paciente}` | `pacientes.show` | `PacienteController@show` | Detalle del paciente |
+| PUT/PATCH | `pacientes/{paciente}` | `pacientes.update` | `PacienteController@update` | Actualiza un paciente |
+| DELETE | `pacientes/{paciente}` | `pacientes.destroy` | `PacienteController@destroy` | Elimina un paciente |
+| GET | `pacientes/{paciente}/edit` | `pacientes.edit` | `PacienteController@edit` | Formulario de edición |
+| GET | `panel` | `panel` | `PanelController` | Muestra el panel principal |
+| POST | `recordatorios` | `recordatorios.store` | `RecordatorioController@store` | Guarda un recordatorio |
+| GET | `recordatorios` | `recordatorios.index` | `RecordatorioController@index` | Lista de recordatorios |
+| GET | `recordatorios/create` | `recordatorios.create` | `RecordatorioController@create` | Formulario para crear recordatorio |
+| PUT/PATCH | `recordatorios/{recordatorio}` | `recordatorios.update` | `RecordatorioController@update` | Actualiza un recordatorio |
+| DELETE | `recordatorios/{recordatorio}` | `recordatorios.destroy` | `RecordatorioController@destroy` | Elimina un recordatorio |
+| GET | `recordatorios/{recordatorio}` | `recordatorios.show` | `RecordatorioController@show` | Detalle del recordatorio |
+| GET | `recordatorios/{recordatorio}/edit` | `recordatorios.edit` | `RecordatorioController@edit` | Formulario de edición |
+| GET | `register` | `register` | `AuthController@showRegister` | Muestra el registro |
+| POST | `register` | — | `AuthController@register` | Registra un usuario |
+| POST | `servicios` | `servicios.store` | `ServicioController@store` | Guarda un servicio |
+| GET | `servicios` | `servicios.index` | `ServicioController@index` | Lista de servicios |
+| GET | `servicios/create` | `servicios.create` | `ServicioController@create` | Formulario para crear servicio |
+| PUT/PATCH | `servicios/{servicio}` | `servicios.update` | `ServicioController@update` | Actualiza un servicio |
+| DELETE | `servicios/{servicio}` | `servicios.destroy` | `ServicioController@destroy` | Elimina un servicio |
+| GET | `servicios/{servicio}` | `servicios.show` | `ServicioController@show` | Detalle del servicio |
+| GET | `servicios/{servicio}/edit` | `servicios.edit` | `ServicioController@edit` | Formulario de edición |
 
 ## 8. Capturas de pantalla
 ![Listado de Citas](docs/capturas/01-listado.png)
 ![Errores en Formulario](docs/capturas/02-crear-errores.png)
 ![Cita Creada](docs/capturas/03-crear-exito.png)
+![Detalle de Cita](docs/capturas/04-detalle.png)
+![Edición de Cita](docs/capturas/05-editar.png)
+![Modal Eliminar](docs/capturas/06-modal-eliminar.png)
+![Cita Eliminada](docs/capturas/07-eliminado.png)
+![Error 404](docs/capturas/08-404.png)
+![Route List](docs/capturas/09-route-list.png)
+![Kanban GitHub](docs/capturas/10-kanban.png)
 ---
 
 ## Auditoría de Validación y Seguridad (T16)

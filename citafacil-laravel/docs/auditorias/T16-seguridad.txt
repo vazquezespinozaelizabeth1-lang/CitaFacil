@@ -1,25 +1,71 @@
-# Seguridad (T16)
+]633;E;echo "# Seguridad (T16)";0608b20e-dd31-4eae-9ccd-36ab5ca7aebf]633;C# Seguridad (T16)
 
-## Sintaxis sin escapar (debe estar vacio)
+## Sintaxis Blade sin escapar
 
-## request->all() (debe estar vacio)
+## Uso de all() en solicitudes
 
-## guarded (debe estar vacio)
+## Uso de guarded
 
-## SQL crudo (debe estar vacio)
+## SQL crudo
 
 ## Requests Store y Update
-BaseFormRequest.php
-Concerns
-LoginRequest.php
-RegisterRequest.php
-StoreCitaRequest.php
-StoreHorarioRequest.php
-StorePacienteRequest.php
-StoreRecordatorioRequest.php
-StoreServicioRequest.php
-UpdateCitaRequest.php
-UpdateHorarioRequest.php
-UpdatePacienteRequest.php
-UpdateRecordatorioRequest.php
-UpdateServicioRequest.php
+app/Http/Requests/BaseFormRequest.php
+app/Http/Requests/Concerns/ChoqueDeHorario.php
+app/Http/Requests/LoginRequest.php
+app/Http/Requests/RegisterRequest.php
+app/Http/Requests/StoreCitaRequest.php
+app/Http/Requests/StoreHorarioRequest.php
+app/Http/Requests/StorePacienteRequest.php
+app/Http/Requests/StoreRecordatorioRequest.php
+app/Http/Requests/StoreServicioRequest.php
+app/Http/Requests/UpdateCitaRequest.php
+app/Http/Requests/UpdateHorarioRequest.php
+app/Http/Requests/UpdatePacienteRequest.php
+app/Http/Requests/UpdateRecordatorioRequest.php
+app/Http/Requests/UpdateServicioRequest.php
+]633;E;echo;0608b20e-dd31-4eae-9ccd-36ab5ca7aebf]633;C
+## Uso de datos validados en controladores
+app/Http/Controllers/RecordatorioController.php:42:        $recordatorio = Recordatorio::create($request->validated());
+app/Http/Controllers/RecordatorioController.php:65:        $recordatorio->update($request->validated());
+app/Http/Controllers/PacienteController.php:34:        Paciente::create($request->validated());
+app/Http/Controllers/PacienteController.php:57:        $paciente->update($request->validated());
+app/Http/Controllers/ServicioController.php:30:        Servicio::create($request->validated());
+app/Http/Controllers/ServicioController.php:50:        $servicio->update($request->validated());
+app/Http/Controllers/CitaController.php:44:        Cita::create($request->validated());
+app/Http/Controllers/CitaController.php:64:        $cita->update($request->validated());
+app/Http/Controllers/AuthController.php:22:        if (Auth::attempt($request->validated(), $request->boolean('remember'))) {
+app/Http/Controllers/AuthController.php:40:        $user = User::create($request->validated());
+app/Http/Controllers/HorarioController.php:38:        Horario::create($request->validated());
+app/Http/Controllers/HorarioController.php:51:        $horario->update($request->validated());
+
+## Protección fillable en modelos
+app/Models/Paciente.php:11:    protected $fillable = ['nombre', 'telefono', 'email', 'fecha_nacimiento'];
+app/Models/User.php:25:    protected $fillable = [
+app/Models/Servicio.php:11:    protected $fillable = ['nombre', 'descripcion', 'duracion_min', 'precio', 'activo'];
+app/Models/Horario.php:20:    protected $fillable = ['dia_semana', 'hora_inicio', 'hora_fin', 'activo'];
+app/Models/Cita.php:14:    protected $fillable = ['paciente_id', 'servicio_id', 'fecha', 'hora', 'motivo', 'estado'];
+app/Models/Recordatorio.php:12:    protected $fillable = ['cita_id', 'mensaje', 'fecha_envio', 'canal', 'enviado'];
+
+## Protección CSRF en formularios
+resources/views/auth/register.blade.php:11:                @csrf
+resources/views/auth/login.blade.php:11:                @csrf
+resources/views/citas/create.blade.php:15:                    @csrf
+resources/views/citas/edit.blade.php:15:                    @csrf
+resources/views/pacientes/create.blade.php:16:                        @csrf
+resources/views/pacientes/edit.blade.php:16:                        @csrf
+resources/views/horarios/create.blade.php:15:                    @csrf
+resources/views/horarios/edit.blade.php:15:                    @csrf
+resources/views/layouts/app.blade.php:83:                                @csrf
+resources/views/recordatorios/create.blade.php:8:        @csrf
+resources/views/recordatorios/edit.blade.php:8:        @csrf
+resources/views/components/modal-eliminar.blade.php:16:                    @csrf
+resources/views/servicios/create.blade.php:15:                    @csrf
+resources/views/servicios/edit.blade.php:15:                    @csrf
+
+## Métodos HTTP en formularios
+resources/views/citas/edit.blade.php:16:                    @method('PUT')
+resources/views/pacientes/edit.blade.php:17:                        @method('PUT')
+resources/views/horarios/edit.blade.php:16:                    @method('PUT')
+resources/views/recordatorios/edit.blade.php:9:        @method('PUT')
+resources/views/components/modal-eliminar.blade.php:17:                    @method('DELETE')
+resources/views/servicios/edit.blade.php:16:                    @method('PUT')
