@@ -25,8 +25,7 @@ Route::resource('citas', CitaController::class);                       // Aram (
 
 Route::resource('pacientes', PacienteController::class);            // Liam (T06)
 
- Route::resource('servicios', ServicioController::class);            // Victor (T07)
-
+Route::resource('servicios', ServicioController::class)->except('show');   // Victor (T07)
 // Route::resource('horarios', HorarioController::class);              // Victor (T08)
 
 // Route::resource('recordatorios', RecordatorioController::class);    // Angel (T10)

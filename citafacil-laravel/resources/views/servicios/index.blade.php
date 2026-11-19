@@ -3,11 +3,15 @@
 @section('titulo', 'Servicios')
 
 @section('contenido')
+    @php $esAdmin = auth()->user()?->esAdmin(); @endphp
+
     <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
         <h1 class="h3 mb-0">Servicios</h1>
-        <a href="{{ route('servicios.create') }}" class="btn btn-primary">
-            <i class="bi bi-plus-lg" aria-hidden="true"></i> Nuevo servicio
-        </a>
+        @if ($esAdmin)
+            <a href="{{ route('servicios.create') }}" class="btn btn-primario">
+                <i class="bi bi-plus-lg" aria-hidden="true"></i> Nuevo servicio
+            </a>
+        @endif
     </div>
 
     <form method="GET" action="{{ route('servicios.index') }}" class="row g-2 mb-3" role="search">
@@ -16,9 +20,9 @@
             <input type="search" id="q" name="q" class="form-control" placeholder="Buscar por nombre" value="{{ request('q') }}">
         </div>
         <div class="col-auto">
-            <button type="submit" class="btn btn-outline-primary">Buscar</button>
+            <button type="submit" class="btn btn-outline-secondary">Buscar</button>
             @if (request('q'))
-                <a href="{{ route('servicios.index') }}" class="btn btn-outline-secondary">Limpiar</a>
+                <a href="{{ route('servicios.index') }}" class="btn btn-outline-danger">Limpiar</a>
             @endif
         </div>
     </form>
@@ -37,7 +41,9 @@
                         <th scope="col">Duración</th>
                         <th scope="col">Precio</th>
                         <th scope="col">Estado</th>
+                        @if ($esAdmin)
                         <th scope="col" class="text-end">Acciones</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -52,6 +58,7 @@
                                     {{ $servicio->activo ? 'Activo' : 'Inactivo' }}
                                 </span>
                             </td>
+                            @if ($esAdmin)
                             <td class="text-end">
                                 <a href="{{ route('servicios.edit', $servicio) }}" class="btn btn-sm btn-outline-primary" aria-label="Editar {{ $servicio->nombre }}">
                                     <i class="bi bi-pencil" aria-hidden="true"></i>
@@ -70,6 +77,7 @@
                                     @endif
                                 </x-modal-eliminar>
                             </td>
+                            @endif
                         </tr>
                     @endforeach
                 </tbody>
