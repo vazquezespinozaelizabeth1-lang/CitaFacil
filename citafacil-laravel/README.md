@@ -109,7 +109,27 @@ El seeder crea un administrador (credenciales en `.env.example`), 8 pacientes, 4
 
 <!-- INICIO: Interfaz y layout -->
 ### Interfaz y layout
-*Pendiente: la completa Angel (T03).*
+
+El layout compartido `resources/views/layouts/app.blade.php` usa el logo de CitaFácil como marca del navbar y favicon. El logo se muestra a 40 px de alto, conserva su proporción y tiene fondo blanco. El navbar usa el verde institucional, se puede expandir en móvil y marca la sección activa con `aria-current="page"`. El pie de página muestra el año actual.
+
+| Enlace | Ruta de Laravel |
+| --- | --- |
+| Panel | `panel` |
+| Citas | `citas.index` |
+| Pacientes | `pacientes.index` |
+| Servicios | `servicios.index` |
+| Horarios | `horarios.index` |
+| Recordatorios | `recordatorios.index` |
+| Iniciar sesión | `login` |
+| Registrarse | `register` |
+| Cerrar sesión | `logout` |
+
+Cada enlace se muestra cuando existe su ruta. La zona de usuario muestra el nombre de la persona autenticada y, cuando está disponible, un formulario de cierre de sesión por POST con CSRF.
+
+![Navbar en escritorio a 1280 px](docs/capturas/t03/navbar-escritorio.png)
+
+![Navbar expandido en móvil a 375 px](docs/capturas/t03/navbar-movil.png)
+
 <!-- FIN: Interfaz y layout -->
 
 <!-- INICIO: Componentes compartidos -->
@@ -119,7 +139,27 @@ El seeder crea un administrador (credenciales en `.env.example`), 8 pacientes, 4
 
 <!-- INICIO: Autenticación -->
 ### Autenticación
-*Pendiente: la completa Jonathan (T05).*
+
+**Flujo**
+1. El visitante entra a `/login` o `/register` (solo invitados).
+2. Al registrarse, se crea el usuario y se inicia sesión automáticamente.
+3. Al iniciar sesión se redirige a la página que intentaba abrir, o al listado de citas.
+4. `POST /logout` cierra la sesión e invalida el token.
+
+**Rutas**
+
+| Método | Ruta | Nombre | Acceso |
+|--------|------|--------|--------|
+| GET | `/login` | `login` | invitados |
+| POST | `/login` | – | invitados (máx. 5 intentos por minuto) |
+| GET | `/register` | `register` | invitados |
+| POST | `/register` | – | invitados |
+| POST | `/logout` | `logout` | autenticados |
+
+**Capturas**
+
+![Login](../docs/capturas/login.png)
+![Registro](../docs/capturas/register.png)
 <!-- FIN: Autenticación -->
 
 <!-- INICIO: Roles y permisos -->
@@ -230,6 +270,27 @@ Se amplía con cada módulo. Rutas actuales:
 ![Listado de Citas](docs/capturas/01-listado.png)
 ![Errores en Formulario](docs/capturas/02-crear-errores.png)
 ![Cita Creada](docs/capturas/03-crear-exito.png)
+---
+
+## Auditoría de Validación y Seguridad (T16)
+
+Se realizó la revisión integral de seguridad y validación sobre el proyecto **CitaFácil** (Laravel 12 + PostgreSQL):
+
+| Control de Seguridad | Estado | Evidencia / Implementación |
+| :--- | :---: | :--- |
+| **FormRequests independientes** | Cumple | `StorePacienteRequest` y `UpdatePacienteRequest` heredan de `BaseFormRequest` con reglas dedicadas (`unique` ignorando el ID actual al editar) y mensajes en español. |
+| **Protección CSRF** | Cumple | Todos los formularios `POST`, `PUT` y `DELETE` incluyen `@csrf` y `@method(...)`. Peticiones sin token devuelven `419 Page Expired`. |
+| **Prevención XSS** | Cumple | Sanitización automática en `BaseFormRequest` (`strip_tags`) y escape nativo `{{ }}` en vistas Blade (sin uso de `{!! !!}`). |
+| **Mass Assignment** | Cumple | Todos los modelos (`Cita`, `Horario`, `Paciente`, `Recordatorio`, `Servicio`, `User`) definen `$fillable` explícito; `User` excluye `role` y los controladores usan `$request->validated()`. |
+| **Prevención SQL Injection** | Cumple | Consultas exclusivas mediante Eloquent ORM y parámetros vinculados (sin `DB::raw` ni `whereRaw`). |
+
+### Evidencias de pruebas manuales
+
+- **Sanitización XSS al registrar paciente con etiquetas `<script>`:**
+  ![Prueba XSS](docs/capturas/11-prueba-xss.png)
+
+- **Bloqueo CSRF (419 Page Expired) al omitir `_token`:**
+  ![Prueba CSRF 419](docs/capturas/12-prueba-csrf-419.png)
 ![Detalle de Cita](docs/capturas/04-detalle.png)
 ![Edición de Cita](docs/capturas/05-editar.png)
 ![Modal Eliminar](docs/capturas/06-modal-eliminar.png)
